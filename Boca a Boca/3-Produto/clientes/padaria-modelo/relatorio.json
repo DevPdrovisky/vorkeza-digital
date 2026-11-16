@@ -1,0 +1,22 @@
+{
+  "_leia": "Números FICTÍCIOS de exemplo. Para clientes reais: acessos vêm do Cloudflare Web Analytics da página da loja; avaliações e nota, do perfil público no dia 1 e no último dia do mês; sugestões, contadas no WhatsApp da loja. O que não souber, deixe null (aparece 'A confirmar').",
+  "exemplo": true,
+  "mes": "2026-10",
+  "acessos": 96,
+  "sugestoes": 4,
+  "avaliacoesInicio": 23,
+  "avaliacoesFim": 41,
+  "notaInicio": 4.4,
+  "notaFim": 4.6,
+  "respondidas": 18,
+  "historico": [
+    { "mes": "2026-08", "acessos": null, "novas": 2, "nota": 4.4 },
+    { "mes": "2026-09", "acessos": 71, "novas": 11, "nota": 4.4 },
+    { "mes": "2026-10", "acessos": 96, "novas": 18, "nota": 4.6 }
+  ],
+  "observacoes": [
+    "Plaquinha do caixa gerou mais acessos que a da mesa: vale manter no caixa.",
+    "Duas sugestões privadas pediram mais opções sem açúcar; repassado ao dono.",
+    "Todas as 18 avaliações novas foram respondidas em até 2 dias."
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "site",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": [
+        "--yes",
+        "http-server@14.1.1",
+        "-p",
+        "8000",
+        "-c-1"
+      ],
+      "port": 8000
+    },
+    {
+      "name": "vitrine-motor",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": [
+        "--yes",
+        "http-server@14.1.1",
+        "C:/Users/cmraj/Desktop/Vorkeza Digital/Vitrine Motor/publicar",
+        "-p",
+        "8100",
+        "-c-1"
+      ],
+      "port": 8100
+    },
+    {
+      "name": "vitrine-imovel",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": [
+        "--yes",
+        "http-server@14.1.1",
+        "C:/Users/cmraj/Desktop/Vorkeza Digital/Vitrine Imovel/publicar",
+        "-p",
+        "8200",
+        "-c-1"
+      ],
+      "port": 8200
+    },
+    {
+      "name": "perfil-no-google",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": [
+        "--yes",
+        "http-server@14.1.1",
+        "C:/Users/cmraj/Desktop/Vorkeza Digital/Bem no Mapa/publicar",
+        "-p",
+        "8300",
+        "-c-1"
+      ],
+      "port": 8300
+    },
+    {
+      "name": "avalia-ai",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": [
+        "--yes",
+        "http-server@14.1.1",
+        "C:/Users/cmraj/Desktop/Vorkeza Digital/Boca a Boca/publicar",
+        "-p",
+        "8400",
+        "-c-1"
+      ],
+      "port": 8400
+    },
+    {
+      "name": "fura-fila",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "--prefix",
+        "C:/Users/cmraj/Desktop/Vorkeza Digital/fura-fila",
+        "run",
+        "dev",
+        "--",
+        "-p",
+        "3100"
+      ],
+      "port": 3100
+    },
+    {
+      "name": "cliente-vorkeza",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": [
+        "--yes",
+        "http-server@14.1.1",
+        "C:/Users/cmraj/Desktop/Vorkeza Digital/clientes-vorkeza",
+        "-p",
+        "8500",
+        "-c-1"
+      ],
+      "port": 8500
+    }
+  ]
+}

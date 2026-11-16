@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Artes Vitrine Motor</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..900&family=DM+Sans:opsz,wght@9..40,400..700&display=swap">
+<style>
+:root { --noite:#0E0F12; --laranja:#FF5A1F; --ambar:#FFB020; --papel:#F6F4F1; --tinta:#121318; --wa:#128C4B; }
+* { box-sizing: border-box; margin: 0; }
+body { background: #444; font-family: "DM Sans", sans-serif; }
+.art { position: relative; overflow: hidden; width: 1080px; height: 1350px; margin-bottom: 40px; background: var(--noite); color: rgba(255,255,255,.82); padding: 90px 84px; display: flex; flex-direction: column; }
+.art.story { height: 1920px; padding: 150px 84px; }
+.art.quad { height: 1080px; padding: 0; align-items: center; justify-content: center; }
+.art.og { width: 1200px; height: 630px; padding: 70px 80px; }
+.claro { background: var(--papel); color: #43464F; }
+.brilho { position: absolute; width: 1100px; height: 1100px; border-radius: 50%; background: radial-gradient(closest-side, rgba(255,90,31,.42), transparent); right: -380px; top: -380px; }
+.brilho.b2 { left: -420px; right: auto; top: auto; bottom: -420px; opacity: .7; }
+h1, h2 { font-family: "Archivo", sans-serif; font-stretch: 112%; font-weight: 850; letter-spacing: -.035em; line-height: 1.02; color: #fff; position: relative; }
+.claro h1, .claro h2 { color: var(--tinta); }
+h1 { font-size: 104px; } h2 { font-size: 80px; }
+em { font-style: normal; background: linear-gradient(90deg, var(--laranja), var(--ambar)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.sub { font-size: 40px; line-height: 1.35; margin-top: 34px; position: relative; max-width: 860px; }
+.tag { font: 700 26px "DM Sans"; letter-spacing: .14em; text-transform: uppercase; color: var(--ambar); margin-bottom: 30px; position: relative; }
+.claro .tag { color: var(--laranja); }
+.marca { position: absolute; left: 84px; bottom: 70px; display: flex; align-items: center; gap: 18px; font: 600 38px "Archivo"; font-stretch: 118%; color: #fff; }
+.claro .marca { color: var(--tinta); }
+.marca b { color: var(--laranja); font-weight: 850; }
+.marca img { width: 60px; }
+.story .marca { bottom: 120px; }
+.cta { position: absolute; right: 84px; bottom: 62px; background: var(--laranja); color: #fff; font: 700 32px "DM Sans"; padding: 22px 36px; border-radius: 999px; }
+.story .cta { bottom: 110px; }
+.baloes { display: flex; flex-direction: column; gap: 26px; margin-top: 60px; position: relative; }
+.balao { align-self: flex-start; background: #fff; color: var(--tinta); font: 600 50px "DM Sans"; padding: 26px 38px; border-radius: 34px 34px 34px 8px; box-shadow: 0 20px 40px rgba(0,0,0,.35); }
+.balao:nth-child(2) { margin-left: 120px; } .balao:nth-child(3) { margin-left: 50px; }
+.balao small { display: block; font-size: 24px; color: #8a8d96; text-align: right; margin-top: 4px; }
+.cel { position: absolute; right: 70px; bottom: -40px; width: 470px; padding: 14px; background: #1d1f25; border-radius: 56px; transform: rotate(-5deg); box-shadow: 0 50px 90px rgba(0,0,0,.6); }
+.cel img { width: 100%; border-radius: 44px; aspect-ratio: 390/700; object-fit: cover; object-position: top; display: block; }
+.duo { position: absolute; bottom: 170px; left: 84px; right: 84px; display: flex; gap: 30px; justify-content: center; }
+.duo img { width: 380px; border-radius: 26px; box-shadow: 0 40px 80px rgba(0,0,0,.6); border: 6px solid #fff; }
+.duo img:last-child { transform: translateY(50px) rotate(3deg); } .duo img:first-child { transform: rotate(-3deg); }
+.passos { display: grid; gap: 26px; margin-top: 64px; position: relative; }
+.passo { display: flex; gap: 30px; align-items: center; background: #fff; border-radius: 30px; padding: 30px 34px; border: 2px solid #E5E2DD; }
+.passo span { flex: none; width: 84px; height: 84px; border-radius: 24px; background: var(--laranja); color: #fff; font: 850 42px "Archivo"; display: grid; place-items: center; }
+.passo b { display: block; font: 800 40px "Archivo"; font-stretch: 108%; color: var(--tinta); }
+.passo p { font-size: 30px; }
+.planos { display: grid; gap: 22px; margin-top: 56px; position: relative; }
+.plano { display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,.06); border: 2px solid rgba(255,255,255,.14); border-radius: 30px; padding: 34px 40px; }
+.plano.dest { background: #fff; color: var(--tinta); border-color: #fff; }
+.plano b { font: 800 46px "Archivo"; font-stretch: 110%; color: #fff; display: block; }
+.plano.dest b { color: var(--tinta); }
+.plano p { font-size: 26px; margin-top: 4px; }
+.plano strong { font: 850 64px "Archivo"; color: var(--ambar); white-space: nowrap; }
+.plano.dest strong { color: var(--laranja); }
+.plano strong small { font-size: 28px; font-weight: 700; }
+.nota { position: relative; margin-top: 30px; font-size: 26px; opacity: .7; }
+.selo-grande { position: relative; margin-top: 70px; background: #fff; color: var(--tinta); border-radius: 40px; padding: 56px; }
+.selo-grande .n { font: 900 230px/1 "Archivo"; color: var(--laranja); letter-spacing: -.05em; }
+.selo-grande p { font-size: 40px; line-height: 1.35; }
+.selo-grande b { color: var(--tinta); }
+.enquete { position: relative; margin-top: 90px; background: #fff; border-radius: 40px; padding: 50px; color: var(--tinta); }
+.enquete .q { font: 800 50px "Archivo"; font-stretch: 105%; margin-bottom: 36px; }
+.op { border: 3px solid #E5E2DD; border-radius: 26px; padding: 30px; font: 600 40px "DM Sans"; margin-top: 20px; text-align: center; }
+.link-sticker { position: relative; margin: 80px auto 0; display: inline-flex; align-self: center; gap: 18px; align-items: center; background: #fff; color: #2563eb; font: 700 44px "DM Sans"; padding: 26px 44px; border-radius: 26px; }
+.seta { position: relative; text-align: center; font: 700 34px "DM Sans"; color: var(--ambar); margin-top: 40px; }
+.perfil { width: 1080px; height: 1080px; display: grid; place-items: center; background: radial-gradient(circle at 70% 25%, #2a1a12, var(--noite) 60%); }
+.perfil img { width: 640px; }
+</style>
+</head>
+<body>
+
+<!-- POST 1 -->
+<div class="art" id="post-1-ainda-tem">
+  <div class="brilho"></div>
+  <p class="tag">Revendedor, isso é você?</p>
+  <div class="baloes">
+    <div class="balao">Ainda tem? <small>08:12</small></div>
+    <div class="balao">Qual o valor? <small>08:13</small></div>
+    <div class="balao">Manda mais foto <small>08:13</small></div>
+  </div>
+  <h2 style="margin-top:80px">Um link por carro<br><em>responde por você.</em></h2>
+  <div class="marca"><img src="../../2-Site/assets/logo.svg" alt="">Vitrine<b>Motor</b></div>
+</div>
+
+<!-- POST 2 -->
+<div class="art" id="post-2-link-de-cada-carro">
+  <div class="brilho"></div>
+  <p class="tag">Site de estoque para revendas</p>
+  <h1 style="max-width:560px">Cada carro com <em>link, foto e preço.</em></h1>
+  <p class="sub" style="max-width:430px;font-size:36px">Mandou no WhatsApp, o cliente vê tudo e chama você no botão.</p>
+  <div class="cel"><img src="../../2-Site/assets/demo-carro.webp" alt=""></div>
+  <div class="marca"><img src="../../2-Site/assets/logo.svg" alt="">Vitrine<b>Motor</b></div>
+</div>
+
+<!-- POST 3 -->
+<div class="art" id="post-3-vendido-vira-post">
+  <div class="brilho b2"></div>
+  <p class="tag">Artes de status prontas</p>
+  <h2>Carro vendido<br><em>também vira post.</em></h2>
+  <div class="duo"><img src="../../2-Site/assets/arte-story.webp" alt=""><img src="../../2-Site/assets/arte-vendido.webp" alt=""></div>
+  <div class="marca"><img src="../../2-Site/assets/logo.svg" alt="">Vitrine<b>Motor</b></div>
+</div>
+
+<!-- POST 4 -->
+<div class="art claro" id="post-4-previa-gratis">
+  <p class="tag">Como funciona</p>
+  <h2>Veja pronto <em>antes de pagar.</em></h2>
+  <div class="passos">
+    <div class="passo"><span>1</span><div><b>Você manda o link</b><p>do Instagram ou do anúncio</p></div></div>
+    <div class="passo"><span>2</span><div><b>Montamos a prévia</b><p>com os seus carros, em até 48h</p></div></div>
+    <div class="passo"><span>3</span><div><b>Gostou, vai ao ar</b><p>com o seu nome e o seu domínio</p></div></div>
+    <div class="passo"><span>4</span><div><b>Estoque sempre em dia</b><p>manda a foto, a gente atualiza</p></div></div>
+  </div>
+  <div class="marca"><img src="../../2-Site/assets/logo.svg" alt="">Vitrine<b>Motor</b></div>
+</div>
+
+<!-- POST 5 -->
+<div class="art" id="post-5-planos">
+  <div class="brilho"></div>
+  <p class="tag">Preço fechado · sem fidelidade</p>
+  <h2>Quanto custa?<br><em>Aqui você sabe.</em></h2>
+  <div class="planos">
+    <div class="plano"><div><b>Artes</b><p>artes de status de todo o estoque</p></div><strong>R$ 97<small>/mês</small></strong></div>
+    <div class="plano dest"><div><b>Vitrine</b><p>site completo + artes · implantação R$ 997</p></div><strong>R$ 149<small>/mês</small></strong></div>
+    <div class="plano"><div><b>Vitrine Pro</b><p>até 150 carros · implantação R$ 1.497</p></div><strong>R$ 249<small>/mês</small></strong></div>
+  </div>
+  <p class="nota">Prévia grátis com os seus carros antes de decidir.</p>
+  <div class="marca"><img src="../../2-Site/assets/logo.svg" alt="">Vitrine<b>Motor</b></div>
+</div>
+
+<!-- POST 6 -->
+<div class="art" id="post-6-fundadores">
+  <div class="brilho b2"></div>
+  <p class="tag">Oferta de lançamento</p>
+  <h2>Procuramos as primeiras <em>5 revendas.</em></h2>
+  <div class="selo-grande">
+    <p class="n">R$ 497</p>
+    <p>de implantação <b>(em vez de R$ 997)</b> e o <b>primeiro mês grátis</b>. Em troca, seu depoimento depois de 30 dias.</p>
+  </div>
+  <div class="marca"><img src="../../2-Site/assets/logo.svg" alt="">Vitrine<b>Motor</b></div>
+</div>
+
+<!-- STORY 1 -->
+<div class="art story" id="story-1-enquete">
+  <div class="brilho"></div>
+  <p class="tag">Pergunta rápida</p>
+  <h2>Quanto tempo você gasta por dia fazendo status dos carros?</h2>
+  <div class="enquete"><p class="q">Use a enquete aqui ↓</p><div class="op">Menos de 30 min</div><div class="op">Mais de 1 hora</div></div>
+  <div class="marca"><img src="../../2-Site/assets/logo.svg" alt="">Vitrine<b>Motor</b></div>
+</div>
+
+<!-- STORY 2 -->
+<div class="art story" id="story-2-veja-a-demo">
+  <div class="brilho"></div>
+  <p class="tag">Revenda de exemplo</p>
+  <h2>Assim fica o site da sua revenda.</h2>
+  <p class="sub">Clique no link e teste: busca, filtros, botão de WhatsApp e gerador de artes.</p>
+  <div class="cel" style="position:relative;right:auto;bottom:auto;margin:70px auto 0;width:560px"><img src="../../2-Site/assets/demo-celular.webp" alt=""></div>
+  <p class="seta">↑ coloque o adesivo de link aqui</p>
+  <div class="marca"><img src="../../2-Site/assets/logo.svg" alt="">Vitrine<b>Motor</b></div>
+</div>
+
+<!-- STORY 3 -->
+<div class="art story" id="story-3-fundadores">
+  <div class="brilho b2"></div>
+  <p class="tag">Só 5 vagas</p>
+  <h1>Prévia grátis com os <em>seus carros.</em></h1>
+  <p class="sub">Me manda o link do seu Instagram ou anúncio que eu monto o site da sua revenda em até 48h. Gostou, fecha. Não gostou, não paga nada.</p>
+  <div class="selo-grande"><p class="n">R$ 497</p><p>de implantação para as 5 primeiras revendas + 1º mês grátis.</p></div>
+  <div class="marca"><img src="../../2-Site/assets/logo.svg" alt="">Vitrine<b>Motor</b></div>
+</div>
+
+<!-- PERFIL -->
+<div class="art quad perfil" id="foto-de-perfil"><img src="../../2-Site/assets/logo.svg" alt=""></div>
+
+<!-- OG -->
+<div class="art og" id="og-image">
+  <div class="brilho"></div>
+  <p class="tag" style="font-size:22px">Site de estoque para revendas</p>
+  <h2 style="font-size:70px;max-width:700px">Seu estoque no ar. <em>Um link para cada carro.</em></h2>
+  <p class="sub" style="font-size:28px;margin-top:22px">Prévia grátis com os seus carros.</p>
+  <div class="cel" style="width:300px;right:60px;bottom:-120px;padding:10px;border-radius:40px"><img src="../../2-Site/assets/demo-celular.webp" alt="" style="border-radius:32px"></div>
+  <div class="marca" style="bottom:50px;left:80px;font-size:30px"><img src="../../2-Site/assets/logo.svg" alt="" style="width:46px">Vitrine<b>Motor</b></div>
+</div>
+
+</body>
+</html>

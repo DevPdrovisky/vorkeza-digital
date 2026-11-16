@@ -1,0 +1,51 @@
+{
+  "_leia": "Fonte única do Grupo Vorkeza. Trocou uma URL, cor ou frase aqui? Rode o montar.mjs de cada marca (ou o publicar.ps1) e todos os sites, rodapés, propostas e o botão de troca se atualizam.",
+  "mae": "vorkeza",
+  "marcas": [
+    {
+      "id": "vorkeza",
+      "nome": "Vorkeza Digital",
+      "frase": "Sites profissionais com preço fechado para pequenas empresas.",
+      "cor": "#9333EA",
+      "icone": "<path d=\"M6 7.5 12 18l6-10.5\"/><circle cx=\"18\" cy=\"7.5\" r=\"1.4\" fill=\"currentColor\" stroke=\"none\"/>",
+      "url": "https://vorkeza.com.br/",
+      "projeto": "vorkeza"
+    },
+    {
+      "id": "vitrinemotor",
+      "nome": "Vitrine Motor",
+      "frase": "Site de estoque e artes de status para revendas de carros.",
+      "cor": "#FF5A1F",
+      "icone": "<path d=\"M4 15.5V13l1.8-4.1A2 2 0 0 1 7.6 7.7h8.8a2 2 0 0 1 1.8 1.2L20 13v2.5z\"/><path d=\"M4 13h16\"/><circle cx=\"7.6\" cy=\"17\" r=\"1.6\"/><circle cx=\"16.4\" cy=\"17\" r=\"1.6\"/>",
+      "url": "https://vitrinemotor.pages.dev/",
+      "projeto": "vitrinemotor"
+    },
+    {
+      "id": "vitrineimovel",
+      "nome": "Vitrine Imóvel",
+      "frase": "Um link por imóvel, com foto e preço no WhatsApp, para corretores.",
+      "cor": "#0F9D6E",
+      "icone": "<path d=\"M4 11.5 12 5l8 6.5\"/><path d=\"M6.5 10v9h11v-9\"/><path d=\"M10 19v-4.5h4V19\"/>",
+      "url": "https://vitrineimovel.pages.dev/",
+      "projeto": "vitrineimovel"
+    },
+    {
+      "id": "bemnomapa",
+      "nome": "Bem no Mapa",
+      "frase": "Seu negócio completo e bem avaliado na busca e no mapa.",
+      "cor": "#E5484D",
+      "icone": "<path d=\"M12 20.5s-6.2-5.6-6.2-10.6a6.2 6.2 0 0 1 12.4 0c0 5-6.2 10.6-6.2 10.6z\"/><circle cx=\"12\" cy=\"10\" r=\"2.2\"/>",
+      "url": "https://bemnomapa.pages.dev/",
+      "projeto": "bemnomapa"
+    },
+    {
+      "id": "bocaaboca",
+      "nome": "Boca a Boca",
+      "frase": "Placa com QR no balcão para o cliente avaliar a sua loja.",
+      "cor": "#F5B301",
+      "icone": "<path d=\"m12 4.6 2.2 4.6 5 .7-3.6 3.5.9 5-4.5-2.4-4.5 2.4.9-5L4.8 9.9l5-.7z\"/>",
+      "url": "https://bocaaboca.pages.dev/",
+      "projeto": "bocaaboca"
+    }
+  ]
+}

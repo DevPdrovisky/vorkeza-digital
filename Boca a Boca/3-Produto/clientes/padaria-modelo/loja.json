@@ -1,0 +1,17 @@
+{
+  "_leia": "Loja FICTÍCIA de demonstração. placeId fica null: na demo, o botão de avaliar mostra um aviso em vez de abrir a tela de avaliação.",
+  "nome": "Padaria Modelo",
+  "ramo": "Padaria e café",
+  "cidade": "Artur Nogueira",
+  "uf": "SP",
+  "cor": "#8A3B12",
+  "placeId": null,
+  "linkAvaliacao": null,
+  "whatsappSugestao": null,
+  "modo": "demo",
+  "placa": {
+    "titulo": "Sua opinião conta",
+    "texto": "Aponte a câmera do celular para o código e conte como foi.",
+    "quantidade": 2
+  }
+}

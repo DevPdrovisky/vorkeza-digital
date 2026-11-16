@@ -1,0 +1,8 @@
+*.js filter=semnumero
+*.mjs filter=semnumero
+*.ts filter=semnumero
+*.json filter=semnumero
+*.html filter=semnumero
+*.md filter=semnumero
+*.css filter=semnumero
+*.txt filter=semnumero

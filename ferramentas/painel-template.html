@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Painel de Tráfego</title>
+<style>
+:root{
+  --bg:#faf6fd;--card:#ffffff;--ink:#22163a;--ink-2:#4a3d61;--muted:#6b5d82;--faint:#988aa8;--line:#ece3f3;--wash:#f5eefb;
+  --a:#7e22ce;--b:#e05bc0;--rank:#9333ea;
+  --good:#15803d;--warn:#b45309;--crit:#b91c1c;--neutral:#8b7fa0;
+  --demo-bg:#fde7f6;--demo-ink:#9d1a7a;--chip-bg:#f3e8ff;--chip-ink:#6b21a8;--shadow:0 1px 2px rgba(34,22,58,.04);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#120a1c;--card:#1a1026;--ink:#f3ecfb;--ink-2:#d6c9e6;--muted:#a898bd;--faint:#7d6f92;--line:#2c1f3d;--wash:#231634;
+  --a:#a855f7;--b:#ec4899;--rank:#a855f7;
+  --good:#4ade80;--warn:#fbbf24;--crit:#f87171;--neutral:#8b7fa0;
+  --demo-bg:#3b1230;--demo-ink:#f9a8d4;--chip-bg:#2e1650;--chip-ink:#d8b4fe;--shadow:none;
+}}
+:root[data-theme="dark"]{
+  --bg:#120a1c;--card:#1a1026;--ink:#f3ecfb;--ink-2:#d6c9e6;--muted:#a898bd;--faint:#7d6f92;--line:#2c1f3d;--wash:#231634;
+  --a:#a855f7;--b:#ec4899;--rank:#a855f7;
+  --good:#4ade80;--warn:#fbbf24;--crit:#f87171;--neutral:#8b7fa0;
+  --demo-bg:#3b1230;--demo-ink:#f9a8d4;--chip-bg:#2e1650;--chip-ink:#d8b4fe;--shadow:none;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:15px/1.45 "Segoe UI",system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1240px;margin:0 auto;padding:28px 24px 48px}
+header{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:flex-end;justify-content:space-between;margin-bottom:20px}
+h1{font-size:28px;font-weight:800;letter-spacing:-.03em;line-height:1.15}
+h1 span{color:var(--a)}
+.sub{color:var(--muted);font-size:14px;margin-top:4px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.chip{font-size:12.5px;font-weight:700;padding:5px 11px;border-radius:99px;background:var(--chip-bg);color:var(--chip-ink)}
+.chip.demo{background:var(--demo-bg);color:var(--demo-ink)}
+.filters{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:18px}
+.seg{display:inline-flex;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:3px}
+.seg button{border:0;background:none;color:var(--muted);font:inherit;font-size:14px;font-weight:600;padding:7px 14px;border-radius:9px;cursor:pointer}
+.seg button:hover{background:var(--wash);color:var(--ink)}
+.seg button[aria-pressed="true"]{background:var(--a);color:#fff}
+.range{color:var(--muted);font-size:14px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-bottom:14px}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 18px;box-shadow:var(--shadow)}
+.tile .k{color:var(--muted);font-size:13.5px;font-weight:600}
+.tile .v{font-size:32px;font-weight:800;letter-spacing:-.03em;line-height:1.15;margin-top:4px;font-variant-numeric:tabular-nums}
+.tile .d{font-size:13px;color:var(--muted);margin-top:2px}
+.tile .d b{color:var(--ink-2);font-weight:700}
+.grid{display:grid;gap:14px;margin-bottom:14px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(340px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px;box-shadow:var(--shadow);min-width:0}
+.card h2{font-size:16px;font-weight:700;letter-spacing:-.01em}
+.card .h-sub{color:var(--muted);font-size:13px;margin:2px 0 14px}
+.legend{display:flex;gap:18px;flex-wrap:wrap;font-size:13.5px;color:var(--muted);margin:-4px 0 6px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:7px;vertical-align:-1px}
+.legend i.ln{width:16px;height:3px;border-radius:2px;vertical-align:3px}
+.chart{position:relative}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+.ax{fill:var(--faint);font-size:12px}
+.gl{stroke:var(--line);stroke-width:1}
+.bar{fill:var(--b);opacity:.45}
+.bar.on{opacity:.75}
+.halo{fill:none;stroke:var(--card);stroke-width:6;stroke-linejoin:round;stroke-linecap:round}
+.ln{fill:none;stroke:var(--a);stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round}
+.dot{fill:var(--a);stroke:var(--card);stroke-width:2}
+.xh{stroke:var(--muted);stroke-width:1;stroke-dasharray:3 3}
+.tip{position:absolute;pointer-events:none;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 11px;font-size:13px;box-shadow:0 6px 20px rgba(20,8,35,.16);min-width:150px;opacity:0;transition:opacity .08s;z-index:2}
+.tip .t{color:var(--muted);font-size:12px;margin-bottom:4px}
+.tip .r{display:flex;align-items:center;gap:8px;white-space:nowrap}
+.tip .r b{font-variant-numeric:tabular-nums;min-width:34px}
+.tip .r i{display:inline-block;width:12px;height:3px;border-radius:2px}
+.tip .r span{color:var(--muted)}
+.rank{list-style:none;display:grid;gap:9px}
+.rank li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 12px;align-items:baseline;border-radius:8px;padding:2px 4px;margin:0 -4px}
+.rank li:hover{background:var(--wash)}
+.rank .nm{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:14px}
+.rank .vl{font-size:14px;font-weight:700;font-variant-numeric:tabular-nums}
+.rank .vl small{color:var(--muted);font-weight:500;margin-left:6px}
+.rank .tr{grid-column:1/-1;height:6px;border-radius:3px;background:var(--wash);overflow:hidden}
+.rank .tr div{height:100%;border-radius:3px;background:var(--rank)}
+.empty{color:var(--muted);font-size:14px;padding:6px 0}
+.howto{font-size:14px;color:var(--ink-2)}
+.howto ol{margin:8px 0 0 18px;display:grid;gap:4px}
+.howto b{color:var(--ink)}
+.stack{display:flex;height:16px;border-radius:5px;overflow:hidden;gap:2px;margin:6px 0 14px}
+.stack div{height:100%;min-width:2px}
+.keys{display:grid;gap:8px;font-size:14px}
+.keys div{display:flex;align-items:center;gap:7px}
+.keys i{width:10px;height:10px;border-radius:3px;flex:none}
+.keys b{margin-left:auto;font-variant-numeric:tabular-nums}
+.big{font-size:28px;font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.meter{height:10px;border-radius:5px;background:var(--wash);overflow:hidden;margin:10px 0 6px}
+.meter div{height:100%;background:var(--a);border-radius:5px}
+.muted{color:var(--muted);font-size:13.5px}
+details{margin-top:4px}
+summary{cursor:pointer;font-weight:700;font-size:15px;padding:4px 0;color:var(--ink)}
+.tbl{overflow-x:auto;margin-top:10px}
+table{border-collapse:collapse;width:100%;font-size:13.5px;font-variant-numeric:tabular-nums}
+th,td{text-align:right;padding:7px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+th{color:var(--muted);font-weight:600;font-size:12.5px}
+tbody tr:hover{background:var(--wash)}
+footer{color:var(--muted);font-size:12.5px;margin-top:18px;display:grid;gap:3px}
+.theme{border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:10px;font:inherit;font-size:13px;padding:6px 10px;cursor:pointer}
+@media (max-width:560px){.wrap{padding:18px 16px 36px}h1{font-size:23px}.tile .v{font-size:26px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>Tráfego <span>·</span> <span id="site"></span></h1>
+      <div class="sub" id="fonte"></div>
+    </div>
+    <div class="chips" id="chips"></div>
+  </header>
+
+  <div class="filters">
+    <div class="seg" role="group" aria-label="Período">
+      <button data-p="7">7 dias</button><button data-p="14">14 dias</button><button data-p="30">30 dias</button>
+    </div>
+    <span class="range" id="range"></span>
+    <span style="flex:1"></span>
+    <button class="theme" id="theme" title="Alternar tema">◐ Tema</button>
+  </div>
+
+  <section class="tiles" id="tiles"></section>
+
+  <section class="card" style="margin-bottom:14px">
+    <h2>Visitas por dia</h2>
+    <div class="h-sub" id="main-sub"></div>
+    <div class="legend" id="main-legend"></div>
+    <div class="chart" id="main"></div>
+  </section>
+
+  <section class="grid g2" id="entradas"></section>
+  <section class="grid g3" id="perfil"></section>
+  <section class="grid g2" id="tecnico"></section>
+
+  <section class="card">
+    <details>
+      <summary>Tabela dia a dia</summary>
+      <div class="tbl" id="tabela"></div>
+    </details>
+  </section>
+
+  <footer id="notas"></footer>
+</div>
+
+<script>
+const DATA = /*__DATA__*/null;
+
+/* ---------- utilidades ---------- */
+const $ = s => document.querySelector(s);
+const el = (tag, cls, txt) => { const e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; };
+const svgEl = (tag, attrs) => { const e = document.createElementNS('http://www.w3.org/2000/svg', tag); for (const k in attrs) e.setAttribute(k, attrs[k]); return e; };
+const num = x => Math.round(x).toLocaleString('pt-BR');
+const pct = x => (x * 100).toLocaleString('pt-BR', { maximumFractionDigits: 1 }) + '%';
+const bytes = b => { const u = ['B','KB','MB','GB','TB']; let i = 0; while (b >= 1024 && i < u.length - 1) { b /= 1024; i++; } return b.toLocaleString('pt-BR', { maximumFractionDigits: b < 10 ? 1 : 0 }) + ' ' + u[i]; };
+const br = d => d.slice(8, 10) + '/' + d.slice(5, 7);
+const semana = d => ['dom','seg','ter','qua','qui','sex','sáb'][new Date(d + 'T12:00:00Z').getUTCDay()];
+const soma = (arr, f) => arr.reduce((s, x) => s + (f(x) || 0), 0);
+let regiao; try { regiao = new Intl.DisplayNames(['pt-BR'], { type: 'region' }); } catch { regiao = null; }
+const pais = c => { if (!c || c === 'XX' || c === 'T1') return c === 'T1' ? 'Rede Tor' : 'Desconhecido'; try { return (regiao && regiao.of(c)) || c; } catch { return c; } };
+function juntar(dias, campo) { const m = {}; for (const d of dias) for (const k in (d[campo] || {})) { const v = d[campo][k]; if (typeof v === 'object') { m[k] = m[k] || {}; for (const j in v) m[k][j] = (m[k][j] || 0) + v[j]; } else m[k] = (m[k] || 0) + v; } return m; }
+
+/* ---------- estado ---------- */
+// começa no menor período que cobre todos os dias com dados (site novo na Cloudflare)
+const primeiro = DATA.dias.findIndex(d => d.requests > 0), comDados = primeiro < 0 ? 0 : DATA.dias.length - primeiro;
+let P = comDados <= 7 ? 7 : comDados <= 14 ? 14 : 30;
+try { const s = +localStorage.getItem('painel-periodo'); if ([7,14,30].includes(s)) P = s; } catch {}
+try { const t = localStorage.getItem('painel-tema'); if (t) document.documentElement.dataset.theme = t; } catch {}
+
+function fatia() {
+  const d = DATA.dias, n = d.length;
+  return { cur: d.slice(Math.max(0, n - P)), prev: d.slice(Math.max(0, n - 2 * P), Math.max(0, n - P)) };
+}
+
+/* ---------- cabeçalho ---------- */
+function cabecalho() {
+  $('#site').textContent = DATA.site;
+  $('#fonte').textContent = DATA.rum ? 'Pessoas reais (Web Analytics) + rede da Cloudflare' : 'Rede da Cloudflare (conta robôs e buscadores também)';
+  const c = $('#chips'); c.textContent = '';
+  if (DATA.demo) c.append(el('span', 'chip demo', 'DADOS DE EXEMPLO'));
+  c.append(el('span', 'chip', 'Atualizado ' + new Date(DATA.atualizado).toLocaleString('pt-BR', { dateStyle: 'short', timeStyle: 'short' })));
+  document.querySelectorAll('.seg button').forEach(b => b.setAttribute('aria-pressed', +b.dataset.p === P));
+}
+
+/* ---------- cartões de números ---------- */
+function tiles() {
+  const { cur, prev } = fatia(), t = $('#tiles'); t.textContent = '';
+  const linhas = [];
+  if (DATA.rum) {
+    const rc = DATA.rum.dias.slice(-P), rp = DATA.rum.dias.slice(-2 * P, -P);
+    linhas.push(['Visitas (pessoas)', soma(rc, x => x.visits), rp.length ? soma(rp, x => x.visits) : null, num]);
+    linhas.push(['Páginas abertas', soma(rc, x => x.views), rp.length ? soma(rp, x => x.views) : null, num]);
+  } else {
+    linhas.push(['Visitantes únicos', soma(cur, x => x.uniques), prev.length ? soma(prev, x => x.uniques) : null, num, 'soma diária, inclui robôs']);
+    linhas.push(['Páginas vistas', soma(cur, x => x.pageViews), prev.length ? soma(prev, x => x.pageViews) : null, num]);
+  }
+  linhas.push(['Requisições', soma(cur, x => x.requests), prev.length ? soma(prev, x => x.requests) : null, num, 'arquivos, imagens, scripts']);
+  const req = soma(cur, x => x.requests), cr = soma(cur, x => x.cachedRequests);
+  linhas.push(['Entregue pelo cache', req ? cr / req : 0, null, pct, 'mais alto = site mais rápido']);
+  linhas.push(['Ameaças bloqueadas', soma(cur, x => x.threats), prev.length ? soma(prev, x => x.threats) : null, num]);
+  for (const [k, v, ant, fmt, nota] of linhas) {
+    const box = el('div', 'tile');
+    box.append(el('div', 'k', k), el('div', 'v', fmt(v)));
+    const d = el('div', 'd');
+    if (ant != null && ant > 0) {
+      const ch = (v - ant) / ant, b = el('b', null, (ch >= 0 ? '▲ ' : '▼ ') + Math.abs(Math.round(ch * 100)) + '%');
+      d.append(b, document.createTextNode(' vs ' + P + ' dias antes'));
+    } else if (ant === 0 && v > 0) d.textContent = 'antes: 0';
+    else d.textContent = nota || ' ';
+    box.append(d); t.append(box);
+  }
+}
+
+/* ---------- gráfico principal ---------- */
+function principal() {
+  const box = $('#main'); box.textContent = '';
+  const usaRum = !!DATA.rum;
+  const linhaD = usaRum ? DATA.rum.dias.slice(-P) : fatia().cur;
+  const S = usaRum
+    ? { a: { nome: 'Visitas (pessoas)', v: linhaD.map(x => x.visits) }, b: { nome: 'Páginas abertas', v: linhaD.map(x => x.views) } }
+    : { a: { nome: 'Visitantes únicos', v: linhaD.map(x => x.uniques) }, b: { nome: 'Páginas vistas', v: linhaD.map(x => x.pageViews) } };
+  const datas = linhaD.map(x => x.date), n = datas.length;
+  $('#main-sub').textContent = br(datas[0]) + ' a ' + br(datas[n - 1]) + (usaRum ? ' · pessoas reais' : ' · inclui robôs e buscadores') + ' · passe o mouse para ver cada dia';
+  const lg = $('#main-legend'); lg.textContent = '';
+  const la = el('span'); const ia = el('i', 'ln'); ia.style.background = 'var(--a)'; la.append(ia, document.createTextNode(S.a.nome));
+  const lb = el('span'); const ib = el('i'); ib.style.background = 'var(--b)'; ib.style.opacity = '.45'; lb.append(ib, document.createTextNode(S.b.nome));
+  lg.append(la, lb);
+
+  const W = 1180, H = 300, L = 44, R = 12, T = 14, B = 30;
+  const top = Math.max(4, ...S.a.v, ...S.b.v);
+  const passo = [1,2,5,10,20,25,50,100,200,250,500,1000,2000,5000,10000,20000,50000].find(p => top / p <= 5) || Math.ceil(top / 5);
+  const maxY = Math.ceil(top / passo) * passo;
+  const cw = (W - L - R) / n, x = i => L + (i + .5) * cw, y = v => T + (H - T - B) * (1 - v / maxY);
+  const svg = svgEl('svg', { viewBox: `0 0 ${W} ${H}`, role: 'img', 'aria-label': 'Gráfico de visitas por dia' });
+  for (let v = 0; v <= maxY; v += passo) {
+    svg.append(svgEl('line', { x1: L, x2: W - R, y1: y(v), y2: y(v), class: 'gl' }));
+    const t = svgEl('text', { x: L - 8, y: y(v) + 4, class: 'ax', 'text-anchor': 'end' }); t.textContent = num(v); svg.append(t);
+  }
+  const bw = Math.max(2, cw - Math.min(6, cw * .25)), barras = [];
+  S.b.v.forEach((v, i) => {
+    const h = y(0) - y(v); if (h <= 0) { barras.push(null); return; }
+    const r = Math.min(4, h / 2, bw / 2), x0 = x(i) - bw / 2, x1 = x0 + bw, y0 = y(v), yb = y(0);
+    const p = svgEl('path', { d: `M${x0},${yb}V${y0 + r}Q${x0},${y0} ${x0 + r},${y0}H${x1 - r}Q${x1},${y0} ${x1},${y0 + r}V${yb}Z`, class: 'bar' });
+    svg.append(p); barras.push(p);
+  });
+  const d = S.a.v.map((v, i) => (i ? 'L' : 'M') + x(i).toFixed(1) + ',' + y(v).toFixed(1)).join('');
+  svg.append(svgEl('path', { d, class: 'halo' }), svgEl('path', { d, class: 'ln' }));
+  const cada = n <= 7 ? 1 : n <= 14 ? 2 : 5;
+  datas.forEach((dt, i) => { if ((n - 1 - i) % cada === 0) { const t = svgEl('text', { x: x(i), y: H - 8, class: 'ax', 'text-anchor': 'middle' }); t.textContent = br(dt); svg.append(t); } });
+  // rótulos diretos: pico e último dia
+  let pk = 0; S.a.v.forEach((v, i) => { if (v > S.a.v[pk]) pk = i; });
+  const marca = (i, txt) => { svg.append(svgEl('circle', { cx: x(i), cy: y(S.a.v[i]), r: 4.5, class: 'dot' })); const t = svgEl('text', { x: Math.min(Math.max(x(i), L + 30), W - R - 30), y: y(S.a.v[i]) - 11, 'text-anchor': 'middle', style: 'fill:var(--ink);font-size:12.5px;font-weight:700' }); t.textContent = txt; svg.append(t); };
+  if (S.a.v[pk] > 0) marca(pk, 'pico ' + num(S.a.v[pk]));
+  if (n - 1 - pk >= 3) marca(n - 1, num(S.a.v[n - 1]));
+  const xh = svgEl('line', { y1: T, y2: H - B, class: 'xh', visibility: 'hidden' }); svg.append(xh);
+  const hd = svgEl('circle', { r: 5, class: 'dot', visibility: 'hidden' }); svg.append(hd);
+  const hit = svgEl('rect', { x: L, y: 0, width: W - L - R, height: H, fill: 'transparent', tabindex: 0 }); svg.append(hit);
+  box.append(svg);
+  const tip = el('div', 'tip'); box.append(tip);
+  let on = -1;
+  const mostra = i => {
+    if (i === on) return; if (on >= 0 && barras[on]) barras[on].classList.remove('on'); on = i;
+    if (barras[i]) barras[i].classList.add('on');
+    xh.setAttribute('x1', x(i)); xh.setAttribute('x2', x(i)); xh.setAttribute('visibility', 'visible');
+    hd.setAttribute('cx', x(i)); hd.setAttribute('cy', y(S.a.v[i])); hd.setAttribute('visibility', 'visible');
+    tip.textContent = '';
+    tip.append(el('div', 't', semana(datas[i]) + ', ' + br(datas[i])));
+    for (const [s, cor, op] of [[S.a, 'var(--a)', 1], [S.b, 'var(--b)', .6]]) {
+      const r = el('div', 'r'), k = el('i'); k.style.background = cor; k.style.opacity = op;
+      r.append(k, el('b', null, num(s.v[i])), el('span', null, s.nome)); tip.append(r);
+    }
+    const rect = svg.getBoundingClientRect(), sx = rect.width / W, px = x(i) * sx;
+    tip.style.opacity = 1; tip.style.top = '8px';
+    tip.style.left = (px > rect.width / 2 ? px - tip.offsetWidth - 14 : px + 14) + 'px';
+  };
+  const some = () => { if (on >= 0 && barras[on]) barras[on].classList.remove('on'); on = -1; tip.style.opacity = 0; xh.setAttribute('visibility', 'hidden'); hd.setAttribute('visibility', 'hidden'); };
+  hit.addEventListener('pointermove', e => { const r = svg.getBoundingClientRect(); const vx = (e.clientX - r.left) / r.width * W; mostra(Math.max(0, Math.min(n - 1, Math.floor((vx - L) / cw)))); });
+  hit.addEventListener('pointerleave', some);
+  hit.addEventListener('focus', () => mostra(n - 1));
+  hit.addEventListener('blur', some);
+  hit.addEventListener('keydown', e => { if (e.key === 'ArrowLeft') mostra(Math.max(0, on - 1)); if (e.key === 'ArrowRight') mostra(Math.min(n - 1, on + 1)); });
+}
+
+/* ---------- listas ranqueadas ---------- */
+function card(alvo, titulo, sub) { const c = el('div', 'card'); c.append(el('h2', null, titulo)); c.append(el('div', 'h-sub', sub)); alvo.append(c); return c; }
+function ranking(c, itens, unidade, total) {
+  if (!itens.length || !itens.some(i => i.v > 0)) { c.append(el('div', 'empty', 'Sem dados neste período.')); return; }
+  const max = Math.max(...itens.map(i => i.v)), ul = el('ul', 'rank');
+  for (const it of itens) {
+    const li = el('li'); li.title = it.k + ': ' + num(it.v) + ' ' + unidade;
+    const vl = el('span', 'vl', num(it.v)); if (total) vl.append(el('small', null, pct(it.v / total)));
+    const tr = el('div', 'tr'), f = el('div'); f.style.width = Math.max(1.5, it.v / max * 100) + '%'; tr.append(f);
+    li.append(el('span', 'nm', it.k), vl, tr); ul.append(li);
+  }
+  c.append(ul);
+}
+const topN = (obj, f, n = 8) => Object.entries(obj).map(([k, v]) => ({ k, v: f(v) })).filter(x => x.v > 0).sort((a, b) => b.v - a.v).slice(0, n);
+function comoAtivar(c) {
+  const h = el('div', 'howto');
+  h.append(document.createTextNode('Para ver de onde as pessoas chegam e quais páginas abrem, ligue o Web Analytics (grátis):'));
+  const ol = el('ol');
+  for (const s of ['No painel da Cloudflare, abra Workers & Pages e clique no projeto vorkeza.', 'Vá em Metrics e ative o Web Analytics.', 'Rode o painel de novo amanhã: as visitas começam a aparecer aqui.']) ol.append(el('li', null, s));
+  h.append(ol); c.append(h);
+}
+
+function entradas() {
+  const s = $('#entradas'); s.textContent = '';
+  const nota = DATA.rum ? 'pessoas reais · últimos 30 dias' : 'precisa do Web Analytics';
+  const c1 = card(s, 'De onde vieram', 'sites que mandaram visitas · ' + nota);
+  const c2 = card(s, 'Páginas mais abertas', nota);
+  if (DATA.rum) {
+    const tv = soma(DATA.rum.origens, x => x.visits);
+    const nomeOrigem = k => !k ? 'Direto (link no WhatsApp, digitou ou favorito)' : /(^|\.)instagram\.com$/.test(k) ? 'Instagram' : /(^|\.)facebook\.com$/.test(k) ? 'Facebook' : /(^|\.)google\./.test(k) ? 'Google' : k;
+    const og = {}; for (const o of DATA.rum.origens) { if (!o.visits || /vorkeza\.com\.br$/.test(o.k)) continue; const n = nomeOrigem(o.k); og[n] = (og[n] || 0) + o.visits; }
+    ranking(c1, Object.entries(og).map(([k, v]) => ({ k, v })).sort((a, b) => b.v - a.v).slice(0, 8), 'visitas', tv);
+    ranking(c2, DATA.rum.paginas.slice().sort((a, b) => b.views - a.views).map(o => ({ k: o.k, v: o.views })).slice(0, 8), 'aberturas');
+  } else { comoAtivar(c1); comoAtivar(c2); }
+}
+
+function perfil() {
+  const s = $('#perfil'); s.textContent = ''; const { cur } = fatia();
+  const pm = juntar(cur, 'paises'), tr = soma(Object.values(pm), v => v.r);
+  ranking(card(s, 'Países', 'requisições · ' + P + ' dias · robôs inclusos'), topN(pm, v => v.r, 7).map(i => ({ k: pais(i.k), v: i.v })), 'requisições', tr);
+  const nav = juntar(cur, 'navegadores'), tn = soma(Object.values(nav), v => v);
+  const nomeNav = { Unknown: 'Desconhecido (quase sempre robô)', Curl: 'Curl (robô)', ChromeMobile: 'Chrome no celular', MobileSafari: 'Safari no celular' };
+  ranking(card(s, 'Navegadores', 'páginas vistas · ' + P + ' dias'), topN(nav, v => v, 7).map(i => ({ k: nomeNav[i.k] || i.k, v: i.v })), 'páginas', tn);
+  if (DATA.rum && DATA.rum.aparelhos.length) {
+    const nomes = { mobile: 'Celular', desktop: 'Computador', tablet: 'Tablet' }, ta = soma(DATA.rum.aparelhos, x => x.visits);
+    ranking(card(s, 'Aparelhos', 'pessoas reais · 30 dias'), DATA.rum.aparelhos.map(a => ({ k: nomes[a.k] || a.k || 'Outro', v: a.visits })), 'visitas', ta);
+  } else {
+    const tm = juntar(cur, 'tipos'), tt = soma(Object.values(tm), v => v.r);
+    ranking(card(s, 'O que foi entregue', 'tipo de arquivo · requisições · ' + P + ' dias'), topN(tm, v => v.r, 7).map(i => ({ k: { html: 'Páginas (html)', empty: 'Sem conteúdo (redirecionamentos)', txt: 'Texto (robots.txt etc.)', js: 'Scripts (js)', css: 'Estilos (css)', webp: 'Imagens (webp)', svg: 'Ícones (svg)', jpeg: 'Imagens (jpeg)', png: 'Imagens (png)' }[i.k] || i.k, v: i.v })), 'requisições', tt);
+  }
+}
+
+function tecnico() {
+  const s = $('#tecnico'); s.textContent = ''; const { cur } = fatia();
+  // respostas do servidor
+  const st = juntar(cur, 'status'), g = { '2xx': 0, '3xx': 0, '4xx': 0, '5xx': 0 };
+  for (const k in st) { const c = String(k)[0] + 'xx'; if (c in g) g[c] += st[k]; }
+  const tot = soma(Object.values(g), v => v);
+  const c = card(s, 'Respostas do servidor', 'requisições · ' + P + ' dias');
+  const meta = [['2xx', 'Funcionou', 'var(--good)'], ['3xx', 'Redirecionou', 'var(--neutral)'], ['4xx', 'Não encontrado / negado', 'var(--warn)'], ['5xx', 'Erro no servidor', 'var(--crit)']];
+  if (!tot) c.append(el('div', 'empty', 'Sem dados neste período.'));
+  else {
+    const bar = el('div', 'stack');
+    for (const [k, nome, cor] of meta) if (g[k]) { const d = el('div'); d.style.width = g[k] / tot * 100 + '%'; d.style.background = cor; d.title = nome + ' (' + k + '): ' + num(g[k]); bar.append(d); }
+    const keys = el('div', 'keys');
+    for (const [k, nome, cor] of meta) { const r = el('div'); const i = el('i'); i.style.background = cor; r.append(i, el('span', null, (k === '2xx' ? '✓ ' : k === '5xx' ? '✕ ' : k === '4xx' ? '! ' : '↪ ') + nome), el('b', null, num(g[k]) + ' · ' + pct(g[k] / tot))); keys.append(r); }
+    c.append(bar, keys);
+  }
+  // dados e cache
+  const c2 = card(s, 'Dados transferidos', P + ' dias');
+  const b = soma(cur, x => x.bytes), cb = soma(cur, x => x.cachedBytes);
+  c2.append(el('div', 'big', bytes(b)));
+  const m = el('div', 'meter'), f = el('div'); f.style.width = (b ? cb / b * 100 : 0) + '%'; m.append(f);
+  c2.append(m, el('div', 'muted', pct(b ? cb / b : 0) + ' saiu direto do cache da Cloudflare (' + bytes(cb) + '), sem pesar no servidor.'));
+}
+
+function tabela() {
+  const t = $('#tabela'); t.textContent = '';
+  const { cur } = fatia(), rum = DATA.rum ? Object.fromEntries(DATA.rum.dias.map(d => [d.date, d])) : null;
+  const tb = el('table'), th = el('thead'), hr = el('tr');
+  const cols = ['Dia'].concat(rum ? ['Visitas (pessoas)', 'Páginas abertas'] : []).concat(['Visitantes únicos', 'Páginas vistas', 'Requisições', 'Cache', 'Ameaças', 'Dados']);
+  cols.forEach(c => hr.append(el('th', null, c))); th.append(hr); tb.append(th);
+  const body = el('tbody');
+  for (const d of cur.slice().reverse()) {
+    const r = el('tr');
+    const cel = [semana(d.date) + ' ' + br(d.date)].concat(rum ? [num(rum[d.date]?.visits || 0), num(rum[d.date]?.views || 0)] : [])
+      .concat([num(d.uniques), num(d.pageViews), num(d.requests), d.requests ? pct(d.cachedRequests / d.requests) : '—', num(d.threats), bytes(d.bytes)]);
+    cel.forEach(v => r.append(el('td', null, v))); body.append(r);
+  }
+  tb.append(body); t.append(tb);
+}
+
+function notas() {
+  const f = $('#notas'); f.textContent = '';
+  f.append(el('div', null, 'Fonte: ' + DATA.fonte + '. Dias contados no horário UTC (3 horas à frente de Brasília).'));
+  if (!DATA.rum) f.append(el('div', null, '"Visitantes únicos" e "Páginas vistas" vêm da rede da Cloudflare e incluem robôs e buscadores, então costumam ser maiores que as pessoas de verdade.'));
+  if (DATA.demo) f.append(el('div', null, 'Este painel está com DADOS DE EXEMPLO, gerados só para testar o visual. Não são visitas reais.'));
+  f.append(el('div', null, 'Para atualizar: dê dois cliques em "Abrir painel de trafego.cmd" na pasta do projeto.'));
+}
+
+function render() { cabecalho(); tiles(); principal(); entradas(); perfil(); tecnico(); tabela(); notas(); }
+document.querySelectorAll('.seg button').forEach(b => b.addEventListener('click', () => { P = +b.dataset.p; try { localStorage.setItem('painel-periodo', P); } catch {} render(); }));
+$('#theme').addEventListener('click', () => {
+  const r = document.documentElement, escuro = r.dataset.theme ? r.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+  r.dataset.theme = escuro ? 'light' : 'dark'; try { localStorage.setItem('painel-tema', r.dataset.theme); } catch {} render();
+});
+let rz; addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(principal, 120); });
+render();
+</script>
+</body>
+</html>

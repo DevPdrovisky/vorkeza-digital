@@ -1,0 +1,19 @@
+{
+  "name": "pack-instagram-src",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@ffmpeg-installer/ffmpeg": "^1.1.0",
+    "@fontsource-variable/dm-sans": "^5.1.1",
+    "@fontsource-variable/manrope": "^5.1.1",
+    "puppeteer-core": "^23.11.1"
+  }
+}

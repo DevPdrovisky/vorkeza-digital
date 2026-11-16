@@ -1,0 +1,399 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><link rel="stylesheet" href="kit.css">
+<!-- Vídeos motion (1080 x 1920). motion.html?v=marca  |  motion.html?v=pedro
+     Linguagem: macro com pull-out, giro 3D que troca o objeto, texto cinético inclinado,
+     corte seco para o quadro de giz, cena que encolhe para um card com cantoneiras,
+     texto digitado do cinza para o preto, pan de cards com ícones, estrada até a bandeira
+     e banho de cor no final. Tudo é desenhado por código. -->
+<style>
+@font-face{font-family:Chalk;src:url("file:///C:/Windows/Fonts/Inkfree.ttf")}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#000}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:#0b0b0c}
+.L{position:absolute;inset:0;display:none;overflow:hidden}
+.abs{position:absolute}
+.dark{background:radial-gradient(1100px 1300px at 50% 46%,#2c2b31 0%,#151418 52%,#060607 100%)}
+/* abertura A: busca */
+#pill{left:90px;top:815px;width:900px;height:170px;border-radius:85px;background:#fff;box-shadow:0 40px 90px -20px #000c;display:flex;align-items:center;gap:30px;padding:0 54px;font:500 54px "DM Sans";color:#1c1c1c}
+#pill svg{width:72px;height:72px;flex:none}
+#caret{display:inline-block;width:5px;height:62px;background:#9333ea;vertical-align:middle;margin-left:4px}
+#drop{left:90px;top:1010px;width:900px;border-radius:44px;background:#ffffff;padding:22px 0;box-shadow:0 40px 90px -20px #000c}
+.res{display:flex;align-items:center;gap:26px;padding:22px 54px}
+.res i{width:46px;height:46px;border-radius:50%;background:#efe6f8;flex:none}
+.res b{display:block;height:20px;border-radius:10px;background:#d9d4de}
+/* abertura B: calendário */
+#cal{left:240px;top:560px;width:600px;height:660px;border-radius:56px;background:#fff;box-shadow:0 40px 90px -20px #000d;overflow:hidden}
+#cal .top{height:170px;background:linear-gradient(135deg,#a855f7,#7e22ce);display:flex;align-items:center;justify-content:center;font:800 50px Manrope;letter-spacing:.18em;color:#fff}
+#cal .ring{position:absolute;top:-26px;width:34px;height:80px;border-radius:17px;background:#1b1a1f;border:6px solid #3a3940}
+#day{position:absolute;left:0;right:0;top:170px;bottom:0;display:flex;align-items:center;justify-content:center;font:800 330px/1 Manrope;letter-spacing:-.06em;color:#141414}
+/* cena 2 */
+#glow{left:90px;top:300px;width:900px;height:900px;border-radius:50%;background:radial-gradient(closest-side,#9333ea88,#9333ea00)}
+.phone2{left:290px;top:250px;width:500px;height:1010px;border-radius:78px;background:#0c0b0f;padding:16px;box-shadow:0 60px 120px -30px #000,inset 0 0 0 3px #2c2a33}
+.phone2 .scr{width:100%;height:100%;border-radius:64px;overflow:hidden;position:relative;background:#111}
+
+.phone2 .isl{position:absolute;left:50%;top:22px;width:150px;height:42px;margin-left:-75px;border-radius:21px;background:#000;z-index:2}
+.phone2 .ex{position:absolute;left:50%;bottom:34px;transform:translateX(-50%);white-space:nowrap;font:700 26px "DM Sans";padding:12px 24px;border-radius:99px;background:#000c;color:#fff;letter-spacing:.02em}
+#biz{left:90px;top:470px;width:900px;height:540px;border-radius:48px;background:linear-gradient(150deg,#1f1c26,#0e0d12);box-shadow:0 60px 120px -30px #000,inset 0 0 0 3px #ffffff14;padding:64px 70px;display:flex;flex-direction:column;justify-content:space-between}
+#biz .logo small{color:#c084fc}
+#biz .nm{font:800 74px Manrope;letter-spacing:-.04em;color:#fff}
+#biz .rl{font:600 36px "DM Sans";color:#c084fc;margin-top:10px;letter-spacing:.02em}
+#biz .url{position:absolute;right:70px;bottom:70px;font:600 30px "DM Sans";color:#ffffff99}
+.kick{left:96px;width:900px;perspective:1100px}
+.kick div{transform-origin:0 100%}
+.kick .s{font:700 54px "DM Sans";color:#ffffffcc;letter-spacing:-.01em}
+.kick .b{font:800 128px/1 Manrope;letter-spacing:-.05em;color:#fff;margin-top:10px;text-shadow:0 0 40px #c084fc66}
+.cm{position:relative;height:100%;background:#120c08 url(assets/casa-modelo-mobile.webp) center bottom/cover no-repeat;color:#fff;font-family:"DM Sans"}
+.cm-n{display:flex;align-items:center;gap:10px;padding:62px 18px 20px}
+.cm-n img{width:38px;height:38px;border-radius:50%}
+.cm-n b{font:700 19px Georgia,serif;line-height:1.1}
+.cm-n b small{display:block;font:800 9px "DM Sans";letter-spacing:.14em;color:#d8cbbd;margin-top:3px}
+.cm-n i{margin-left:auto;font-style:normal;padding:7px 12px;border:1.5px solid #ffffff66;border-radius:99px;font:700 13px "DM Sans"}
+.cm-c{padding:26px 22px}
+.cm-c small{font:800 12px "DM Sans";letter-spacing:.2em;color:#e9b35a}
+.cm-c h3{font:700 58px/1 Georgia,serif;letter-spacing:-.03em;margin:14px 0 18px}
+.cm-c h3 em{color:#e9b35a;font-style:italic}
+.cm-c span{display:inline-block;padding:14px 22px;border-radius:99px;background:#d42a20;font:800 17px Manrope}
+.cm{width:366px;height:764px;zoom:1.28}
+/* cena 3: quadro */
+#board{background:#1b1a1d}
+#boardIn{position:absolute;inset:0;transform-origin:540px 900px}
+.smudge{position:absolute;border-radius:50%;filter:blur(40px)}
+.chalk{position:absolute;white-space:nowrap;font:400 92px Chalk;color:#ececec;letter-spacing:.01em}
+.chalk svg{position:absolute;left:-14px;top:50%;overflow:visible}
+#stickyW{left:360px;top:720px;width:360px;height:360px;filter:drop-shadow(0 26px 30px #000a)}
+#sticky{position:absolute;inset:0;background:linear-gradient(160deg,#e3c8ff,#c99afc 55%,#b57bf7);clip-path:polygon(0 0,100% 0,100% 80%,80% 100%,0 100%);display:flex;align-items:center;justify-content:center;font:700 92px Chalk;color:#2e1065}
+#fold{position:absolute;right:0;bottom:0;width:20%;height:20%;background:linear-gradient(135deg,#7e3fc9 0%,#9d63e6 48%,transparent 50%);clip-path:polygon(0 0,100% 0,0 100%)}
+#bwhite{position:absolute;inset:0;background:#fff;opacity:0}
+/* cena 4: cinza, card, cards de ícones */
+#gbg{background:#ddd}
+#ghost{left:-60px;top:330px;font:800 760px/1 Manrope;letter-spacing:-.08em;color:transparent;-webkit-text-stroke:5px #0000001a;white-space:nowrap}
+#card{left:200px;top:580px;width:680px;height:680px;border-radius:70px;background:#fff;box-shadow:0 50px 100px -40px #0005;display:flex;align-items:center;justify-content:center;text-align:center;padding:60px;font:800 100px/1.05 Manrope;letter-spacing:-.05em;color:#111}
+#card span{display:inline-block;margin:0 .12em}
+.brk{position:absolute;width:110px;height:110px;border:12px solid #111}
+.tile{width:290px;height:290px;border-radius:64px;background:linear-gradient(160deg,#242328,#131216);box-shadow:0 40px 70px -24px #000a,inset 0 0 0 2px #ffffff10;display:flex;align-items:center;justify-content:center}
+.tile svg{width:160px;height:160px;overflow:visible}
+.tlab{width:330px;text-align:center;font:800 44px/1.08 Manrope;letter-spacing:-.04em;color:#151515}
+/* cena 5: estrada */
+#roadTxt{left:0;right:0;top:470px;text-align:center;font:800 108px/1.04 Manrope;letter-spacing:-.05em}
+#roadTxt span{display:inline-block;margin:0 .11em}
+/* final */
+#endL{background:radial-gradient(900px 800px at 92% 6%,#ec4899,transparent 70%),radial-gradient(1000px 1000px at 0 100%,#3b0764,transparent 70%),#7e22ce}
+#endL .orbit{position:absolute;border-radius:50%;border:3px dashed #ffffff30}
+.col{position:absolute;left:0;right:0;display:flex;flex-direction:column;align-items:center;text-align:center;color:#fff}
+.mk{overflow:hidden;padding:0 .05em .12em;margin-bottom:-.12em}
+.mk>*{display:block}
+.pill{display:inline-flex;align-items:center;gap:.45em;padding:.62em 1.1em;border-radius:99px;background:#fff;color:#7e22ce;font:800 56px Manrope;letter-spacing:-.02em;box-shadow:0 30px 60px -20px #0008}
+.wbrk{position:absolute;width:90px;height:90px;border:10px solid #fff}
+#flash{background:#fff;z-index:90}
+#grain{position:absolute;inset:0;width:1080px;height:1920px;z-index:95;pointer-events:none;opacity:.075;mix-blend-mode:overlay}
+#vig{z-index:96;display:block;background:radial-gradient(1200px 1700px at 50% 45%,transparent 55%,#00000070 100%)}
+</style></head><body>
+<div id="stage">
+  <div class="L dark" id="dbg"></div>
+  <div class="L" id="s1"></div>
+  <div class="L" id="s2"></div>
+  <div class="L" id="gbg"><div class="abs" id="ghost"></div></div>
+  <div class="L" id="road"></div>
+  <div class="L" id="s4"></div>
+  <div class="L" id="board"><div id="boardIn"></div><div id="bwhite"></div></div>
+  <div class="L" id="endL"></div>
+  <div class="L" id="flash"></div>
+  <canvas id="grain" width="540" height="960"></canvas>
+  <div class="L" id="vig"></div>
+</div>
+<script src="kit.js"></script>
+<script>
+const V = new URLSearchParams(location.search).get('v') || 'marca';
+const $ = id => document.getElementById(id);
+const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+const lerp = (a, b, p) => a + (b - a) * p;
+const E = {
+  lin: p => p, out3: p => 1 - Math.pow(1 - p, 3), in3: p => p * p * p,
+  io3: p => p < .5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2,
+  outExpo: p => p >= 1 ? 1 : 1 - Math.pow(2, -10 * p), inExpo: p => p <= 0 ? 0 : Math.pow(2, 10 * p - 10),
+  ioExpo: p => p <= 0 ? 0 : p >= 1 ? 1 : p < .5 ? Math.pow(2, 20 * p - 10) / 2 : (2 - Math.pow(2, -20 * p + 10)) / 2,
+  back: p => { const c = 1.7; return 1 + (c + 1) * Math.pow(p - 1, 3) + c * Math.pow(p - 1, 2) },
+};
+const seg = (t, a, b, e = E.lin) => e(clamp((t - a) / (b - a)));
+const hex = h => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16));
+const mix = (a, b, p) => { const x = hex(a), y = hex(b); return `rgb(${x.map((v, i) => Math.round(lerp(v, y[i], p))).join(',')})` };
+const show = (el, on) => { el.style.display = on ? 'block' : 'none' };
+
+// ---------- conteúdo dos dois vídeos ----------
+const ICON = {
+  site: '<rect x="5" y="9" width="38" height="30" rx="5"/><path d="M5 17h38"/><circle cx="10.5" cy="13" r=".6"/><circle cx="15" cy="13" r=".6"/><path d="M11 25h15M11 31h22"/>',
+  menu: '<rect x="13" y="4" width="22" height="40" rx="5"/><path d="M19 14h10M19 21h10M19 28h6"/><circle cx="24" cy="38" r="1.2"/>',
+  chart: '<path d="M7 41h34"/><path d="M14 35v-8M22 35v-15M30 35v-10"/><path d="M11 19l8-6 6 4 11-8"/>',
+  chat: '<path d="M9 13a5 5 0 0 1 5-5h20a5 5 0 0 1 5 5v14a5 5 0 0 1-5 5H21l-8 7v-7a5 5 0 0 1-4-5Z"/><path d="M16 17h16M16 23h10"/>',
+  pen: '<path d="M10 38l3.5-11L31 9.5l7.5 7.5L21 34.5Z"/><path d="M27 13.5l7.5 7.5"/><path d="M13.5 27l7.5 7.5"/>',
+  rocket: '<path d="M24 5c7 5 10 13 8 22H16c-2-9 1-17 8-22Z"/><circle cx="24" cy="17" r="3.5"/><path d="M16 27l-5 7 6 .5M32 27l5 7-6 .5"/><path d="M20.5 32c0 4 3.5 7 3.5 9 0-2 3.5-5 3.5-9"/>',
+};
+const C = {
+  marca: {
+    file: 'video-4-motion-vorkeza', open: 'search', typed: 'salgados perto de mim',
+    kickS: 'Seu cliente procurou.', kickB: 'Achou você?',
+    board: ['depois eu vejo', 'só no Instagram', 'cardápio em PDF', 'ano que vem'], sticky: 'AGORA',
+    card: ['Seu', 'negócio', 'na', 'internet.'], ghost: 'www.',
+    tiles: [['site', 'Sites'], ['menu', 'Cardápio<br>digital'], ['chart', 'Painel de<br>gestão']],
+    road: ['Do', 'papel', 'para', 'o', 'ar.'],
+  },
+  pedro: {
+    file: 'reel-pedro-fundador', open: 'calendar',
+    kickS: 'Uma ideia antiga', kickB: 'virou negócio.',
+    board: ['um dia', 'quando der', 'ano que vem', 'talvez'], sticky: 'COMECEI',
+    card: ['Prazer,', 'sou', 'o', 'Pedro.'], ghost: 'P.',
+    tiles: [['chat', 'Entendo seu<br>negócio'], ['pen', 'Crio com<br>a sua cara'], ['rocket', 'Coloco<br>no ar']],
+    road: ['Isso', 'é', 'só', 'o', 'começo.'],
+  },
+}[V];
+window.FILE = C.file;
+const TOTAL = window.TOTAL = 20.4;
+const SFX = window.SFX = []; // [tipo, tempo, ...parâmetros] para a trilha
+const sfx = (...a) => SFX.push(a);
+
+// ---------- cena 1: abertura ----------
+const MAG = '<svg viewBox="0 0 48 48" fill="none" stroke="#1c1c1c" stroke-width="5" stroke-linecap="round"><circle cx="20" cy="20" r="13"/><path d="M30 30l12 12"/></svg>';
+let s1a, s1b, typedEl, caret, dayEl, macro;
+if (C.open === 'search') {
+  $('s1').innerHTML = `<div class="abs" id="s1a" style="inset:0;transform-origin:540px 900px"><div class="abs" id="s1b" style="inset:0">
+    <div class="abs" id="pill">${MAG}<span><span id="typed"></span><i id="caret"></i></span></div>
+    <div class="abs" id="drop">${[0, 1, 2].map(i => `<div class="res" data-r="${i}"><i></i><span style="flex:1"><b style="width:${[62, 48, 55][i]}%"></b><b style="width:${[36, 42, 30][i]}%;margin-top:14px;height:14px;opacity:.6"></b></span></div>`).join('')}</div>
+  </div></div>`;
+  macro = [185, 900];
+  typedEl = $('typed'); caret = $('caret');
+  const n = C.typed.length; for (let i = 0; i < n; i++) if (C.typed[i] !== ' ') sfx('key', .55 + .9 * i / n, i);
+  sfx('key', 1.62, 99, 1.6); // enter
+} else {
+  $('s1').innerHTML = `<div class="abs" id="s1a" style="inset:0;transform-origin:540px 890px"><div class="abs" id="s1b" style="inset:0">
+    <div class="abs" id="cal"><div class="top">NOVEMBRO</div><div id="day">1</div></div>
+    <div class="abs ring" style="left:360px;top:540px;width:34px;height:80px;border-radius:17px;background:#1b1a1f;border:6px solid #3a3940"></div>
+    <div class="abs ring" style="left:686px;top:540px;width:34px;height:80px;border-radius:17px;background:#1b1a1f;border:6px solid #3a3940"></div>
+  </div></div>`;
+  macro = [540, 960];
+  dayEl = $('day');
+  let last = 0; for (let k = 0; k < 600; k++) { const t = .55 + k * .01; const d = dayAt(t); if (d !== last && t < 1.78) { sfx('tick', t, d); last = d } }
+  sfx('key', 1.84, 99, 1.6);
+}
+function dayAt(t) { return 1 + Math.floor(seg(t, .55, 1.78, E.io3) * 29.999) }
+s1a = $('s1a'); s1b = $('s1b'); s1b.style.transformOrigin = `${macro[0]}px ${macro[1]}px`;
+sfx('impact', 0, .9); sfx('whoosh', 0, .55, 1, 1.2); sfx('whoosh', 2.02, .45, -1, 1);
+
+function upd1(t) {
+  const p = seg(t, 0, .62, E.outExpo);
+  s1b.style.transform = `translateX(${(540 - macro[0]) * (1 - p)}px) scale(${lerp(7, 1, p)})`;
+  const d = seg(t, .62, 2.1, E.io3), f = seg(t, 2.06, 2.4, E.in3);
+  const pulse = 1 + .035 * Math.sin(Math.PI * seg(t, 1.62, 1.82));
+  s1a.style.transform = `perspective(1600px) scale(${lerp(1, .86, d) * pulse}) rotateY(${lerp(lerp(0, -14, d), -90, f)}deg)`;
+  s1a.style.filter = `blur(${(1 - p) * 16 + f * 8}px)`;
+  if (C.open === 'search') {
+    const n = Math.floor(seg(t, .55, 1.45) * C.typed.length + .001);
+    typedEl.textContent = C.typed.slice(0, n);
+    caret.style.opacity = (t < 1.5 || Math.floor(t * 3.4) % 2 === 0) ? 1 : 0;
+    const dr = $('drop'); dr.style.opacity = seg(t, 1.66, 1.82); dr.style.transform = `translateY(${(1 - seg(t, 1.66, 1.9, E.outExpo)) * -40}px)`;
+    dr.querySelectorAll('.res').forEach((r, i) => { const q = seg(t, 1.72 + i * .07, 1.95 + i * .07, E.outExpo); r.style.opacity = q; r.style.transform = `translateX(${(1 - q) * 40}px)` });
+  } else {
+    if (t < 1.84) { const raw = seg(t, .55, 1.78, E.io3) * 29.999, fr = raw % 1; dayEl.textContent = dayAt(t); dayEl.style.color = '#141414'; dayEl.style.fontSize = '330px'; dayEl.style.transform = `translateY(${t > .55 && t < 1.78 ? (1 - E.outExpo(clamp(fr * 2.5))) * -60 : 0}px)` }
+    else { const q = seg(t, 1.84, 2.02, E.back); dayEl.textContent = 'HOJE'; dayEl.style.color = '#9333ea'; dayEl.style.fontSize = '190px'; dayEl.style.transform = `scale(${lerp(1.4, 1, q)})` }
+  }
+}
+
+// ---------- cena 2: giro 3D vira outro objeto + texto cinético ----------
+$('s2').innerHTML = `<div class="abs" id="glow"></div><div class="abs" id="s2o" style="inset:0;transform-origin:540px 760px">${C.open === 'search'
+  ? `<div class="abs phone2"><div class="scr"><div class="isl"></div><div class="cm"><div class="cm-n"><img src="assets/casa-modelo-logo.webp" alt=""><b>Casa · Modelo<small>SALGADOS & LANCHES</small></b><i>Meu pedido 0</i></div><div class="cm-c"><small>SUA CIDADE · UF</small><h3>Seu momento<br><em>pede sabor.</em></h3><span>Explorar cardápio →</span></div></div><div class="ex">Projeto exemplo</div></div></div>`
+  : `<div class="abs" id="biz">${logo(50)}<div><div class="nm">Pedro Almeida</div><div class="rl">Fundador · Sites e cardápios</div></div><div class="url">vorkeza.com.br</div></div>`}</div>
+  <div class="abs kick" id="kick" style="top:${C.open === 'search' ? 1320 : 1130}px"><div class="s">${C.kickS}</div><div class="b">${C.kickB}</div></div>`;
+sfx('thump', 2.4, .7); sfx('pop', 2.78, .5); sfx('pop', 2.98, .7); sfx('swell', 4.3, .5);
+function upd2(t) {
+  const o = $('s2o'), p = seg(t, 2.4, 2.86, E.outExpo), d = seg(t, 2.86, 4.8, E.io3), b = seg(t, 4.42, 4.8, E.in3);
+  o.style.transform = `perspective(1600px) translateY(${Math.sin(t * 2.2) * 8}px) scale(${lerp(1, 1.07, d)}) rotateY(${lerp(90, 0, p) + lerp(0, -7, d)}deg) rotateX(${lerp(0, 4, d)}deg)`;
+  o.style.filter = `blur(${(1 - p) * 10 + b * 18}px)`;
+  $('glow').style.opacity = seg(t, 2.5, 3.2) * (1 - b * .6);
+  const k = $('kick'); k.style.filter = `blur(${b * 14}px)`; k.style.opacity = 1 - b * .5;
+  [...k.children].forEach((el, i) => { const q = seg(t, 2.72 + i * .2, 3.25 + i * .2, E.outExpo); el.style.opacity = clamp(q * 2); el.style.transform = `translateY(${(1 - q) * 70}px) rotateX(${(1 - q) * 82}deg)` });
+}
+
+// ---------- cena 3: quadro de giz, palavras riscadas e o post-it ----------
+const rnd = (s => () => (s = (s * 16807) % 2147483647) / 2147483647)(V === 'marca' ? 7 : 11);
+const WPOS = [[520, 470, -3], [600, 615, 2], [500, 1170, -2], [580, 1320, 3]];
+$('boardIn').innerHTML = `
+  <div class="smudge" style="left:-200px;top:200px;width:700px;height:500px;background:#ffffff0c"></div>
+  <div class="smudge" style="left:500px;top:1200px;width:800px;height:600px;background:#ffffff09"></div>
+  <div class="smudge" style="left:300px;top:700px;width:600px;height:500px;background:#ffffff07"></div>
+  ${C.board.map((w, i) => `<div class="chalk" data-i="${i}" style="left:${WPOS[i][0]}px;top:${WPOS[i][1]}px;transform:translateX(-50%) rotate(${WPOS[i][2]}deg)">${w}</div>`).join('')}
+  <div class="abs" id="stickyW"><div id="sticky" style="font-size:${C.sticky.length > 5 ? 70 : 92}px">${C.sticky}</div><div id="fold"></div></div>`;
+C.board.forEach((w, i) => sfx('scratch', 4.9 + i * .13, .2));
+sfx('impact', 4.8, 1); sfx('slap', 4.82); sfx('whoosh', 6.5, .7, 1, 1.1); sfx('snap', 7.06);
+function strikes() { // risco feito à mão, do tamanho de cada palavra
+  $('board').style.display = 'block';
+  document.querySelectorAll('.chalk').forEach((el, i) => {
+    const w = el.offsetWidth + 28; let d = `M0 ${rnd() * 8 - 4}`;
+    for (let x = 30; x <= w; x += 30) d += ` L${x} ${(rnd() * 10 - 5).toFixed(1)}`;
+    d += ` L${w - 40} ${(10 + rnd() * 8).toFixed(1)}`;
+    el.insertAdjacentHTML('beforeend', `<svg width="${w}" height="40" style="margin-top:-6px"><path d="${d}" pathLength="1" fill="none" stroke="#f2f2f2" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1" stroke-dashoffset="1"/></svg>`);
+  });
+}
+const CARD = { l: 200, t: 580, w: 680, h: 680, r: 70 };
+function upd3(t) {
+  const bi = $('boardIn'), cam = seg(t, 4.8, 5.18, E.outExpo), push = seg(t, 4.8, 6.6), k = seg(t, 6.55, 7.15, E.ioExpo);
+  const sc = lerp(1, 1.1, push) * lerp(1, .5, k);
+  bi.style.transform = `translateX(${(1 - cam) * 160}px) scale(${sc})`;
+  bi.style.filter = `blur(${(1 - cam) * 10}px)`;
+  const sp = seg(t, 4.8, 5.06, E.back), st = $('stickyW');
+  st.style.transform = `scale(${lerp(1.45, 1, sp)}) rotate(${lerp(-14, -4, sp)}deg)`;
+  document.querySelectorAll('.chalk path').forEach((p, i) => p.setAttribute('stroke-dashoffset', 1 - seg(t, 4.9 + i * .13, 5.12 + i * .13, E.out3)));
+  const B = $('board');
+  const top = CARD.t * k, bot = (1920 - CARD.t - CARD.h) * k, side = CARD.l * k;
+  B.style.clipPath = `inset(${top}px ${side}px ${bot}px ${side}px round ${CARD.r * k}px)`;
+  $('bwhite').style.opacity = seg(t, 6.95, 7.28);
+}
+
+// ---------- cena 4: card com cantoneiras, texto digitado e cards de ícones ----------
+$('ghost').textContent = C.ghost;
+$('s4').innerHTML = `
+  <div class="abs" id="cardW" style="inset:0">
+    <div class="abs" id="card"><div>${C.card.map(w => `<span>${w}</span>`).join(' ')}</div></div>
+    ${[[0, 0], [1, 0], [0, 1], [1, 1]].map(([x, y]) => `<div class="brk" style="left:${CARD.l - 34 + x * (CARD.w - 42)}px;top:${CARD.t - 34 + y * (CARD.h - 42)}px;border-${x ? 'left' : 'right'}:0;border-${y ? 'top' : 'bottom'}:0;border-${y ? 'bottom' : 'top'}-${x ? 'right' : 'left'}-radius:44px"></div>`).join('')}
+  </div>
+  <div class="abs" id="tiles" style="inset:0;transform-origin:540px 860px">
+    ${C.tiles.map(([ic, lab], i) => `<div class="abs tileW" style="left:${55 + i * 340}px;top:${715}px;width:290px">
+      <div class="tile"><svg viewBox="0 0 48 48" fill="none" stroke="#c084fc" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">${ICON[ic].replace(/<(path|rect|circle)/g, '<$1 pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"')}</svg></div>
+      <div class="tlab" style="margin:34px 0 0 -20px">${lab}</div></div>`).join('')}
+  </div>`;
+C.card.forEach((w, i) => sfx('type', 7.36 + i * .22));
+sfx('whoosh', 8.7, .8, -1, .9);
+C.tiles.forEach((x, i) => { sfx('pop', 9.12 + i * .2, .9); sfx('draw', 9.3 + i * .2) });
+C.tiles.forEach((x, i) => sfx('label', 10.0 + i * .15)); sfx('drift', 10.6, 1.6);
+sfx('whoosh', 12.2, .75, 1, 1.15);
+function upd4(t) {
+  const ex = seg(t, 8.75, 9.45, E.io3), br = seg(t, 7.0, 7.3, E.outExpo);
+  $('cardW').style.transform = `translateX(${-1050 * ex}px)`;
+  $('cardW').style.display = t < 9.5 ? 'block' : 'none';
+  $('card').style.opacity = t >= 7.25 ? 1 : 0;
+  document.querySelectorAll('.brk').forEach((b, i) => { const dx = (i % 2 ? 1 : -1) * 60 * (1 - br), dy = (i > 1 ? 1 : -1) * 60 * (1 - br); b.style.opacity = br; b.style.transform = `translate(${dx}px,${dy}px)` });
+  document.querySelectorAll('#card span').forEach((s, i) => { const a = 7.36 + i * .22; s.style.opacity = seg(t, a, a + .1); s.style.color = mix('#c9c9c9', '#111111', seg(t, a + .06, a + .5, E.out3)) });
+  const push = seg(t, 9.8, 12.3), out = seg(t, 12.25, 12.85, E.in3);
+  $('tiles').style.transform = `scale(${lerp(1, 1.1, push)})`;
+  $('tiles').style.display = t > 8.8 && t < 12.9 ? 'block' : 'none';
+  document.querySelectorAll('.tileW').forEach((w, i) => {
+    const a = 8.85 + i * .2, q = seg(t, a, a + .62, E.outExpo);
+    let x = (1 - q) * 1100, y = 0;
+    if (i === 0) x -= 950 * out; if (i === 2) x += 950 * out; if (i === 1) y += 1400 * out;
+    w.style.transform = `translate(${x}px,${y}px) rotate(${(1 - q) * 8}deg)`;
+    w.querySelectorAll('svg *').forEach(p => p.setAttribute('stroke-dashoffset', 1 - seg(t, a + .4, a + 1.0, E.out3)));
+    const l = w.querySelector('.tlab'), lq = seg(t, 10.0 + i * .15, 10.45 + i * .15, E.outExpo);
+    l.style.opacity = lq * (1 - seg(t, 12.1, 12.3)); l.style.transform = `translateY(${(1 - lq) * 30}px)`;
+  });
+  const g = $('ghost'); g.style.transform = `translateX(${lerp(60, -340, seg(t, 6.8, 12.6))}px)`; g.style.opacity = 1 - seg(t, 12.0, 12.5);
+}
+
+// ---------- cena 5: estrada até a bandeira + banho de cor ----------
+function roadPath() {
+  const P = [[150, 2160], [640, 1760], [820, 1500], [430, 1290], [330, 1120], [690, 990], [610, 905], [520, 860]];
+  const cr = (p0, p1, p2, p3, u) => { const u2 = u * u, u3 = u2 * u; return .5 * ((2 * p1) + (-p0 + p2) * u + (2 * p0 - 5 * p1 + 4 * p2 - p3) * u2 + (-p0 + 3 * p1 - 3 * p2 + p3) * u3) };
+  const pts = [];
+  for (let i = 0; i < P.length - 1; i++) for (let k = 0; k < 24; k++) {
+    const u = k / 24, a = P[Math.max(0, i - 1)], b = P[i], c = P[i + 1], d = P[Math.min(P.length - 1, i + 2)];
+    pts.push([cr(a[0], b[0], c[0], d[0], u), cr(a[1], b[1], c[1], d[1], u)]);
+  }
+  pts.push(P[P.length - 1]);
+  const L = [], R = [];
+  pts.forEach((p, i) => {
+    const q = pts[Math.min(pts.length - 1, i + 1)], o = pts[Math.max(0, i - 1)];
+    let dx = q[0] - o[0], dy = q[1] - o[1]; const m = Math.hypot(dx, dy) || 1; dx /= m; dy /= m;
+    const depth = clamp((p[1] - 860) / 1300), w = 6 + 560 * Math.pow(depth, 1.35);
+    L.push([p[0] - dy * w / 2, p[1] + dx * w / 2]); R.push([p[0] + dy * w / 2, p[1] - dx * w / 2]);
+  });
+  return 'M' + L.concat(R.reverse()).map(p => p.map(v => v.toFixed(1)).join(' ')).join('L') + 'Z';
+}
+$('road').innerHTML = `
+  <div class="abs" id="roadG" style="inset:0;transform-origin:540px 860px">
+    <div class="abs" style="left:300px;top:810px;width:480px;height:110px;border-radius:50%;background:#fff;filter:blur(26px);opacity:.85"></div>
+    <svg class="abs" style="left:0;top:0" width="1080" height="1920"><path id="roadP" d="${roadPath()}"/>
+      <g id="flag" transform="translate(522 862)"><path d="M0 0V-92" stroke="#3a3a3a" stroke-width="5" stroke-linecap="round"/><path id="flagP" d=""/></g></svg>
+  </div>
+  <div class="abs" id="roadTxt">${C.road.map((w, i) => `<span>${w}</span>${i === 1 ? '<br>' : ''}`).join(' ')}</div>`;
+C.road.forEach((w, i) => sfx('type', 13.35 + i * .2));
+sfx('thump', 12.95, .45); sfx('riser', 13.9, 1.7); sfx('impact', 15.6, 1.25); sfx('whoosh', 15.9, .6, 1, 1.2);
+function upd5(t) {
+  const p = seg(t, 12.3, 13.6, E.out3), push = seg(t, 13.6, 15.6);
+  $('roadG').style.transform = `translateY(${lerp(760, 0, p)}px) scale(${lerp(1.55, 1, p) * lerp(1, 1.05, push)})`;
+  const c = seg(t, 15.05, 15.6, E.in3);
+  $('gbg').style.background = `radial-gradient(1000px 1400px at 50% 42%,${mix('#f7f7f7', '#fbf2ff', c)} 0%,${mix('#d9d9d9', '#dcb8ff', c)} 55%,${mix('#a3a3a3', '#9333ea', c)} 100%)`;
+  $('roadP').setAttribute('fill', mix('#151515', '#7e22ce', c));
+  let d = 'M0 -92'; for (let k = 1; k <= 6; k++) { const x = k * 9.5; d += ` L${x} ${-92 + Math.sin(t * 9 - k * .9) * 2.5 * k / 6}` }
+  for (let k = 6; k >= 0; k--) { const x = k * 9.5; d += ` L${x} ${-56 + Math.sin(t * 9 - k * .9) * 2.5 * k / 6 - (k / 6) * 18}` }
+  $('flagP').setAttribute('d', d + 'Z'); $('flagP').setAttribute('fill', mix('#9333ea', '#ffffff', c));
+  document.querySelectorAll('#roadTxt span').forEach((s, i) => { const a = 13.35 + i * .2; s.style.opacity = seg(t, a, a + .1); s.style.color = mix('#c4c4c4', '#111111', seg(t, a + .06, a + .5, E.out3)); if (c > 0) s.style.color = mix('#111111', '#3b0764', c) });
+  $('roadTxt').style.transform = `translateY(${lerp(120, 0, seg(t, 12.6, 13.5, E.out3))}px)`;
+}
+
+// ---------- final ----------
+const IG = '<svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r=".9" fill="currentColor" stroke="none"/></svg>';
+const corners = (l, t, w, h) => [[0, 0], [1, 0], [0, 1], [1, 1]].map(([x, y]) => `<div class="wbrk" style="left:${l + x * (w - 90)}px;top:${t + y * (h - 90)}px;border-${x ? 'left' : 'right'}:0;border-${y ? 'top' : 'bottom'}:0;border-${y ? 'bottom' : 'top'}-${x ? 'right' : 'left'}-radius:36px"></div>`).join('');
+let END = [];
+if (V === 'marca') {
+  $('endL').innerHTML = `<div class="orbit" style="left:-180px;top:260px;width:1440px;height:1440px"></div><div class="orbit" style="left:90px;top:530px;width:900px;height:900px"></div>
+    ${corners(160, 470, 760, 330)}
+    <div class="col" style="top:540px"><div id="e1" style="background:#fff;padding:30px 50px;border-radius:40px;box-shadow:0 30px 60px -16px #0008" class="light">${logo(78)}</div></div>
+    <div class="col" style="top:900px"><div class="mk"><span id="e2" style="font:600 56px 'DM Sans';color:#ffffffd9">Peça seu orçamento</span></div>
+      <div class="mk" style="margin-top:14px"><span id="e3" class="m" style="font-size:118px">vorkeza.com.br</span></div>
+      <div id="e4" style="margin-top:60px"><span class="pill">${WA('#7e22ce')} (DDD) NUMERO</span></div>
+      <div id="e5" style="margin-top:44px;font:700 54px 'DM Sans';display:flex;align-items:center;gap:16px;color:#fff">${IG} @vorkeza</div></div>`;
+  END = [['e1', 16.3, 'pop'], ['e2', 16.7, 'mask'], ['e3', 16.85, 'mask'], ['e4', 17.25, 'pop'], ['e5', 17.5, 'up']];
+} else {
+  $('endL').innerHTML = `<div class="orbit" style="left:-180px;top:260px;width:1440px;height:1440px"></div><div class="orbit" style="left:90px;top:530px;width:900px;height:900px"></div>
+    ${corners(110, 430, 860, 470)}
+    <div class="col" style="top:470px"><div class="mk"><span id="e1" class="m" style="font-size:176px;line-height:.98">Pedro</span></div><div class="mk"><span id="e2" class="m" style="font-size:176px;line-height:.98;color:#f5d0fe">Almeida</span></div></div>
+    <div class="col" style="top:960px"><div id="e3" style="display:flex;align-items:center;gap:24px;font:600 50px 'DM Sans';color:#ffffffe0">Fundador da <span style="background:#fff;padding:14px 26px;border-radius:26px" class="light">${logo(44)}</span></div>
+      <div id="e4" style="margin-top:40px;font:600 50px/1.3 'DM Sans';color:#ffffffd9">Sites e cardápios digitais<br><span style="opacity:.75;font-size:42px">Artur Nogueira-SP</span></div>
+      <div id="e5" style="margin-top:56px"><span class="pill">${WA('#7e22ce')} (DDD) NUMERO</span></div></div>`;
+  END = [['e1', 16.3, 'mask'], ['e2', 16.45, 'mask'], ['e3', 16.85, 'up'], ['e4', 17.1, 'up'], ['e5', 17.45, 'pop']];
+}
+END.forEach(([id, a, k]) => sfx(k === 'pop' ? 'pop' : 'type', a + (k === 'pop' ? .05 : 0), 1));
+sfx('chime', 16.3);
+function upd6(t) {
+  const w = seg(t, 15.9, 16.45, E.io3);
+  $('endL').style.clipPath = `circle(${w * 2300}px at 522px 800px)`;
+  END.forEach(([id, a, k]) => {
+    const el = $(id), q = seg(t, a, a + .6, k === 'pop' ? E.back : E.outExpo);
+    if (k === 'mask') { el.style.transform = `translateY(${(1 - q) * 110}%)` }
+    else if (k === 'pop') { el.style.opacity = clamp(q * 3); el.style.transform = `scale(${lerp(.55, 1, q)})` }
+    else { el.style.opacity = q; el.style.transform = `translateY(${(1 - q) * 60}px)` }
+  });
+  const b = seg(t, 16.45, 16.8, E.outExpo);
+  document.querySelectorAll('.wbrk').forEach((el, i) => { const dx = (i % 2 ? 1 : -1) * 80 * (1 - b), dy = (i > 1 ? 1 : -1) * 80 * (1 - b); el.style.opacity = b; el.style.transform = `translate(${dx}px,${dy}px) scale(${1 + .015 * Math.sin(t * 3)})` });
+  document.querySelectorAll('#endL .orbit').forEach((o, i) => o.style.transform = `rotate(${t * (i ? -9 : 6)}deg)`);
+}
+if (V === 'marca') sfx('snap', 16.5); else sfx('snap', 16.5);
+
+// ---------- grão de filme ----------
+const gctx = $('grain').getContext('2d'), gimg = gctx.createImageData(540, 960);
+function grain(frame) {
+  let s = (frame * 9301 + 49297) % 233280 || 1; const d = gimg.data;
+  for (let i = 0; i < d.length; i += 4) { s = (s * 16807) % 2147483647; const v = s & 255; d[i] = d[i + 1] = d[i + 2] = v; d[i + 3] = 255 }
+  gctx.putImageData(gimg, 0, 0);
+}
+
+// ---------- relógio global ----------
+window.seek = t => {
+  show($('dbg'), t < 4.8); show($('s1'), t < 2.4); show($('s2'), t >= 2.4 && t < 4.8);
+  show($('board'), t >= 4.8 && t < 7.3); show($('gbg'), t >= 6.5 && t < 16.5);
+  show($('s4'), t >= 6.9 && t < 12.9); show($('road'), t >= 12.2 && t < 16.5); show($('endL'), t >= 15.9);
+  if (t < 2.4) upd1(t);
+  if (t >= 2.4 && t < 4.8) upd2(t);
+  if (t >= 4.8 && t < 7.3) upd3(t);
+  if (t >= 6.9 && t < 12.9) upd4(t);
+  if (t >= 12.2 && t < 16.5) upd5(t);
+  if (t >= 15.9) upd6(t);
+  const fl = Math.max(1 - seg(t, 0, .2), (1 - seg(t, 15.6, 15.95)) * (t >= 15.6 ? .55 : 0), (1 - seg(t, 4.8, 4.92)) * (t >= 4.8 ? .25 : 0));
+  $('flash').style.display = fl > 0.003 ? 'block' : 'none'; $('flash').style.opacity = fl;
+  grain(Math.round(t * 24));
+};
+window.ready = (async () => {
+  await document.fonts.load('800 40px Manrope'); await document.fonts.load('600 40px "DM Sans"'); await document.fonts.load('400 40px Chalk');
+  await document.fonts.ready;
+  await Promise.all([...document.images].map(i => i.decode().catch(() => {})));
+  strikes();
+  window.SFX.sort((a, b) => a[1] - b[1]);
+  seek(0);
+  return true;
+})();
+</script></body></html>

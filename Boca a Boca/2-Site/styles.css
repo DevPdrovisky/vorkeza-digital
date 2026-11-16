@@ -1,0 +1,7 @@
+/* Boca a Boca — só as cores da marca. O resto vem de grupo/site-marca.css. Âmbar com texto escuro para dar contraste. */
+:root {
+  --m: #F5B301; --m-botao: #F5B301; --m-2: #FFD25E; --m-txt: #2A1A00;
+  --noite: #1A1303; --grafite: #2A1F06; --m-claro: #FFF6DB; --m-borda: #F6DF9A; --m-forte: #8A5A00;
+}
+.hero h1 em { color: var(--m-2); }
+.regra { border-left: 4px solid var(--m); }

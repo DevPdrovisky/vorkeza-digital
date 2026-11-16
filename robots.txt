@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /demo-painel/
+
+Sitemap: https://vorkeza.com.br/sitemap.xml

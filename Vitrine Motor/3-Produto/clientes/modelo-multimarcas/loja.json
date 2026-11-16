@@ -1,0 +1,21 @@
+{
+  "nome": "Modelo Multimarcas",
+  "nomeCurto": "Modelo",
+  "slogan": "Seminovos revisados, com procedência e atendimento direto.",
+  "cidade": "Artur Nogueira",
+  "uf": "SP",
+  "endereco": "Endereço fictício — revenda de demonstração",
+  "whatsapp": "55DDDNUMERO",
+  "telefone": "",
+  "instagram": "",
+  "horarios": ["Seg a sex: 8h às 18h", "Sábado: 8h às 13h"],
+  "cnpj": "",
+  "cores": { "primaria": "#E11D48", "escura": "#111317" },
+  "logo": "",
+  "url": "https://vitrinemotor.pages.dev/demo/",
+  "aceitaTroca": true,
+  "financiamento": true,
+  "compramos": true,
+  "modo": "demo",
+  "indexar": false
+}

@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Azul-marinho: credibilidade. Verde: aprovação (mesmo tom da Vitrine Imóvel). */
+  --color-tinta-950: #061226;
+  --color-tinta-900: #0b1f3a;
+  --color-tinta-800: #12305a;
+  --color-tinta-700: #1b4277;
+  --color-marca-50: #ecfaf4;
+  --color-marca-100: #d2f3e4;
+  --color-marca-300: #6ee7b7;
+  --color-marca-500: #12b07c;
+  --color-marca-600: #0f9d6e;
+  --color-marca-700: #0b7a55;
+
+  --animate-entrar-cima: entrar-cima 480ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-entrar-baixo: entrar-baixo 480ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-surgir: surgir 600ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-pulsar: pulsar 1.6s ease-in-out infinite;
+
+  @keyframes entrar-cima {
+    from {
+      opacity: 0;
+      transform: translateY(36px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes entrar-baixo {
+    from {
+      opacity: 0;
+      transform: translateY(-36px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes surgir {
+    from {
+      opacity: 0;
+      transform: translateY(14px) scale(0.985);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes pulsar {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.45;
+    }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: #ffffff;
+  color: var(--color-slate-900);
+}
+
+::selection {
+  background: var(--color-marca-100);
+  color: var(--color-tinta-900);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+    scroll-behavior: auto !important;
+  }
+}

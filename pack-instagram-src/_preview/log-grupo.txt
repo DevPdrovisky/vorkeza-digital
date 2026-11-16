@@ -1,0 +1,9 @@
+musica: continue-eluzai.mp3 a partir de 20.56s
+antes: -17.46 LUFS, pico -0.55 dB
+grupo 0/1224 (0s)
+grupo 240/1224 (31s)
+grupo 480/1224 (69s)
+grupo 720/1224 (111s)
+grupo 960/1224 (149s)
+grupo 1200/1224 (184s)
+grupo pronto: C:\Users\cmraj\Desktop\Vorkeza Digital\Pack-Grupo-Vorkeza\1-Videos\video-1-grupo-vorkeza.mp4 ffmpeg=0 25.0 MB

@@ -1,0 +1,164 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><link rel="stylesheet" href="kit.css">
+<style>
+body{width:6480px}
+.art{position:relative;width:1080px;height:1350px;overflow:hidden;margin-bottom:40px}
+.strip{position:relative;width:6480px;height:1350px;overflow:hidden;margin-bottom:40px;display:flex}
+.slide{position:relative;width:1080px;height:1350px;flex:none;padding:96px 84px 92px;display:flex;flex-direction:column;z-index:2}
+.pad{position:absolute;inset:0;padding:96px 84px 84px;display:flex;flex-direction:column;z-index:2}
+.night{background:radial-gradient(900px 700px at 88% 8%,#a21caf99,transparent 68%),radial-gradient(1000px 900px at 0% 100%,#7e22cebb,transparent 68%),#13071f}
+.vivid{background:radial-gradient(800px 700px at 90% 5%,#ec4899,transparent 70%),radial-gradient(900px 900px at 0 100%,#581c87,transparent 70%),#9333ea}
+.light{background:radial-gradient(800px 600px at 100% 0,#f0d9ff,transparent 70%),#faf6fd;color:var(--plum)}
+.grid:before{content:"";position:absolute;inset:0;background-image:linear-gradient(#ffffff0d 2px,transparent 2px),linear-gradient(90deg,#ffffff0d 2px,transparent 2px);background-size:90px 90px;-webkit-mask-image:radial-gradient(closest-side,#000,transparent);z-index:0}
+h1{font-size:112px}h2{font-size:92px}
+h1 em,h2 em{background:linear-gradient(95deg,#f5b8ff,#c084fc 55%,#e879f9);-webkit-background-clip:text;color:transparent;padding-right:.05em}
+.light h1 em,.light h2 em{background:linear-gradient(95deg,#9333ea,#d946ef)!important;-webkit-background-clip:text!important;color:transparent}
+.lead{font-size:38px;line-height:1.35;color:#ffffffd0;margin-top:30px}
+.light .lead{color:#5c4a70}
+.foot{margin-top:auto;display:flex;justify-content:space-between;align-items:center;font:700 30px "DM Sans"}
+.fine{font-size:19px;line-height:1.35;opacity:.62;margin-top:18px}
+.swipe{display:inline-flex;gap:.45em;align-items:center;font:800 32px Manrope;letter-spacing:-.02em}
+.num{font:800 30px Manrope;color:var(--rose);letter-spacing:.02em}
+.light .num{color:var(--v)}
+.rows{display:flex;flex-direction:column;gap:22px;margin-top:50px}
+.row{display:flex;align-items:center;gap:26px;padding:28px 32px;border-radius:30px;background:#ffffff12;border:2px solid #ffffff22;font:700 40px/1.14 Manrope;letter-spacing:-.03em}
+.row .check{font-size:48px}
+.light .row{background:#fff;border-color:var(--line)}
+.plan{border-radius:32px;padding:34px;background:#fff;border:2px solid var(--line);display:flex;flex-direction:column;box-shadow:0 26px 50px -30px #7e22ce77}
+.plan.hot{background:linear-gradient(150deg,#1e0d38,#7e22ce);color:#fff;border:0}
+.plan h3{font-size:42px}.plan p{font-size:26px;line-height:1.28;color:var(--muted);margin-top:14px}
+.plan.hot p{color:#ffffffc8}
+.plan .price{margin-top:auto;padding-top:20px;font:800 72px Manrope;letter-spacing:-.05em;color:var(--v)}
+.plan.hot .price{color:#fff}.plan .price small{font-size:30px;letter-spacing:-.02em;margin-right:.2em}
+.pline{display:flex;justify-content:space-between;align-items:center;padding:26px 0;border-bottom:2px solid #ffffff22;font:800 42px Manrope;letter-spacing:-.03em}
+.pline b{font-size:54px;color:var(--rose)}
+.compare{display:flex;flex-direction:column;gap:26px;margin-top:54px}
+.cmp{border-radius:32px;padding:36px 38px}
+.cmp small{font:600 28px "DM Sans";display:block}
+.cmp b{display:block;font:800 88px Manrope;letter-spacing:-.05em;margin-top:6px}
+.tilt{position:absolute;z-index:1}
+.ribbon{position:absolute;left:0;top:0;width:6480px;height:1350px;z-index:1;pointer-events:none}
+</style></head><body>
+<div id="root"></div>
+<script src="kit.js"></script>
+<script>
+const foot = (r='vorkeza.com.br') => `<div class="foot">${logo(34)}<span>${r}</span></div>`;
+const swipe = `<span class="swipe">Arrasta para o lado ${ARROW}</span>`;
+const n = (i,t=6) => `<div class="num">${String(i).padStart(2,'0')} / ${String(t).padStart(2,'0')}</div>`;
+const ribbon = (d) => `<svg class="ribbon" viewBox="0 0 6480 1350" fill="none"><defs><linearGradient id="rb" x1="0" x2="6480" gradientUnits="userSpaceOnUse"><stop stop-color="#c084fc"/><stop offset=".5" stop-color="#ec4899"/><stop offset="1" stop-color="#c084fc"/></linearGradient></defs><path d="${d}" stroke="url(#rb)" stroke-width="10" stroke-linecap="round" opacity=".55"/></svg>`;
+
+document.getElementById('root').innerHTML = `
+<!-- POST 1 -->
+<section class="art night grid" id="post-1-seu-negocio-e-bom"><div class="pad">
+ <div class="eyebrow">Sites profissionais</div>
+ <h1 style="margin-top:30px;font-size:122px">Seu negócio<br>é bom.<br><em>Seu site precisa<br>mostrar isso.</em></h1>
+ <div class="foot" style="position:absolute;left:84px;bottom:84px;flex-direction:column;align-items:flex-start;gap:28px">
+  <span class="btn" style="font-size:36px">Peça seu orçamento ${ARROW}</span>${logo(34)}</div>
+ </div>
+ <div class="tilt" style="right:-46px;bottom:-250px;transform:rotate(-9deg)">${phone(siteScreen(),1.06)}</div>
+</section>
+
+<!-- POST 2 -->
+<section class="art light" id="post-2-planos"><div class="pad" style="padding-top:76px">
+ <div class="eyebrow">Preço claro</div>
+ <h2 style="margin-top:20px;font-size:86px">O site certo para <em>cada fase do negócio.</em></h2>
+ <div style="display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:318px;gap:22px;margin-top:40px">
+ ${PLANS.map(([t,p,d],i)=>`<div class="plan ${i==1?'hot':''}"><h3>${t}</h3><p>${d}</p><div class="price"><small>R$</small>${p}*</div></div>`).join('')}</div>
+ <div class="foot" style="margin-top:28px;font-size:28px">${logo(30)}<span>Painel para editar sozinho: adicional</span></div>
+ <div class="fine">${FINE}</div>
+</div></section>
+
+<!-- POST 3 -->
+<section class="art vivid grid" id="post-3-pedido-no-whatsapp"><div class="pad">
+ <div class="eyebrow" style="color:#fff">Cardápio digital</div>
+ <h1 style="margin-top:28px;font-size:108px">O pedido<br>chega pronto<br>no seu<br>WhatsApp.</h1>
+ <p class="lead" style="width:520px;color:#fff">Cardápio com a cara da sua loja, <b>sem comissão em cada pedido.</b></p>
+ <div class="foot" style="position:absolute;left:84px;bottom:84px">${logo(34)}</div>
+ </div>
+ <div class="tilt" style="right:-30px;top:430px;transform:rotate(7deg)">${phone(whatsScreen(),1.12)}</div>
+</section>
+
+<!-- CARROSSEL 1 -->
+<div class="strip night" data-slides="carrossel-1-seu-cliente-procurou">
+ ${ribbon('M-20 1305C300 1345 700 1275 1080 1310S1640 1345 2160 1305 2800 1275 3240 1312 3900 1345 4320 1305 5000 1275 5400 1312 6200 1340 6500 1300')}
+ <div class="slide"><div class="eyebrow">Pare e pense</div>
+  <h1 style="margin-top:34px;font-size:122px">Alguém procurou seu negócio agora.</h1>
+  <h1 style="margin-top:34px;font-size:122px"><em>O que encontrou?</em></h1>
+  <div style="margin-top:58px;display:flex;align-items:center;gap:20px;background:#fff;color:var(--muted);border-radius:99px;padding:30px 42px;font-size:38px;font-weight:600"><svg viewBox="0 0 24 24" width="42" height="42" fill="none" stroke="#9333ea" stroke-width="3" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5L21 21"/></svg>sua empresa perto de mim</div>
+  <div class="foot">${logo(32)}${swipe}</div></div>
+
+ <div class="slide">${n(2)}
+  <h2 style="margin-top:30px;font-size:112px">O Instagram apresenta.<br><em>O site completa.</em></h2>
+  <p class="lead" style="font-size:42px;margin-top:44px">No Instagram, o cliente te conhece. No site, ele encontra tudo o que precisa para decidir.</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:54px">
+   <div class="cmp" style="background:#ffffff12;border:2px solid #ffffff22;padding:34px"><div class="m" style="font-size:46px">Instagram</div><div style="font-size:33px;line-height:1.5;margin-top:18px;opacity:.85">Fotos<br>Stories<br>Novidades</div></div>
+   <div class="cmp" style="background:linear-gradient(150deg,#9333ea,#c026d3);padding:34px"><div class="m" style="font-size:46px">Seu site</div><div style="font-size:33px;line-height:1.5;margin-top:18px">Serviços e preços<br>Endereço<br>Contato direto</div></div></div>
+  <div class="foot">${logo(32)}${swipe}</div></div>
+
+ <div class="slide">${n(3)}
+  <h2 style="margin-top:30px">Sem site, o cliente precisa:</h2>
+  <div class="rows">${['Perguntar o preço no direct','Esperar você responder','Procurar o endereço','Adivinhar o que você faz'].map(t=>`<div class="row">${XMARK}<span>${t}</span></div>`).join('')}</div>
+  <div class="foot" style="font:800 42px Manrope;letter-spacing:-.03em;color:var(--rose)">E às vezes ele desiste no caminho.</div></div>
+
+ <div class="slide">${n(4)}
+  <h2 style="margin-top:30px">Com site, ele já <em>encontra:</em></h2>
+  <div class="rows">${['Seus serviços e produtos','Fotos do seu trabalho','Endereço e horários','WhatsApp em um toque','Tudo certinho no celular'].map(t=>`<div class="row" style="padding:23px 32px">${CHECK}<span>${t}</span></div>`).join('')}</div>
+  <div class="foot">${logo(32)}${swipe}</div></div>
+
+ <div class="slide">${n(5)}
+  <h2 style="margin-top:30px;font-size:84px">Você sabe quanto vai pagar <em>antes de começar.</em></h2>
+  <div style="margin-top:30px">${PLANS.map(([t,p])=>`<div class="pline"><span>${t}</span><b>R$ ${p}*</b></div>`).join('')}</div>
+  <div style="display:flex;gap:14px;margin-top:32px;font-size:27px;flex-wrap:wrap"><span class="chip">Preço fechado</span><span class="chip">2 rodadas de ajustes</span><span class="chip">12 meses de hospedagem*</span></div>
+  <div class="fine" style="margin-top:auto">${FINE}</div></div>
+
+ <div class="slide">${n(6)}
+  <h1 style="margin-top:40px;font-size:128px">Vamos colocar seu negócio <em>no ar?</em></h1>
+  <p class="lead" style="font-size:42px">Conte o que você precisa e receba uma proposta com preço fechado.</p>
+  <div style="margin-top:56px"><span class="btn" style="font-size:48px">${WA()} Pedir orçamento</span></div>
+  <div class="foot">${logo(34)}<span style="text-align:right">vorkeza.com.br<br>(DDD) NUMERO</span></div></div>
+</div>
+
+<!-- CARROSSEL 2 -->
+<div class="strip vivid" style="background:linear-gradient(90deg,#3b0764,#7e22ce 26%,#c026d3 50%,#7e22ce 74%,#1e0d38)" data-slides="carrossel-2-cardapio-proprio">
+ ${ribbon('M-20 50C400 20 800 80 1200 45S2000 20 2400 60 3200 80 3700 40 4600 20 5000 60 6100 80 6500 40').replace('opacity=".55"','opacity=".4"')}
+ <div class="slide"><div class="eyebrow" style="margin-top:60px">Para restaurantes e delivery</div>
+  <h1 style="margin-top:34px;font-size:136px">Seu delivery trabalha <em>para quem?</em></h1>
+  <p class="lead" style="font-size:44px;color:#fff">Tem conta que todo mês sai do seu caixa e você nem repara.</p>
+  <div style="margin-top:48px;background:#fff;color:var(--plum);border-radius:30px;padding:32px 38px;transform:rotate(-2deg);box-shadow:0 40px 70px -20px #0009;font:700 37px Manrope;letter-spacing:-.03em">
+   <div style="padding:12px 0;border-bottom:2px dashed var(--line)">Mensalidade do app</div>
+   <div style="padding:12px 0;border-bottom:2px dashed var(--line)">Comissão por venda</div>
+   <div style="padding:16px 0 2px;font-size:44px;color:var(--v);font-weight:800">Quanto sobra para você?</div></div>
+  <div class="foot">${logo(32)}${swipe}</div></div>
+
+ <div class="slide">${n(2)}
+  <h2 style="margin-top:50px;font-size:84px">Faça a conta do seu 1º ano:</h2>
+  <div class="compare">
+   <div class="cmp" style="background:#ffffff18;border:2px solid #ffffff2c"><small>App de cardápio por assinatura<br>(exemplo: R$ 150 por mês)</small><b><s style="text-decoration-thickness:7px;text-decoration-color:#f5b8ff">R$ 1.800</s></b></div>
+   <div class="cmp" style="background:#fff;color:var(--plum)"><small>Cardápio Delivery Vorkeza<br>pagamento único, com 12 meses de hospedagem*</small><b style="color:var(--v)">R$ 1.490*</b></div></div>
+  <div class="fine" style="margin-top:auto">Exemplo ilustrativo: os valores de aplicativos variam. ${FINE}</div></div>
+
+ <div class="slide">${n(3)}
+  <h2 style="margin-top:50px;font-size:104px">Em cada venda no app, <em>uma parte fica com ele.</em></h2>
+  <p class="lead" style="font-size:44px;color:#fff;margin-top:44px">Com cardápio próprio, o cliente pede direto para você. <b>Sem comissão em cada pedido.</b></p>
+  <div style="display:flex;flex-direction:column;gap:18px;margin-top:50px">${['O cliente escolhe no seu cardápio','Monta o carrinho','O pedido vai para o seu WhatsApp'].map((t,i)=>`<div class="row" style="background:#ffffff1c;padding:24px 30px;font-size:38px"><span class="check" style="font-size:46px;background:#fff;color:#9333ea;font-family:Manrope;font-weight:800"><span style="font-size:27px">${i+1}</span></span><span>${t}</span></div>`).join('')}</div>
+  <div class="foot">${logo(32)}${swipe}</div></div>
+
+ <div class="slide">${n(4)}
+  <h2 style="margin-top:50px;font-size:92px;width:560px">O pedido chega <em>pronto.</em></h2>
+  <p class="lead" style="width:470px;color:#fff">Itens, total, endereço e pagamento em uma só mensagem no seu WhatsApp.</p>
+  <div class="foot" style="position:absolute;left:84px;bottom:92px">${logo(32)}</div>
+  <div class="tilt" style="right:-12px;top:250px;transform:rotate(5deg)">${phone(whatsScreen(),1.14)}</div></div>
+
+ <div class="slide">${n(5)}
+  <h2 style="margin-top:50px;font-size:84px">Quer controlar tudo? <em>Painel Completo.</em></h2>
+  <div class="rows" style="gap:15px;margin-top:36px">${['Abertura e fechamento de caixa','Loja aberta ou fechada','Pedidos, despesas e equipe'].map(t=>`<div class="row" style="padding:21px 28px;font-size:36px">${CHECK}<span>${t}</span></div>`).join('')}</div>
+  <div style="display:flex;gap:60px;margin-top:40px"><div><div style="font-size:27px;opacity:.85">Implantação*</div><div class="m" style="font-size:66px">a partir de R$ 3.490</div></div></div>
+  <div style="font:700 32px 'DM Sans';margin-top:12px">+ R$ 149/mês a partir do 2º ano</div>
+  <div class="fine" style="margin-top:auto">*Somado ao cardápio. Valor final conforme o que for incluído na proposta.</div></div>
+
+ <div class="slide">${n(6)}
+  <h1 style="margin-top:50px;font-size:124px">Seu cardápio. <em>Suas vendas.</em></h1>
+  <p class="lead" style="font-size:42px;color:#fff">Veja um exemplo funcionando: Casa Modelo Salgados, em vorkeza.com.br.</p>
+  <div style="margin-top:50px"><span class="btn white" style="font-size:46px">${WA('#9333ea')} Quero meu cardápio</span></div>
+  <div class="foot">${logo(34)}<span style="text-align:right">vorkeza.com.br<br>(DDD) NUMERO</span></div></div>
+</div>`;
+</script></body></html>

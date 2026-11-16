@@ -1,0 +1,7 @@
+/* Bem no Mapa — só as cores da marca. O resto vem de grupo/site-marca.css. */
+:root {
+  --m: #E5484D; --m-botao: #CE2C31; --m-2: #FF8A8E; --m-txt: #fff;
+  --noite: #1A0B0C; --grafite: #2A1214; --m-claro: #FDECEC; --m-borda: #F7C6C7; --m-forte: #B4232A;
+}
+.hero h1 em { color: var(--m-2); }
+.indep { font-size: 13px; opacity: .85; }

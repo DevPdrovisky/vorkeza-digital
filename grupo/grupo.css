@@ -1,0 +1,84 @@
+/* Grupo Vorkeza — peças compartilhadas por todos os sites do grupo.
+   Selo "uma empresa Vorkeza", botão de troca entre marcas e cartões "Nossas marcas".
+   As marcas, cores e URLs vêm de grupo.json (lido por grupo.js). Não edite cópias: edite esta pasta. */
+@font-face { font-family: "Manrope"; src: url("fontes/manrope.woff2") format("woff2"); font-weight: 200 800; font-display: swap; }
+@font-face { font-family: "DM Sans"; src: url("fontes/dm-sans.woff2") format("woff2"); font-weight: 100 1000; font-display: swap; }
+
+:root {
+  --vk-roxo: #9333EA; --vk-roxo-escuro: #7E22CE; --vk-lilas: #C084FC; --vk-rosa: #F5B8FF;
+  --vk-noite: #13071F; --vk-tinta: #1E0D38; --vk-texto: #4A3D5E; --vk-suave: #6B5D82; --vk-linha: #E7DCEE; --vk-papel: #FAF6FD;
+  --vk-t: "Manrope", "DM Sans", system-ui, sans-serif; --vk-c: "DM Sans", system-ui, sans-serif;
+  --vk-ease: cubic-bezier(.2, .7, .2, 1);
+}
+
+/* ícone de marca: quadrado arredondado na cor da marca, traço no mesmo estilo para todas */
+.vk-tile { --vk-cor: var(--vk-roxo); --vk-ink: #fff; display: inline-grid; place-items: center; flex: none; width: 40px; height: 40px; border-radius: 12px; background: var(--vk-cor); color: var(--vk-ink); box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .06), inset 0 1px 0 rgba(255, 255, 255, .22); }
+.vk-tile svg { width: 62%; height: 62%; fill: none; stroke: currentColor; stroke-width: 2.1; stroke-linecap: round; stroke-linejoin: round; }
+
+/* selo "uma empresa Vorkeza" — para fundos escuros; use .vk-selo-claro em fundo claro */
+.vk-selo { display: inline-flex; align-items: center; gap: 8px; padding: 5px 12px 5px 5px; border-radius: 999px; border: 1px solid rgba(192, 132, 252, .35); background: rgba(147, 51, 234, .12); color: rgba(255, 255, 255, .78); font: 500 13px/1.2 var(--vk-c); text-decoration: none; white-space: nowrap; transition: background .2s, border-color .2s; }
+.vk-selo b { font-family: var(--vk-t); font-weight: 800; color: var(--vk-lilas); letter-spacing: -.01em; }
+.vk-selo .vk-tile { width: 22px; height: 22px; border-radius: 7px; background: linear-gradient(135deg, #B15CFF, var(--vk-roxo-escuro)); }
+.vk-selo:hover { background: rgba(147, 51, 234, .22); border-color: rgba(192, 132, 252, .6); }
+.vk-selo-claro { background: #F6EEFE; border-color: #E2CCF8; color: var(--vk-texto); }
+.vk-selo-claro b { color: var(--vk-roxo-escuro); }
+.vk-selo-claro:hover { background: #EFE2FD; border-color: #CFA8F6; }
+
+/* aba fixa na borda direita */
+.vk-aba { position: fixed; right: 0; top: 50%; z-index: 9000; display: grid; place-items: center; width: 46px; height: 58px; padding: 0 0 0 2px; border: 1px solid rgba(30, 13, 56, .12); border-right: 0; border-radius: 16px 0 0 16px; background: rgba(255, 255, 255, .96); box-shadow: 0 10px 30px -8px rgba(19, 7, 31, .35); cursor: pointer; transform: translate(0, -50%); transition: transform .3s var(--vk-ease), box-shadow .2s, width .2s; -webkit-tap-highlight-color: transparent; animation: vk-entra .6s .8s var(--vk-ease) both; }
+.vk-aba .vk-tile { width: 32px; height: 32px; border-radius: 10px; }
+.vk-aba:hover { transform: translate(-3px, -50%); box-shadow: 0 14px 34px -8px rgba(19, 7, 31, .45); }
+.vk-aba:focus-visible { outline: 3px solid var(--vk-lilas); outline-offset: 2px; }
+.vk-aba[aria-expanded="true"] { transform: translate(0, -50%); }
+.vk-aba-dica { position: absolute; right: calc(100% + 10px); top: 50%; transform: translate(6px, -50%); padding: 7px 11px; border-radius: 10px; background: var(--vk-noite); color: #fff; font: 600 13px/1 var(--vk-c); white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity .18s, transform .18s; }
+@media (hover: hover) { .vk-aba:hover .vk-aba-dica, .vk-aba:focus-visible .vk-aba-dica { opacity: 1; transform: translate(0, -50%); } }
+.vk-aba[aria-expanded="true"] .vk-aba-dica { opacity: 0; }
+@keyframes vk-entra { from { transform: translate(100%, -50%); } }
+@media (max-width: 640px) {
+  .vk-aba { width: 30px; height: 46px; border-radius: 12px 0 0 12px; padding-left: 1px; }
+  .vk-aba .vk-tile { width: 22px; height: 22px; border-radius: 7px; }
+}
+
+/* painel */
+.vk-fundo { position: fixed; inset: 0; z-index: 9001; background: rgba(19, 7, 31, .32); opacity: 0; visibility: hidden; transition: opacity .25s, visibility 0s .25s; }
+.vk-painel { position: fixed; right: 14px; top: 50%; z-index: 9002; width: min(380px, calc(100vw - 28px)); max-height: calc(100dvh - 28px); overflow: auto; overscroll-behavior: contain; padding: 18px; border-radius: 22px; background: #fff; color: var(--vk-texto); box-shadow: 0 30px 80px -20px rgba(19, 7, 31, .55), 0 0 0 1px rgba(30, 13, 56, .08); font: 15px/1.45 var(--vk-c); opacity: 0; visibility: hidden; transform: translate(18px, -50%) scale(.98); transform-origin: right center; transition: opacity .22s, transform .3s var(--vk-ease), visibility 0s .3s; text-align: left; }
+.vk-aberto .vk-fundo { opacity: 1; visibility: visible; transition: opacity .25s; }
+.vk-aberto .vk-painel { opacity: 1; visibility: visible; transform: translate(0, -50%); transition: opacity .22s, transform .3s var(--vk-ease); }
+.vk-painel-topo { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+.vk-painel-kicker { margin: 0; font: 700 11.5px/1 var(--vk-c); letter-spacing: .12em; text-transform: uppercase; color: var(--vk-roxo-escuro); }
+.vk-painel-titulo { margin: 6px 0 0; font: 800 20px/1.15 var(--vk-t); color: var(--vk-tinta); letter-spacing: -.02em; }
+.vk-fechar { display: grid; place-items: center; width: 40px; height: 40px; margin: -6px -6px 0 0; border: 0; border-radius: 12px; background: transparent; color: var(--vk-suave); cursor: pointer; }
+.vk-fechar:hover { background: var(--vk-papel); color: var(--vk-tinta); }
+.vk-fechar:focus-visible, .vk-item:focus-visible { outline: 3px solid var(--vk-lilas); outline-offset: 2px; }
+.vk-fechar svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; }
+.vk-lista { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.vk-item { --vk-cor: var(--vk-roxo); position: relative; display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: center; padding: 10px 12px 10px 10px; border-radius: 16px; border: 1px solid transparent; color: inherit; text-decoration: none; transition: background .18s, border-color .18s, transform .18s; }
+.vk-item:hover { background: color-mix(in srgb, var(--vk-cor) 7%, white); border-color: color-mix(in srgb, var(--vk-cor) 22%, white); }
+.vk-item[aria-current="page"] { background: color-mix(in srgb, var(--vk-cor) 9%, white); border-color: color-mix(in srgb, var(--vk-cor) 40%, white); }
+.vk-item-nome { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 8px; font: 800 15.5px/1.2 var(--vk-t); color: var(--vk-tinta); letter-spacing: -.01em; }
+.vk-item-frase { display: block; margin-top: 2px; font-size: 13.5px; line-height: 1.35; color: var(--vk-suave); }
+.vk-aqui { font: 700 11px/1 var(--vk-c); letter-spacing: .02em; padding: 4px 8px; border-radius: 999px; background: var(--vk-tinta); color: #fff; }
+.vk-mae { font: 700 11px/1 var(--vk-c); padding: 4px 8px; border-radius: 999px; background: #F3E8FF; color: var(--vk-roxo-escuro); }
+.vk-sep { height: 1px; background: var(--vk-linha); margin: 6px 4px; }
+.vk-painel-nota { margin: 12px 4px 0; font-size: 12.5px; color: var(--vk-suave); }
+
+/* cartões "Nossas marcas" (site da Vorkeza) */
+.vk-marcas { display: grid; gap: 16px; grid-template-columns: 1fr; }
+@media (min-width: 680px) { .vk-marcas { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1100px) { .vk-marcas { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.vk-cartao { --vk-cor: var(--vk-roxo); position: relative; display: flex; flex-direction: column; gap: 14px; padding: 24px 22px 22px; border-radius: 22px; background: #fff; border: 1px solid var(--vk-linha); color: var(--vk-texto); text-decoration: none; overflow: hidden; transition: transform .25s var(--vk-ease), box-shadow .25s, border-color .25s; }
+.vk-cartao::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 4px; background: var(--vk-cor); }
+.vk-cartao::after { content: ""; position: absolute; right: -60px; top: -60px; width: 160px; height: 160px; border-radius: 50%; background: radial-gradient(closest-side, color-mix(in srgb, var(--vk-cor) 18%, transparent), transparent); pointer-events: none; }
+.vk-cartao .vk-tile { width: 48px; height: 48px; border-radius: 14px; }
+.vk-cartao h3 { margin: 0; font: 800 21px/1.15 var(--vk-t); color: var(--vk-tinta); letter-spacing: -.02em; }
+.vk-cartao p { margin: 0; font-size: 15px; line-height: 1.5; flex: 1; }
+.vk-cartao-link { display: inline-flex; align-items: center; gap: 6px; font: 700 14.5px/1 var(--vk-c); color: var(--vk-tinta); }
+.vk-cartao-link svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; transition: transform .2s; }
+.vk-cartao:hover { transform: translateY(-4px); box-shadow: 0 24px 50px -24px rgba(30, 12, 52, .35); border-color: color-mix(in srgb, var(--vk-cor) 35%, white); }
+.vk-cartao:hover .vk-cartao-link svg { transform: translate(2px, -2px); }
+.vk-cartao:focus-visible { outline: 3px solid var(--vk-lilas); outline-offset: 3px; }
+
+@media print { .vk-aba, .vk-painel, .vk-fundo { display: none !important; } }
+@media (prefers-reduced-motion: reduce) {
+  .vk-aba, .vk-painel, .vk-fundo, .vk-cartao, .vk-item { animation: none !important; transition: none !important; }
+}

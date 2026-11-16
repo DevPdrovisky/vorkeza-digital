@@ -1,0 +1,50 @@
+# ===== Segredos (nunca sobem) =====
+.env
+.env.*
+*.pem
+*.key
+*token*.txt
+.claude/settings.local.json
+
+# ===== Pastas de login/estado das ferramentas =====
+.netlify/
+.wrangler/
+.vercel/
+
+# ===== Dados de clientes reais e relatórios =====
+clientes-vorkeza/
+relatorios/
+
+# ===== Pastas geradas (refeitas na hora de publicar) =====
+publicar/
+publicar-netlify/
+.next/
+out/
+dist/
+build/
+
+# ===== Cópias de segurança =====
+backup-azul/
+
+# ===== Dependências =====
+node_modules/
+
+# ===== Arquivos grandes =====
+*.zip
+*.mp4
+*.mov
+
+# ===== Sistema =====
+Thumbs.db
+desktop.ini
+.DS_Store
+*.log
+
+# Saidas por cliente e propostas de venda (podem ter dados reais)
+**/3-Produto/saida/
+**/5-Vendas/
+**/3-Produto/clientes/*
+!**/3-Produto/clientes/*modelo*/
+
+# Repositorio do perfil do GitHub (tem git proprio)
+perfil-github/

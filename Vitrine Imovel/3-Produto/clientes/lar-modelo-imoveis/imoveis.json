@@ -1,0 +1,514 @@
+{
+  "imoveis": [
+    {
+      "id": "201",
+      "finalidade": "venda",
+      "tipo": "Casa",
+      "titulo": "Casa térrea com quintal amplo",
+      "bairro": "Jardim das Flores",
+      "quartos": 3,
+      "suites": 1,
+      "vagas": 2,
+      "area": 142,
+      "areaTerreno": 300,
+      "condominio": 0,
+      "iptu": 1180,
+      "preco": 485000,
+      "precoAntigo": 499000,
+      "destaque": true,
+      "status": "disponivel",
+      "entrada": "2026-11-08",
+      "caracteristicas": [
+        "Quintal gramado",
+        "Área de serviço coberta",
+        "Cozinha planejada",
+        "Portão eletrônico",
+        "Aceita financiamento"
+      ],
+      "fotos": [
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9f/Casa_da_vila_que_ainda_recebe_visitas.jpg/1280px-Casa_da_vila_que_ainda_recebe_visitas.jpg",
+          "autor": "Jayme Tosi Neto",
+          "licenca": "CC BY-SA 4.0",
+          "fonte": "https://commons.wikimedia.org/wiki/File:Casa_da_vila_que_ainda_recebe_visitas.jpg"
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/12/California_Cut_In.jpg/1280px-California_Cut_In.jpg",
+          "autor": "Jodistansfield",
+          "licenca": "CC BY-SA 3.0",
+          "fonte": "https://commons.wikimedia.org/wiki/File:California_Cut_In.jpg"
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a5/Bedroom_twin_beds.jpg/1280px-Bedroom_twin_beds.jpg",
+          "autor": "IFERREIRO",
+          "licenca": "CC BY-SA 3.0",
+          "fonte": "https://commons.wikimedia.org/wiki/File:Bedroom_twin_beds.jpg"
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/25/Cozinha_Hotel-Apartamentos_Gaivota.JPG/1280px-Cozinha_Hotel-Apartamentos_Gaivota.JPG",
+          "autor": "Hotel-Apartamentos Gaivota",
+          "licenca": "CC BY-SA 3.0",
+          "fonte": "https://commons.wikimedia.org/wiki/File:Cozinha_Hotel-Apartamentos_Gaivota.JPG"
+        }
+      ],
+      "cidade": "Artur Nogueira",
+      "uf": "SP",
+      "descricao": "Imóvel fictício, criado para demonstrar como cada imóvel aparece no site da imobiliária."
+    },
+    {
+      "id": "202",
+      "finalidade": "venda",
+      "tipo": "Casa",
+      "titulo": "Sobrado de 4 quartos perto do centro",
+      "bairro": "Centro",
+      "quartos": 4,
+      "suites": 2,
+      "vagas": 3,
+      "area": 260,
+      "areaTerreno": 420,
+      "condominio": 0,
+      "iptu": 2350,
+      "preco": 890000,
+      "status": "disponivel",
+      "entrada": "2026-10-28",
+      "caracteristicas": [
+        "Sala de estar e jantar",
+        "Varanda no 2º andar",
+        "Edícula",
+        "Escritório",
+        "Jardim de entrada"
+      ],
+      "fotos": [
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d3/Casa_em_Bananal_%285%29.jpg/1280px-Casa_em_Bananal_%285%29.jpg",
+          "autor": "Eduardo P",
+          "licenca": "CC BY-SA 3.0",
+          "fonte": "https://commons.wikimedia.org/wiki/File:Casa_em_Bananal_(5).jpg"
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/fb/Beach_House_Bridgehampton_%2812%29.jpg/1280px-Beach_House_Bridgehampton_%2812%29.jpg",
+          "autor": "Interior Designer Amy Lau",
+          "licenca": "CC BY-SA 3.0",
+          "fonte": "https://commons.wikimedia.org/wiki/File:Beach_House_Bridgehampton_(12).jpg"
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/88/Bedroom_with_wooden_bed_%281133%29.jpg/1280px-Bedroom_with_wooden_bed_%281133%29.jpg",
+          "autor": "linhvan",
+          "licenca": "CC BY 3.0",
+          "fonte": "https://commons.wikimedia.org/wiki/File:Bedroom_with_wooden_bed_(1133).jpg"
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ce/Ambjetet_e_tualetit_-_panoramio.jpg/1280px-Ambjetet_e_tualetit_-_panoramio.jpg",
+          "autor": "Petrit Gjeçaj",
+          "licenca": "CC BY 3.0",
+          "fonte": "https://commons.wikimedia.org/wiki/File:Ambjetet_e_tualetit_-_panoramio.jpg"
+        }
+      ],
+      "cidade": "Artur Nogueira",
+      "uf": "SP",
+      "descricao": "Imóvel fictício, criado para demonstrar como cada imóvel aparece no site da imobiliária."
+    },
+    {
+      "id": "203",
+      "finalidade": "venda",
+      "tipo": "Apartamento",
+      "titulo": "Apartamento com vista, andar alto",
+      "bairro": "Vila Nova",
+      "quartos": 2,
+      "suites": 1,
+      "vagas": 1,
+      "area": 68,
+      "condominio": 520,
+      "iptu": 640,
+      "preco": 398000,
+      "status": "disponivel",
+      "entrada": "2026-11-05",
+      "caracteristicas": [
+        "Andar alto",
+        "Varanda",
+        "Portaria 24h",
+        "Elevador",
+        "Academia e piscina no condomínio"
+      ],
+      "fotos": [
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/ff/Apartment_towers_Curitiba.jpg/1280px-Apartment_towers_Curitiba.jpg",
+          "autor": "Mateusmatsuda",
+          "licenca": "CC BY-SA 4.0",
+          "fonte": "https://commons.wikimedia.org/wiki/File:Apartment_towers_Curitiba.jpg"
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/01/Alternate_Art_%26_Design.jpg/1280px-Alternate_Art_%26_Design.jpg",
+          "autor": "Jkrona",
+          "licenca": "CC BY-SA 4.0",
+          "fonte": "https://commons.wikimedia.org/wiki/File:Alternate_Art_%26_Design.jpg"
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6e/Bed_%26_Nightstand_%2849875912823%29.jpg/1280px-Bed_%26_Nightstand_%2849875912823%29.jpg",
+          "autor": "Ajay Suresh",
+          "licenca": "CC BY 2.0",
+          "fonte": "https://commons.wikimedia.org/wiki/File:Bed_%26_Nightstand_(49875912823).jpg"
+        }
+      ],
+      "cidade": "Artur Nogueira",
+      "uf": "SP",
+      "descricao": "Imóvel fictício, criado para demonstrar como cada imóvel aparece no site da imobiliária."
+    },
+    {
+      "id": "204",
+      "finalidade": "aluguel",
+      "tipo": "Apartamento",
+      "titulo": "Apartamento de 3 quartos em condomínio novo",
+      "bairro": "Parque Residencial",
+      "quartos": 3,
+      "suites": 1,
+      "vagas": 2,
+      "area": 82,
+      "condominio": 610,
+      "iptu": 95,
+      "preco": 2900,
+      "destaque": false,
+      "status": "disponivel",
+      "entrada": "2026-11-09",
+      "caracteristicas": [
+        "Condomínio com playground",
+        "Armários nos quartos",
+        "Aceita pet",
+        "Garantia: seguro fiança ou fiador"
+      ],
+      "fotos": [
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/Paranoa_Parque.jpg/1280px-Paranoa_Parque.jpg",
+          "autor": "Agência Brasília",
+          "licenca": "CC BY 2.0",
+          "fonte": "https://commons.wikimedia.org/wiki/File:Paranoa_Parque.jpg"
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/72/Bilioth%C3%A8que_ALBI_et_bureau_VOLGA.jpg/1280px-Bilioth%C3%A8que_ALBI_et_bureau_VOLGA.jpg",
+          "autor": "TEMAHOME President",
+          "licenca": "CC BY-SA 4.0",
+          "fonte": "https://commons.wikimedia.org/wiki/File:Bilioth%C3%A8que_ALBI_et_bureau_VOLGA.jpg"
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/56/Beispiel_Elternschlafzimmer.jpg/1280px-Beispiel_Elternschlafzimmer.jpg",
+          "autor": "HoffnungstraegerStift",
+          "licenca": "CC BY-SA 4.0",
+          "fonte": "https://commons.wikimedia.org/wiki/File:Beispiel_Elternschlafzimmer.jpg"
+        }
+      ],
+      "cidade": "Artur Nogueira",
+      "uf": "SP",
+      "descricao": "Imóvel fictício, criado para demonstrar como cada imóvel aparece no site da imobiliária."
+    },
+    {
+      "id": "205",
+      "finalidade": "aluguel",
+      "tipo": "Casa",
+      "titulo": "Casa de 2 quartos com garagem",
+      "bairro": "Vila Nova",
+      "quartos": 2,
+      "suites": 0,
+      "vagas": 1,
+      "area": 90,
+      "areaTerreno": 200,
+      "condominio": 0,
+      "iptu": 80,
+      "preco": 1850,
+      "status": "disponivel",
+      "entrada": "2026-10-30",
+      "caracteristicas": [
+        "Quintal",
+        "Lavanderia",
+        "Rua tranquila",
+        "Perto de escola e mercado"
+      ],
+      "fotos": [
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2f/Casa_em_Bananal_%284%29.jpg/1280px-Casa_em_Bananal_%284%29.jpg",
+          "autor": "Eduardo P",
+          "licenca": "CC BY-SA 3.0",
+          "fonte": "https://commons.wikimedia.org/wiki/File:Casa_em_Bananal_(4).jpg"
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/47/Bungalow_N%C2%B010_-_Living_room_%2816575188626%29.jpg/1280px-Bungalow_N%C2%B010_-_Living_room_%2816575188626%29.jpg",
+          "autor": "Bernard DUPONT from FRANCE",
+          "licenca": "CC BY-SA 2.0",
+          "fonte": "https://commons.wikimedia.org/wiki/File:Bungalow_N%C2%B010_-_Living_room_(16575188626).jpg"
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2e/Bedroom_of_Canopy_Tower_in_Gamboa%2C_Panama_01.jpg/1280px-Bedroom_of_Canopy_Tower_in_Gamboa%2C_Panama_01.jpg",
+          "autor": "Dozenist",
+          "licenca": "CC BY-SA 3.0",
+          "fonte": "https://commons.wikimedia.org/wiki/File:Bedroom_of_Canopy_Tower_in_Gamboa%2C_Panama_01.jpg"
+        }
+      ],
+      "cidade": "Artur Nogueira",
+      "uf": "SP",
+      "descricao": "Imóvel fictício, criado para demonstrar como cada imóvel aparece no site da imobiliária."
+    },
+    {
+      "id": "206",
+      "finalidade": "venda",
+      "tipo": "Casa",
+      "titulo": "Casa com piscina e área gourmet",
+      "bairro": "Jardim Primavera",
+      "quartos": 3,
+      "suites": 3,
+      "vagas": 4,
+      "area": 230,
+      "areaTerreno": 500,
+      "condominio": 0,
+      "iptu": 2100,
+      "preco": 1150000,
+      "status": "disponivel",
+      "entrada": "2026-11-02",
+      "caracteristicas": [
+        "Piscina",
+        "Área gourmet com churrasqueira",
+        "Closet na suíte principal",
+        "Aquecimento solar",
+        "Sala integrada"
+      ],
+      "fotos": [
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/ff/E_tem_o_vento_l%C3%A1_fora.jpg/1280px-E_tem_o_vento_l%C3%A1_fora.jpg",
+          "autor": "Zan moreno",
+          "licenca": "CC BY-SA 4.0",
+          "fonte": "https://commons.wikimedia.org/wiki/File:E_tem_o_vento_l%C3%A1_fora.jpg"
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/60/80_by_noontime_-_panoramio.jpg/1280px-80_by_noontime_-_panoramio.jpg",
+          "autor": "Andy “AJ” Jennings",
+          "licenca": "CC BY-SA 3.0",
+          "fonte": "https://commons.wikimedia.org/wiki/File:80_by_noontime_-_panoramio.jpg"
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e8/Brier_Living_Room.jpg/1280px-Brier_Living_Room.jpg",
+          "autor": "ChrisCaparro",
+          "licenca": "CC BY-SA 4.0",
+          "fonte": "https://commons.wikimedia.org/wiki/File:Brier_Living_Room.jpg"
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/68/Armadi_inloopkast.jpg/1280px-Armadi_inloopkast.jpg",
+          "autor": "Armadi",
+          "licenca": "CC BY-SA 3.0",
+          "fonte": "https://commons.wikimedia.org/wiki/File:Armadi_inloopkast.jpg"
+        }
+      ],
+      "cidade": "Artur Nogueira",
+      "uf": "SP",
+      "descricao": "Imóvel fictício, criado para demonstrar como cada imóvel aparece no site da imobiliária.",
+      "destaque": true
+    },
+    {
+      "id": "207",
+      "finalidade": "venda",
+      "tipo": "Casa",
+      "titulo": "Sobrado em condomínio fechado",
+      "bairro": "Residencial Bosque",
+      "quartos": 3,
+      "suites": 1,
+      "vagas": 2,
+      "area": 118,
+      "condominio": 380,
+      "iptu": 890,
+      "preco": 620000,
+      "status": "reservado",
+      "entrada": "2026-10-20",
+      "caracteristicas": [
+        "Condomínio fechado",
+        "Portaria 24h",
+        "Varanda",
+        "Área verde"
+      ],
+      "fotos": [
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9a/Condom%C3%ADnio_Caminho_do_Engenho.jpg/1280px-Condom%C3%ADnio_Caminho_do_Engenho.jpg",
+          "autor": "Eduardo P",
+          "licenca": "CC BY-SA 3.0",
+          "fonte": "https://commons.wikimedia.org/wiki/File:Condom%C3%ADnio_Caminho_do_Engenho.jpg"
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/At_La_Palma_2021_1854.jpg/1280px-At_La_Palma_2021_1854.jpg",
+          "autor": "Mike Peel",
+          "licenca": "CC BY-SA 4.0",
+          "fonte": "https://commons.wikimedia.org/wiki/File:At_La_Palma_2021_1854.jpg"
+        }
+      ],
+      "cidade": "Artur Nogueira",
+      "uf": "SP",
+      "descricao": "Imóvel fictício, criado para demonstrar como cada imóvel aparece no site da imobiliária."
+    },
+    {
+      "id": "208",
+      "finalidade": "venda",
+      "tipo": "Terreno",
+      "titulo": "Terreno rural com acesso por estrada",
+      "bairro": "Zona rural",
+      "quartos": null,
+      "suites": null,
+      "vagas": null,
+      "area": 5000,
+      "condominio": 0,
+      "iptu": null,
+      "preco": 240000,
+      "status": "disponivel",
+      "entrada": "2026-10-15",
+      "caracteristicas": [
+        "Acesso por estrada de terra",
+        "Cercado",
+        "Bom para chácara"
+      ],
+      "fotos": [
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/12/A_casa_no_fim_do_caminho_%2813934772812%29.jpg/1280px-A_casa_no_fim_do_caminho_%2813934772812%29.jpg",
+          "autor": "Cícero R. C. Omena",
+          "licenca": "CC BY 2.0",
+          "fonte": "https://commons.wikimedia.org/wiki/File:A_casa_no_fim_do_caminho_(13934772812).jpg"
+        }
+      ],
+      "cidade": "Artur Nogueira",
+      "uf": "SP",
+      "descricao": "Imóvel fictício, criado para demonstrar como cada imóvel aparece no site da imobiliária."
+    },
+    {
+      "id": "209",
+      "finalidade": "venda",
+      "tipo": "Terreno",
+      "titulo": "Área de 1,2 hectare com casa antiga",
+      "bairro": "Zona rural",
+      "quartos": null,
+      "suites": null,
+      "vagas": null,
+      "area": 12000,
+      "condominio": 0,
+      "iptu": null,
+      "preco": 690000,
+      "status": "disponivel",
+      "entrada": "2026-11-06",
+      "caracteristicas": [
+        "Casa sede para reformar",
+        "Pasto formado",
+        "Árvores frutíferas"
+      ],
+      "fotos": [
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/af/Barra_bonita_03.jpg/1280px-Barra_bonita_03.jpg",
+          "autor": "Avalon11",
+          "licenca": "CC BY-SA 4.0",
+          "fonte": "https://commons.wikimedia.org/wiki/File:Barra_bonita_03.jpg"
+        }
+      ],
+      "cidade": "Artur Nogueira",
+      "uf": "SP",
+      "descricao": "Imóvel fictício, criado para demonstrar como cada imóvel aparece no site da imobiliária."
+    },
+    {
+      "id": "210",
+      "finalidade": "aluguel",
+      "tipo": "Comercial",
+      "titulo": "Ponto comercial com 4 portas",
+      "bairro": "Centro",
+      "quartos": null,
+      "suites": null,
+      "vagas": 0,
+      "area": 160,
+      "condominio": 0,
+      "iptu": 420,
+      "preco": 4500,
+      "status": "disponivel",
+      "entrada": "2026-11-04",
+      "caracteristicas": [
+        "4 portas de frente",
+        "2 banheiros",
+        "Bom para loja ou escritório"
+      ],
+      "fotos": [
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a7/Casa_onde_nasceu_Jo%C3%A3o_Pessoa_Cavalcanti_de_Albuquerque.JPG/1280px-Casa_onde_nasceu_Jo%C3%A3o_Pessoa_Cavalcanti_de_Albuquerque.JPG",
+          "autor": "Iuryaguiar",
+          "licenca": "CC BY-SA 3.0",
+          "fonte": "https://commons.wikimedia.org/wiki/File:Casa_onde_nasceu_Jo%C3%A3o_Pessoa_Cavalcanti_de_Albuquerque.JPG"
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d0/A_bathroom_at_local_peter_pan%27s_play_area.jpg/1280px-A_bathroom_at_local_peter_pan%27s_play_area.jpg",
+          "autor": "AguyfromacityinNL",
+          "licenca": "CC BY 3.0",
+          "fonte": "https://commons.wikimedia.org/wiki/File:A_bathroom_at_local_peter_pan's_play_area.jpg"
+        }
+      ],
+      "cidade": "Artur Nogueira",
+      "uf": "SP",
+      "descricao": "Imóvel fictício, criado para demonstrar como cada imóvel aparece no site da imobiliária."
+    },
+    {
+      "id": "211",
+      "finalidade": "venda",
+      "tipo": "Casa",
+      "titulo": "Casa com escada e jardim na frente",
+      "bairro": "Jardim das Flores",
+      "quartos": 3,
+      "suites": 1,
+      "vagas": 2,
+      "area": 150,
+      "areaTerreno": 280,
+      "condominio": 0,
+      "iptu": 1300,
+      "preco": 530000,
+      "status": "vendido",
+      "entrada": "2026-09-30",
+      "caracteristicas": [
+        "Jardim",
+        "Sala ampla"
+      ],
+      "fotos": [
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d6/Casa_em_Bananal_%283%29.jpg/1280px-Casa_em_Bananal_%283%29.jpg",
+          "autor": "Eduardo P",
+          "licenca": "CC BY-SA 3.0",
+          "fonte": "https://commons.wikimedia.org/wiki/File:Casa_em_Bananal_(3).jpg"
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/23/A_standard_living_room_in_Accra.jpg/1280px-A_standard_living_room_in_Accra.jpg",
+          "autor": "Kwameghana",
+          "licenca": "CC BY-SA 4.0",
+          "fonte": "https://commons.wikimedia.org/wiki/File:A_standard_living_room_in_Accra.jpg"
+        }
+      ],
+      "cidade": "Artur Nogueira",
+      "uf": "SP",
+      "descricao": "Imóvel fictício, criado para demonstrar como cada imóvel aparece no site da imobiliária."
+    },
+    {
+      "id": "212",
+      "finalidade": "aluguel",
+      "tipo": "Apartamento",
+      "titulo": "Apartamento mobiliado de 1 quarto",
+      "bairro": "Centro",
+      "quartos": 1,
+      "suites": 0,
+      "vagas": 0,
+      "area": 42,
+      "condominio": 280,
+      "iptu": 60,
+      "preco": 1400,
+      "status": "alugado",
+      "entrada": "2026-10-10",
+      "caracteristicas": [
+        "Mobiliado",
+        "Perto do comércio"
+      ],
+      "fotos": [
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/94/2023-07-30_Vogtsbauernhof_Ortenauhaus_006.jpg/1280px-2023-07-30_Vogtsbauernhof_Ortenauhaus_006.jpg",
+          "autor": "Ahmet Düz",
+          "licenca": "CC BY-SA 4.0",
+          "fonte": "https://commons.wikimedia.org/wiki/File:2023-07-30_Vogtsbauernhof_Ortenauhaus_006.jpg"
+        }
+      ],
+      "cidade": "Artur Nogueira",
+      "uf": "SP",
+      "descricao": "Imóvel fictício, criado para demonstrar como cada imóvel aparece no site da imobiliária."
+    }
+  ]
+}

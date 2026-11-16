@@ -1,0 +1,156 @@
+PACK DE DIVULGAÇÃO — VORKEZA DIGITAL
+
+O QUE TEM AQUI
+0-Perfil       Foto de perfil (1080 x 1080)
+1-Posts       3 imagens para o feed (1080 x 1350)
+2-Carrosseis   2 carrosséis com 6 imagens cada (poste na ordem slide-1 a slide-6)
+3-Videos       3 Reels verticais de 30 segundos, com música própria (1080 x 1920)
+               + video-4-motion-vorkeza (Reel motion de 20 s, para o @vorkeza)
+4-Stories      7 Stories para o perfil @vorkeza (1080 x 1920)
+5-Seu-perfil   Post de anúncio para o SEU perfil (@Pdrovisky), 1080 x 1350
+               + reel-pedro-fundador (Reel motion de 20 s, para o seu perfil)
+
+A música foi criada por código para estes vídeos. Se preferir um áudio em alta no
+Instagram, é só escolher ao publicar e baixar o volume do som original.
+
+ORDEM SUGERIDA PARA COMEÇAR O PERFIL
+1. post-1-seu-negocio-e-bom
+2. video-1-todos-os-servicos
+3. carrossel-1-seu-cliente-procurou
+4. post-2-planos
+5. video-2-como-funciona
+6. carrossel-2-cardapio-proprio
+7. post-3-pedido-no-whatsapp
+8. video-3-cardapio-e-painel
+
+PERFIL DO INSTAGRAM
+
+Nome (aparece na busca):
+Vorkeza | Sites e Cardápios
+
+Bio:
+💻 Sites e cardápios digitais
+💰 Preço fechado, sem enrolação
+📲 Pedido direto no seu WhatsApp
+📍 Artur Nogueira-SP
+👇 Peça seu orçamento
+
+Link: https://vorkeza.com.br
+
+Bio alternativa:
+Seu negócio é bom. Seu site precisa mostrar isso. 💜
+Sites e cardápios digitais com preço fechado.
+📍 Artur Nogueira-SP
+👇 Peça seu orçamento
+
+LEGENDAS PRONTAS
+
+Post 1
+Seu negócio é bom. Seu site precisa mostrar isso.
+Criamos sites profissionais com a cara da sua empresa e preço fechado.
+Peça seu orçamento: vorkeza.com.br ou WhatsApp (DDD) NUMERO.
+
+Post 2
+Do site de uma página ao cardápio com 150 produtos: tem um plano para cada fase do seu negócio.
+Valores iniciais, confirmados na proposta.
+Qual combina com você? Conta aqui nos comentários.
+
+Post 3
+O cliente escolhe, monta o carrinho e o pedido chega pronto no seu WhatsApp. Sem comissão em cada pedido.
+Quer um cardápio assim? Chama no WhatsApp: (DDD) NUMERO.
+
+Carrossel 1
+Alguém procurou seu negócio agora. O que encontrou?
+O Instagram apresenta. O site completa. Arrasta para o lado e veja a diferença.
+
+Carrossel 2
+Seu delivery trabalha para quem?
+Faça a conta e veja como um cardápio próprio coloca o pedido direto no seu WhatsApp.
+Exemplo ilustrativo: os valores de aplicativos variam.
+
+Vídeo 1
+Sites, cardápios digitais e painéis de gestão. Veja qual é o certo para o seu negócio.
+Orçamento em vorkeza.com.br.
+
+Vídeo 2
+Quanto custa um site? Aqui você sabe antes de começar.
+Uma conversa, seu visual, revisão juntos e site no ar.
+
+Vídeo 3
+Do pedido ao fechamento do caixa, tudo em um só lugar.
+Cardápio digital e Painel Completo da Vorkeza.
+
+STORIES (@vorkeza)
+Poste 1 ou 2 por dia, nesta ordem. Os espaços vazios nas artes são para os adesivos do Instagram:
+1. story-1-prazer-vorkeza          Só a arte.
+2. story-2-caixinha-de-perguntas   Adesivo "Perguntas" no quadro vazio. Texto: "Pergunte sobre sites"
+3. story-3-antes-e-depois          Só a arte.
+4. story-4-veja-um-exemplo         Adesivo "Link" em cima do endereço: https://casa-modelo.vorkeza.com.br
+5. story-5-planos                  Adesivo "Link": https://vorkeza.com.br
+6. story-6-enquete                 Adesivo "Enquete" no quadro: "Sim, já tem" / "Ainda não"
+7. story-7-peca-seu-orcamento      Adesivo "Link" no quadro: https://vorkeza.com.br
+Depois, salve todos num Destaque chamado "Comece aqui".
+Quem votar "Ainda não" na enquete: mande uma mensagem simpática, sem forçar venda.
+
+POST DE ANÚNCIO NO SEU PERFIL (@Pdrovisky)
+Arquivo: 5-Seu-perfil/post-anuncio-pedro-fundador.png
+Ao postar, toque em "Marcar pessoas" > "Convidar colaborador" e escolha @vorkeza.
+Depois aceite o convite pelo perfil @vorkeza. O post aparece nos dois perfis.
+Fixe o post no topo dos dois perfis.
+
+Legenda:
+Abri meu próprio negócio. 💜
+Sou o Pedro, fundador da @vorkeza. Crio sites e cardápios digitais para negócios de Artur Nogueira e região.
+Preço fechado, visual com a cara do seu negócio e pedido direto no WhatsApp.
+Se você tem um negócio, ou conhece alguém que precisa de um site, me chama ou marca aqui nos comentários.
+vorkeza.com.br
+
+Seu perfil pessoal:
+Nome: Pedro Almeida | Sites e Cardápios
+Bio:
+Crio sites e cardápios digitais 💻
+Fundador da @vorkeza
+📍 Artur Nogueira-SP
+👇 Peça seu orçamento
+Link: https://vorkeza.com.br
+
+VÍDEOS MOTION (estilo do vídeo de referência, com música e efeitos sonoros suaves do seu pack)
+Músicas: video-4-motion-vorkeza usa "Continue" (Eluzai), a partir de 0:18.
+         reel-pedro-fundador usa "Foco, Dedicação" (Ruyter Poubel), a partir de 1:52.
+Nos dois, o drop da música cai no corte seco para o quadro de giz (4,8 s).
+As cenas seguem a linguagem da referência, com conteúdo da Vorkeza:
+  0,0 s  Macro bem de perto e recuo rápido com desfoque (impacto)
+  0,5 s  Time-lapse: a busca sendo digitada / o calendário passando os dias
+  2,1 s  Giro 3D: o objeto vira de lado e volta como outro (whoosh)
+  2,7 s  Texto cinético inclinado entrando no canto
+  4,8 s  Corte seco para o quadro de giz: desculpas riscadas e o post-it lilás
+  6,6 s  A cena encolhe para dentro de um card com cantoneiras
+  7,4 s  Texto digitado, do cinza para o preto
+  8,8 s  Pan lateral com 3 cards de ícones desenhados na hora
+ 12,3 s  Os cards se abrem e a câmera sobe para a estrada até a bandeira
+ 15,6 s  Banho de cor roxo no impacto final
+ 16,0 s  Círculo abre a tela final com contato
+
+video-4-motion-vorkeza (perfil @vorkeza)
+Legenda:
+Seu cliente procurou. Achou você? 👀
+Site, cardápio digital e painel de gestão com preço fechado.
+Do papel para o ar: peça seu orçamento em vorkeza.com.br 💜
+
+reel-pedro-fundador (seu perfil, em colaboração com @vorkeza)
+Legenda:
+Uma ideia antiga virou negócio. 💜
+Prazer, sou o Pedro, fundador da @vorkeza. Eu entendo seu negócio, crio com a sua cara e coloco no ar.
+Isso é só o começo. Me chama: (DDD) NUMERO
+
+Atenção: as músicas são de outros artistas. O Instagram pode silenciar o áudio ou limitar o alcance
+de vídeos com música protegida. Se acontecer, poste o vídeo e escolha a mesma música pela
+biblioteca de músicas do próprio Instagram.
+
+HASHTAGS
+#ArturNogueira #SitesProfissionais #CardapioDigital #Delivery #PequenosNegocios #MarketingDigital #VorkezaDigital
+
+ANTES DE POSTAR
+Os dados de "Casa do Sabor", "Studio Bella", "Salão Aurora" e "Norte Engenharia" e "Casa Modelo Salgados" são exemplos fictícios.
+Sempre apresente a Casa Modelo como exemplo, nunca como cliente.
+Os valores são os que estão hoje no site. Se mudar algum preço, as artes precisam ser atualizadas.

@@ -1,0 +1,132 @@
+PACK DE DIVULGAÇÃO — GRUPO VORKEZA
+
+O QUE TEM AQUI
+1-Videos   2 Reels motion de 20 s (1080 x 1920), com música e efeitos do seu pack
+           video-1-grupo-vorkeza ... "A Vorkeza não faz mais só site": apresenta as 4 marcas
+           video-2-previa-gratis ... "Você pagaria sem ver antes?": como funciona a prévia grátis + o que cada marca faz
+2-Fotos    5 posts de feed (1080 x 1350)
+           post-1-grupo-vorkeza, post-2-vitrine-motor, post-3-vitrine-imovel, post-4-bem-no-mapa, post-5-boca-a-boca
+
+As telas que aparecem são das demonstrações (Modelo Multimarcas, Lar Modelo Imóveis, Doceria Modelo
+e Padaria Modelo). São todas fictícias.
+
+ORDEM SUGERIDA PARA POSTAR
+1. video-1-grupo-vorkeza (fixe no topo do perfil)
+2. post-1-grupo-vorkeza (fixe no topo também)
+3. post-2-vitrine-motor
+4. video-2-previa-gratis
+5. post-3-vitrine-imovel
+6. post-4-bem-no-mapa
+7. post-5-boca-a-boca
+
+Dica: poste o video-1 e o post-1 também no seu perfil pessoal, como colaboração com @vorkeza
+(ao postar: "Marcar pessoas" > "Convidar colaborador"). Assim aparece nos dois perfis.
+
+
+============================================================
+BIO DO @vorkeza
+============================================================
+
+Nome (aparece na busca, até 30 letras):
+Grupo Vorkeza | Negócio local
+
+Bio (134 caracteres):
+Soluções digitais para negócios locais 💜
+🚗 Vitrine Motor  🏠 Vitrine Imóvel
+📍 Bem no Mapa  ⭐ Boca a Boca
+👇 Prévia grátis antes de pagar
+
+Link: https://vorkeza.com.br
+(a página tem a seção "Nossas marcas", que leva a cada site)
+
+Bio alternativa (126 caracteres):
+Uma marca para cada parte do seu negócio 💜
+Sites, perfil no mapa e avaliações
+Prévia grátis antes de pagar
+📍 Artur Nogueira-SP
+
+Destaques sugeridos (com as capas nas cores das marcas): Vitrine Motor · Vitrine Imóvel · Bem no Mapa · Boca a Boca · Como funciona
+
+
+============================================================
+BIO DO SEU PERFIL PESSOAL
+============================================================
+
+Nome:
+Pedro Almeida | Grupo Vorkeza
+
+Bio (125 caracteres):
+Fundador do Grupo Vorkeza 💜
+Soluções digitais para negócios locais
+4 marcas, prévia grátis antes de pagar
+📍 Artur Nogueira-SP
+
+Link: https://vorkeza.com.br
+
+Bio alternativa, mais pessoal (133 caracteres):
+Empreendedor | Artur Nogueira-SP
+Criei o Grupo Vorkeza: sites, perfil no mapa e avaliações para negócios locais 💜
+👇 Conheça as marcas
+
+
+============================================================
+LEGENDAS PRONTAS
+============================================================
+
+video-1-grupo-vorkeza
+A Vorkeza não faz mais só site. Agora é um grupo. 💜
+🚗 Vitrine Motor: site de estoque para revendas de carros
+🏠 Vitrine Imóvel: um link para cada imóvel, para corretores
+📍 Bem no Mapa: seu negócio bem apresentado no mapa e na busca
+⭐ Boca a Boca: plaquinha com QR para o cliente avaliar a sua loja
+Todas com prévia grátis antes de você pagar. Conheça: vorkeza.com.br
+
+video-2-previa-gratis
+Você pagaria por um site sem ver antes? Aqui não.
+A gente monta uma prévia com os dados que já estão públicos, você vê pelo WhatsApp e só paga se gostar.
+Vale para as 4 marcas do Grupo Vorkeza. Me chama: (DDD) NUMERO
+
+post-1-grupo-vorkeza
+A Vorkeza virou grupo. 💜
+Quatro marcas, cada uma resolvendo uma coisa só, para negócios de Artur Nogueira e região.
+Qual delas combina com o seu negócio? Conta aqui nos comentários.
+
+post-2-vitrine-motor
+Revenda de carros: seu estoque no ar, com um link para cada carro.
+O cliente vê fotos, preço e chama no WhatsApp. Ainda vem com as artes de status prontas.
+Prévia grátis com o seu estoque: vitrinemotor.pages.dev
+
+post-3-vitrine-imovel
+Corretor, cada imóvel com o seu link.
+Foto e preço aparecem no WhatsApp, e o botão "Tenho interesse" já manda a mensagem pronta.
+A partir de R$ 99/mês + implantação. Prévia grátis: vitrineimovel.pages.dev
+
+post-4-bem-no-mapa
+Quando procuram "perto de mim", o seu negócio aparece bem?
+A gente cuida do perfil da sua empresa: fotos, horário, respostas às avaliações e postagens.
+Peça o raio-x grátis do seu perfil: bemnomapa.pages.dev
+(Serviço independente, sem vínculo com o Google.)
+
+post-5-boca-a-boca
+Cliente satisfeito vai embora calado. A plaquinha lembra por você.
+QR no balcão, na cor da sua loja, direto para a avaliação. Sem filtro: todo cliente pode avaliar.
+A partir de R$ 39/mês + implantação. Veja a arte da sua: bocaaboca.pages.dev
+
+
+============================================================
+MÚSICA
+============================================================
+video-1 usa "Continue" (Eluzai), com o drop no "grupo."
+video-2 usa "Foco e Dedicação" (Ruyter), com o drop no "AQUI NÃO".
+Os efeitos sonoros são do seu pack de edição.
+
+Atenção: as músicas são de outros artistas. O Instagram pode silenciar o áudio ou limitar o alcance
+de vídeos com música protegida. Se acontecer, poste o vídeo e escolha uma música pela biblioteca
+do próprio Instagram, baixando o volume do som original.
+
+Para refazer: na pasta pack-instagram-src, rode
+  node render-grupo.js grupo
+  node render-grupo.js formula
+  node render-posts-grupo.js
+Os nomes, as cores e os endereços vêm de grupo/grupo.json (copie de novo para assets/grupo/marcas.js
+se mudar algo).

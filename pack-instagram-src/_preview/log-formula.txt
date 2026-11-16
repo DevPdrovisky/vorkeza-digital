@@ -1,0 +1,9 @@
+musica: foco-dedicacao-ruyter.mp3 a partir de 115.52s
+antes: -17.18 LUFS, pico -0.67 dB
+formula 0/1224 (0s)
+formula 240/1224 (31s)
+formula 480/1224 (62s)
+formula 720/1224 (100s)
+formula 960/1224 (137s)
+formula 1200/1224 (173s)
+formula pronto: C:\Users\cmraj\Desktop\Vorkeza Digital\Pack-Grupo-Vorkeza\1-Videos\video-2-previa-gratis.mp4 ffmpeg=0 18.5 MB

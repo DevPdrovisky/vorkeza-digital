@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"C:/Users/cmraj/Desktop/Vorkeza Digital/ferramentas/views-pro-pai.js\" --hook",
+            "timeout": 90,
+            "statusMessage": "Buscando visitas do site..."
+          }
+        ]
+      }
+    ]
+  }
+}

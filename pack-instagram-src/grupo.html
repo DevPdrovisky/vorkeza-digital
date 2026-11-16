@@ -1,0 +1,268 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><link rel="stylesheet" href="kit.css">
+<!-- Reels motion do Grupo Vorkeza (1080 x 1920).  grupo.html?v=grupo  |  grupo.html?v=formula
+     Animação declarativa: cada elemento com data-a (início), data-fx (mask, up, pop, left, right, fade, draw),
+     data-d (duração) e data-o (saída). Cenas = .L com data-in/data-out. Marcas vêm de grupo/grupo.json (assets/grupo/marcas.js). -->
+<style>
+html,body{width:1080px;height:1920px;overflow:hidden;background:#000}
+#stage{position:relative;width:1080px;height:1920px;overflow:hidden;background:#0b0b0c}
+.L{position:absolute;inset:0;display:none;overflow:hidden}
+.abs{position:absolute}
+.dark{background:radial-gradient(1100px 1300px at 50% 46%,#2a1e36 0%,#140d1c 52%,#060408 100%)}
+.paper{background:radial-gradient(1000px 900px at 100% 0,#f0d9ff,transparent 70%),#faf6fd;color:#1e0d38}
+.col{position:absolute;left:0;right:0;display:flex;flex-direction:column;align-items:center;text-align:center}
+.lft{position:absolute;left:90px;right:90px}
+.mk{overflow:hidden;padding:0 8px 44px;margin:0 -8px -44px}
+.mk>*{display:block}
+.big{font:800 132px/1 Manrope;letter-spacing:-.055em}
+.mid{font:800 96px/1.02 Manrope;letter-spacing:-.05em}
+.sm{font:600 50px/1.25 "DM Sans";letter-spacing:-.01em}
+.eye{font:700 30px "DM Sans";letter-spacing:.22em;text-transform:uppercase}
+.tl{display:grid;place-items:center;background:var(--c);box-shadow:0 30px 60px -22px #000a,inset 0 0 0 2px #ffffff22;flex:none}
+.tl svg{width:58%;height:58%;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;overflow:visible}
+.ph{width:470px;height:1017px;border-radius:66px;padding:14px;background:#0b0a0e;box-shadow:0 70px 120px -30px #000d,0 0 0 3px #ffffff1c}
+.ph img{display:block;width:100%;height:100%;object-fit:cover;object-position:top;border-radius:53px}
+.pill{display:inline-flex;align-items:center;gap:.45em;padding:.6em 1.05em;border-radius:99px;background:#fff;color:#1e0d38;font:800 46px Manrope;letter-spacing:-.02em;box-shadow:0 26px 50px -18px #0008}
+.selo{display:inline-flex;align-items:center;gap:.5em;padding:.5em .95em;border-radius:99px;font:700 30px "DM Sans";background:#00000026;border:2px solid #ffffff40}
+.selo i{width:.62em;height:.62em;border-radius:50%;background:#c084fc;display:block}
+.strike{position:absolute;left:-20px;right:-20px;top:52%;height:16px;border-radius:9px;background:#ec4899;transform-origin:left;transform:scaleX(0)}
+.stamp{display:inline-block;padding:.18em .5em;border:12px solid currentColor;border-radius:34px;font:800 150px/1 Manrope;letter-spacing:-.04em}
+.step{display:flex;align-items:center;gap:40px;padding:44px 48px;border-radius:48px;background:#fff;box-shadow:0 40px 80px -40px #7e22ce66;border:3px solid #ead8f7}
+.step .n{width:120px;height:120px;border-radius:36px;display:grid;place-items:center;background:linear-gradient(135deg,#a855f7,#7e22ce);flex:none}
+.step .n svg{width:70px;height:70px;fill:none;stroke:#fff;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.step b{display:block;font:800 58px/1.05 Manrope;letter-spacing:-.04em;color:#1e0d38}
+.step span{display:block;font:600 36px/1.25 "DM Sans";color:#6b5a80;margin-top:10px}
+.orbit{position:absolute;border-radius:50%;border:3px dashed #ffffff30}
+.wbrk{position:absolute;width:90px;height:90px;border:10px solid #fff}
+#ghost{font:800 520px/1 Manrope;letter-spacing:-.07em;color:transparent;-webkit-text-stroke:5px #1e0d3812;white-space:nowrap}
+#flash{background:#fff;z-index:90}
+#grain{position:absolute;inset:0;width:1080px;height:1920px;z-index:95;pointer-events:none;opacity:.07;mix-blend-mode:overlay}
+#vig{z-index:96;display:block;background:radial-gradient(1200px 1700px at 50% 45%,transparent 55%,#00000066 100%)}
+</style></head><body>
+<div id="stage"><div id="cenas"></div><div class="L" id="flash"></div><canvas id="grain" width="540" height="960"></canvas><div class="L" id="vig"></div></div>
+<script src="kit.js"></script>
+<script src="assets/grupo/marcas.js"></script>
+<script>
+const V = new URLSearchParams(location.search).get('v') || 'grupo';
+const $ = id => document.getElementById(id), Q = s => [...document.querySelectorAll(s)];
+const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v)), lerp = (a, b, p) => a + (b - a) * p;
+const E = { lin: p => p, out3: p => 1 - Math.pow(1 - p, 3), in3: p => p * p * p, io3: p => p < .5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2,
+  outExpo: p => p >= 1 ? 1 : 1 - Math.pow(2, -10 * p), ioExpo: p => p <= 0 ? 0 : p >= 1 ? 1 : p < .5 ? Math.pow(2, 20 * p - 10) / 2 : (2 - Math.pow(2, -20 * p + 10)) / 2,
+  back: p => { const c = 1.7; return 1 + (c + 1) * Math.pow(p - 1, 3) + c * Math.pow(p - 1, 2) } };
+const seg = (t, a, b, e = E.lin) => e(clamp((t - a) / (b - a)));
+const SFX = window.SFX = [], sfx = (...a) => SFX.push(a);
+const TOTAL = window.TOTAL = 20.4;
+window.FILE = V === 'grupo' ? 'video-1-grupo-vorkeza' : 'video-2-previa-gratis';
+
+// ---------- marcas ----------
+const M = Object.fromEntries(MARCAS.map(m => [m.id, m]));
+const FILHAS = ['vitrinemotor', 'vitrineimovel', 'bemnomapa', 'bocaaboca'].map(id => M[id]);
+const X = {
+  vitrinemotor: { ink: '#fff', dark: '#1F0E07', img: 'vm-celular.webp', diz: 'Prévia grátis com o seu estoque', preco: '97' },
+  vitrineimovel: { ink: '#fff', dark: '#07130F', img: 'vi-imovel.webp', diz: 'Um link para cada imóvel', preco: '99' },
+  bemnomapa: { ink: '#fff', dark: '#1A0B0C', img: 'bm-celular.webp', diz: 'Raio-x grátis do seu perfil', preco: '79' },
+  bocaaboca: { ink: '#2A1A00', dark: '#1A1303', img: 'bb-celular.webp', diz: 'Plaquinha com QR na cor da loja', preco: '39' },
+};
+const host = u => u.replace(/^https?:\/\//, '').replace(/\/$/, '');
+const tile = (m, px, extra = '') => `<div class="tl" ${extra} style="--c:${m.cor};width:${px}px;height:${px}px;border-radius:${Math.round(px * .28)}px"><svg viewBox="0 0 24 24" stroke="${X[m.id]?.ink || '#fff'}">${m.icone}</svg></div>`;
+const cel = (img, extra = '') => `<div class="ph" ${extra}><img src="assets/grupo/${img}" alt=""></div>`;
+const A = (a, fx = 'up', d = .6, o = null) => `data-a="${a}" data-fx="${fx}" data-d="${d}"${o !== null ? ` data-o="${o}"` : ''}`;
+const ICO = {
+  olho: '<path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z"/><circle cx="12" cy="12" r="3"/>',
+  chat: '<path d="M4.5 6.5a2.5 2.5 0 0 1 2.5-2.5h10a2.5 2.5 0 0 1 2.5 2.5v7A2.5 2.5 0 0 1 17 16h-6.5l-4 3.5V16a2.5 2.5 0 0 1-2-2.5Z"/><path d="M8 8.5h8M8 11.5h5"/>',
+  foguete: '<path d="M12 2.5c3.5 2.5 5 6.5 4 11H8c-1-4.5.5-8.5 4-11Z"/><circle cx="12" cy="8.5" r="1.8"/><path d="M8 13.5l-2.5 3.5 3 .3M16 13.5l2.5 3.5-3 .3"/><path d="M10.3 16c0 2 1.7 3.5 1.7 4.5 0-1 1.7-2.5 1.7-4.5"/>',
+};
+const corners = (l, t, w, h) => [[0, 0], [1, 0], [0, 1], [1, 1]].map(([x, y]) => `<div class="wbrk" style="left:${l + x * (w - 90)}px;top:${t + y * (h - 90)}px;border-${x ? 'left' : 'right'}:0;border-${y ? 'top' : 'bottom'}:0;border-${y ? 'bottom' : 'top'}-${x ? 'right' : 'left'}-radius:36px"></div>`).join('');
+const IG = '<svg viewBox="0 0 24 24" width="1em" height="1em" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r=".9" fill="currentColor" stroke="none"/></svg>';
+
+// ---------- cenas ----------
+const CENAS = []; // {id, i, o, upd}
+const cena = (id, i, o, cls, html, upd) => { $('cenas').insertAdjacentHTML('beforeend', `<div class="L ${cls}" id="${id}" data-in="${i}" data-out="${o}">${html}</div>`); CENAS.push({ id, i, o, upd }) };
+
+function fim(a) { // cartão final, igual nos dois vídeos
+  cena('fim', a, TOTAL + 1, '', `<div class="abs" style="inset:0;background:radial-gradient(900px 800px at 92% 6%,#ec4899,transparent 70%),radial-gradient(1000px 1000px at 0 100%,#3b0764,transparent 70%),#7e22ce"></div>
+    <div class="orbit" style="left:-180px;top:240px;width:1440px;height:1440px"></div><div class="orbit" style="left:90px;top:510px;width:900px;height:900px"></div>
+    ${corners(160, 400, 760, 330)}
+    <div class="col" style="top:470px"><div ${A(a + .35, 'pop')} style="background:#fff;padding:30px 50px;border-radius:40px;box-shadow:0 30px 60px -16px #0008" class="light">${logo(78)}</div></div>
+    <div class="col" style="top:830px;color:#fff">
+      <div class="mk"><span class="eye" ${A(a + .7, 'mask')} style="color:#f5d0fe">Grupo Vorkeza</span></div>
+      <div class="mk" style="margin-top:22px"><span class="m" ${A(a + .85, 'mask')} style="font-size:112px">vorkeza.com.br</span></div>
+      <div style="display:flex;gap:22px;margin-top:54px" ${A(a + 1.1, 'up')}>${FILHAS.map(m => tile(m, 120)).join('')}</div>
+      <div ${A(a + 1.4, 'pop')} style="margin-top:60px"><span class="pill" style="color:#7e22ce">${WA('#7e22ce')} (DDD) NUMERO</span></div>
+      <div ${A(a + 1.65, 'up')} style="margin-top:40px;font:700 52px 'DM Sans';display:flex;align-items:center;gap:16px">${IG} @vorkeza</div></div>`,
+    t => {
+      $('fim').style.clipPath = `circle(${seg(t, a, a + .55, E.io3) * 2300}px at 540px 960px)`;
+      const b = seg(t, a + .5, a + .85, E.outExpo);
+      Q('#fim .wbrk').forEach((el, i) => { const dx = (i % 2 ? 1 : -1) * 80 * (1 - b), dy = (i > 1 ? 1 : -1) * 80 * (1 - b); el.style.opacity = b; el.style.transform = `translate(${dx}px,${dy}px)` });
+      Q('#fim .orbit').forEach((o, i) => o.style.transform = `rotate(${t * (i ? -9 : 6)}deg)`);
+    });
+  sfx('whoosh', a, 1); sfx('snap', a + .55); sfx('pop', a + .4); sfx('type', a + .75); sfx('type', a + .9); sfx('pop', a + 1.45); sfx('type', a + 1.7);
+}
+
+if (V === 'grupo') {
+  // 1. "A Vorkeza não faz mais só site."
+  cena('c1', 0, 2.7, 'dark', `<div class="lft" id="c1t" style="top:640px;color:#fff">
+      <div class="mk"><span class="sm" ${A(.2, 'mask')} style="color:#ffffffb0">A Vorkeza</span></div>
+      <div class="mk"><span class="big" ${A(.42, 'mask')}>não faz mais</span></div>
+      <div class="mk" style="position:relative;display:inline-block"><span class="big" ${A(.64, 'mask')} style="color:#c084fc">só site.</span></div>
+      <div style="position:relative;display:inline-block;margin-top:-132px;height:132px;width:520px"><div class="strike" id="risco"></div></div>
+    </div>`, t => {
+    $('risco').style.transform = `scaleX(${seg(t, 1.45, 1.75, E.out3)})`;
+    const o = seg(t, 2.3, 2.7, E.in3); $('c1t').style.transform = `scale(${lerp(1, 1.25, o)})`; $('c1t').style.filter = `blur(${o * 18}px)`;
+  });
+  sfx('open', 0); sfx('type', .22); sfx('type', .44); sfx('type', .66); sfx('scratch', 1.45); sfx('riser', 1.0, 1.6);
+
+  // 2. Logo → quatro marcas: "Agora é um grupo."
+  const POS = [[-250, -230], [250, -230], [-250, 230], [250, 230]];
+  cena('c2', 2.6, 5.35, 'dark', `
+    <div class="abs" style="left:90px;top:300px;width:900px;height:900px;border-radius:50%;background:radial-gradient(closest-side,#9333ea77,#9333ea00)" id="c2g"></div>
+    <div class="abs" id="c2l" style="left:390px;top:600px;width:300px;height:300px">${LOGO_MARK('c2m')}</div>
+    ${FILHAS.map((m, i) => `<div class="abs c2t" data-i="${i}" style="left:450px;top:660px">${tile(m, 180)}</div>`).join('')}
+    <div class="col" style="top:1210px;color:#fff"><div class="mk"><span class="sm" ${A(3.0, 'mask')} style="color:#ffffffc0">Agora é um</span></div>
+      <div class="mk"><span class="big" ${A(3.15, 'mask')} style="font-size:170px">grupo.</span></div>
+      <div class="mk" style="margin-top:26px"><span class="sm" ${A(4.35, 'mask')} style="font-size:44px;color:#e9d5ff">4 marcas. Uma para cada negócio.</span></div></div>`, t => {
+    const p = seg(t, 2.6, 3.0, E.back), s = seg(t, 4.0, 4.5, E.io3);
+    $('c2l').style.transform = `scale(${lerp(.3, 1, p) * lerp(1, .55, s)}) rotate(${lerp(-20, 0, p)}deg)`;
+    $('c2g').style.opacity = seg(t, 2.7, 3.3);
+    Q('.c2t').forEach((el, i) => { const q = seg(t, 4.05 + i * .08, 4.6 + i * .08, E.back), z = seg(t, 5.05, 5.35, E.in3);
+      el.style.opacity = clamp(q * 3); el.style.transform = `translate(${POS[i][0] * q * (1 + z * 2.5)}px,${POS[i][1] * q * (1 + z * 2.5)}px) scale(${lerp(.2, 1, q)}) rotate(${(1 - q) * 30}deg)` });
+    const o = seg(t, 5.05, 5.35, E.in3); $('c2').style.filter = `blur(${o * 14}px)`;
+  });
+  sfx('impact', 2.6); sfx('type', 3.0); sfx('type', 3.15); FILHAS.forEach((m, i) => sfx('pop', 4.05 + i * .08)); sfx('type', 4.35); sfx('whoosh', 5.05, -1);
+
+  // 3–6. Uma cena por marca
+  FILHAS.forEach((m, k) => {
+    const a = 5.25 + k * 2.45, x = X[m.id], id = 'b' + k, txt = x.ink;
+    cena(id, a, a + 2.75, '', `<div class="abs" style="inset:0;background:radial-gradient(1100px 900px at 100% 0%,#ffffff40,transparent 65%),radial-gradient(1000px 900px at 0 100%,${x.dark}aa,transparent 70%),${m.cor}"></div>
+      <div class="lft" style="top:190px;color:${txt}">
+        <div ${A(a + .25, 'pop')} style="display:flex;align-items:center;gap:28px">${tile({ ...m, cor: x.ink === '#fff' ? '#ffffff26' : '#00000018' }, 130)}<span class="selo" style="color:${txt};${txt !== '#fff' ? 'background:#ffffff55;border-color:#2A1A0033' : ''}"><i></i>uma empresa Vorkeza</span></div>
+        <div class="mk" style="margin-top:44px"><span class="big" ${A(a + .35, 'mask')} style="font-size:${m.nome.length > 12 ? 118 : 132}px">${m.nome}</span></div>
+        <div class="mk" style="margin-top:18px"><span class="sm" ${A(a + .55, 'mask')} style="font-size:46px;opacity:.92">${m.frase}</span></div>
+        <div ${A(a + .8, 'pop')} style="margin-top:36px"><span class="pill" style="font-size:40px;${txt !== '#fff' ? 'background:#2A1A00;color:#FFD25E' : `color:${x.dark}`}">${x.diz}</span></div>
+      </div>
+      <div class="abs" style="left:305px;top:1010px" id="${id}p">${cel(x.img)}</div>
+      <div class="abs" style="left:0;right:0;bottom:70px;text-align:center;font:700 34px 'DM Sans';color:${txt};opacity:.85" ${A(a + 1.0, 'fade')}>${host(m.url)}</div>`, t => {
+      $(id).style.clipPath = `circle(${seg(t, a, a + .5, E.io3) * 2300}px at ${k % 2 ? 790 : 290}px ${k > 1 ? 1190 : 730}px)`;
+      const q = seg(t, a + .12, a + .9, E.outExpo), fl = Math.sin((t - a) * 2.4) * 10;
+      $(id + 'p').style.transform = `translateY(${(1 - q) * 900 + fl}px) rotate(${lerp(14, -5, q)}deg)`;
+    });
+    sfx('whoosh', a, k % 2 ? 1 : -1); sfx('pop', a + .25); sfx('type', a + .35); sfx('type', a + .55); sfx('pop', a + .8); sfx('slap', a + .5);
+  });
+
+  // 7. As quatro juntas
+  const a7 = 15.05;
+  cena('c7', a7, 17.4, 'paper', `<div class="abs" id="ghost" style="left:-40px;top:1240px">GRUPO</div>
+    <div class="lft" style="top:250px">
+      <div class="mk"><span class="mid" ${A(a7 + .25, 'mask')}>Uma marca para cada</span></div>
+      <div class="mk"><span class="mid" ${A(a7 + .4, 'mask')} style="color:#9333ea">parte do seu negócio.</span></div></div>
+    <div class="abs" style="left:90px;top:720px;width:900px;display:grid;grid-template-columns:1fr 1fr;gap:34px">
+      ${FILHAS.map((m, i) => `<div ${A(a7 + .6 + i * .12, 'pop')} style="background:#fff;border-radius:44px;padding:40px 36px;box-shadow:0 40px 70px -40px #7e22ce66;border:3px solid #ead8f7">${tile(m, 120)}<div style="font:800 52px/1.05 Manrope;letter-spacing:-.04em;margin-top:26px;color:#1e0d38">${m.nome}</div><div style="font:600 30px/1.3 'DM Sans';color:#6b5a80;margin-top:10px">${host(m.url)}</div></div>`).join('')}
+    </div>`, t => {
+    $('c7').style.clipPath = `inset(0 0 ${(1 - seg(t, a7, a7 + .45, E.io3)) * 100}% 0)`;
+    $('ghost').style.transform = `translateX(${lerp(80, -300, seg(t, a7, 17.4))}px)`;
+  });
+  sfx('whoosh', a7, 1); sfx('type', a7 + .25); sfx('type', a7 + .4); FILHAS.forEach((m, i) => sfx('pop', a7 + .6 + i * .12)); sfx('drift', a7 + 1.2, 1.2);
+  fim(17.0);
+} else {
+  // 1. "Você pagaria sem ver antes?" → AQUI NÃO
+  cena('c1', 0, 2.95, 'dark', `<div class="lft" id="c1t" style="top:560px;color:#fff">
+      <div class="mk"><span class="big" ${A(.25, 'mask')}>Você pagaria</span></div>
+      <div class="mk"><span class="big" ${A(.45, 'mask')}>por um site</span></div>
+      <div class="mk"><span class="big" ${A(.65, 'mask')} style="color:#c084fc">sem ver antes?</span></div></div>
+    <div class="col" style="top:1180px;color:#ec4899"><span class="stamp" id="stamp">AQUI NÃO.</span></div>`, t => {
+    const s = seg(t, 1.6, 1.85, E.back), st = $('stamp');
+    st.style.opacity = clamp(s * 3); st.style.transform = `scale(${lerp(2.2, 1, s)}) rotate(${lerp(-18, -7, s)}deg)`;
+    const o = seg(t, 2.6, 2.95, E.in3); $('c1').style.filter = `blur(${o * 16}px)`; $('c1t').style.transform = `translateY(${-o * 120}px)`;
+  });
+  sfx('open', 0); sfx('type', .25); sfx('type', .45); sfx('type', .65); sfx('impact', 1.62); sfx('slap', 1.64); sfx('whoosh', 2.6, 1);
+
+  // 2. Três passos
+  const a2 = 2.85, STEPS = [['olho', 'A gente monta uma prévia', 'Com os dados que já estão públicos.'], ['chat', 'Você vê pelo WhatsApp', 'Pronta, no seu celular.'], ['foguete', 'Gostou? Aí vai ao ar.', 'Só então você paga.']];
+  cena('c2', a2, 8.75, 'paper', `<div class="lft" style="top:230px">
+      <div class="mk"><span class="eye" ${A(a2 + .3, 'mask')} style="color:#9333ea">Grupo Vorkeza</span></div>
+      <div class="mk" style="margin-top:20px"><span class="mid" ${A(a2 + .42, 'mask')}>Como funciona</span></div></div>
+    <div class="abs" id="c2s" style="left:90px;top:610px;width:900px;display:flex;flex-direction:column;gap:36px">
+      ${STEPS.map(([ic, b, s], i) => `<div class="step" ${A(a2 + .8 + i * 1.05, 'left', .7)}><div class="n"><svg viewBox="0 0 24 24">${ICO[ic].replace(/<(path|circle)/g, '<$1 pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" data-draw="' + (a2 + 1.15 + i * 1.05) + '"')}</svg></div><div><b>${b}</b><span>${s}</span></div></div>`).join('')}
+    </div>
+    <div class="col" style="top:1540px"><span class="stamp" id="gratis" style="font-size:118px;color:#9333ea;border-width:10px">Prévia grátis.</span></div>`, t => {
+    $('c2').style.clipPath = `circle(${seg(t, a2, a2 + .5, E.io3) * 2300}px at 540px 1300px)`;
+    const g = seg(t, 7.0, 7.25, E.back); $('gratis').style.opacity = clamp(g * 3); $('gratis').style.transform = `scale(${lerp(2, 1, g)}) rotate(${lerp(10, -3, g)}deg)`;
+    const o = seg(t, 8.35, 8.75, E.in3); $('c2s').style.transform = `translateX(${-1100 * o}px)`; $('gratis').parentElement.style.transform = `translateY(${600 * o}px)`;
+  });
+  sfx('whoosh', a2, -1); sfx('type', a2 + .3); sfx('type', a2 + .42);
+  STEPS.forEach((s, i) => { sfx('whoosh', a2 + .65 + i * 1.05, 1, 'leve'); sfx('pop', a2 + 1.0 + i * 1.05); sfx('draw', a2 + 1.15 + i * 1.05) });
+  sfx('impact', 7.0); sfx('slap', 7.02); sfx('whoosh', 8.35, -1);
+
+  // 3. Pan pelos quatro celulares
+  const a3 = 8.6, GAP = 620, CEN = [9.55, 11.05, 12.55, 14.05];
+  cena('c3', a3, 15.75, '', `<div class="abs" id="c3bg" style="inset:0"></div>
+    <div class="lft" style="top:150px;height:330px;color:#fff">
+      <div class="eye" style="color:#ffffffaa">O que cada marca faz</div>
+      ${FILHAS.map((m, i) => `<div class="abs c3n" style="left:0;top:70px;right:0"><div class="big" style="font-size:${m.nome.length > 12 ? 104 : 116}px;color:${X[m.id].ink === '#fff' ? '#fff' : m.cor}">${m.nome}</div><div class="sm" style="font-size:42px;margin-top:14px;opacity:.85">${X[m.id].diz}</div></div>`).join('')}
+    </div>
+    <div class="abs" id="c3row" style="left:0;top:560px;height:1300px;width:${GAP * 4 + 1080}px">
+      ${FILHAS.map((m, i) => `<div class="abs c3c" style="left:${305 + i * GAP}px;top:0">${cel(X[m.id].img)}
+        <div style="position:absolute;left:-40px;right:-40px;top:1050px;display:flex;align-items:center;justify-content:center;gap:22px">${tile(m, 96)}<span style="font:800 46px Manrope;color:#fff;letter-spacing:-.03em">a partir de R$ ${X[m.id].preco}<small style="font-size:.6em;opacity:.7">/mês</small></span></div></div>`).join('')}
+    </div>`, t => {
+    $('c3').style.clipPath = `inset(${(1 - seg(t, a3, a3 + .45, E.io3)) * 100}% 0 0 0)`;
+    // posição contínua: segura em cada celular e desliza entre eles
+    let pos = 0; for (let i = 1; i < 4; i++) pos += seg(t, CEN[i - 1] + .55, CEN[i] - .25, E.ioExpo);
+    const ent = seg(t, a3 + .1, a3 + .9, E.outExpo);
+    $('c3row').style.transform = `translateX(${-pos * GAP + (1 - ent) * 900}px)`;
+    const idx = Math.round(pos), f = pos - Math.floor(pos), A0 = FILHAS[Math.floor(pos)], A1 = FILHAS[Math.min(3, Math.floor(pos) + 1)];
+    const c = (h, p) => { const x = [1, 3, 5].map(j => parseInt(h.slice(j, j + 2), 16)); return x }, d0 = c(X[A0.id].dark), d1 = c(X[A1.id].dark), m0 = c(A0.cor), m1 = c(A1.cor);
+    const mixc = (x, y) => `rgb(${x.map((v, j) => Math.round(lerp(v, y[j], f))).join(',')})`;
+    $('c3bg').style.background = `radial-gradient(1200px 1100px at 50% 75%,${mixc(m0, m1)}aa,transparent 70%),${mixc(d0, d1)}`;
+    $('c3bg').style.background = `radial-gradient(1200px 1100px at 50% 78%,${mixc(m0, m1).replace('rgb', 'rgba').replace(')', ',.75)')},transparent 68%),${mixc(d0, d1)}`;
+    Q('.c3n').forEach((el, i) => { const v = clamp(1 - Math.abs(pos - i) * 2.2); el.style.opacity = v * seg(t, a3 + .3, a3 + .8); el.style.transform = `translateY(${(1 - v) * (i < pos ? -40 : 40)}px)` });
+    Q('.c3c').forEach((el, i) => { const v = clamp(1 - Math.abs(pos - i)); el.style.transform = `scale(${lerp(.8, 1, v)}) rotate(${(i - pos) * 4}deg) translateY(${Math.sin(t * 2 + i) * 8}px)`; el.style.opacity = lerp(.45, 1, v) });
+    const o = seg(t, 15.35, 15.75, E.in3); $('c3').style.filter = `blur(${o * 14}px)`;
+  });
+  sfx('whoosh', a3, 1); CEN.forEach((c, i) => { if (i) sfx('whoosh', c - .7, i % 2 ? 1 : -1, 'leve'); sfx('pop', c - .15) });
+
+  // 4. Fecho
+  const a4 = 15.5;
+  cena('c4', a4, 17.5, 'paper', `<div class="lft" style="top:620px">
+      <div class="mk"><span class="mid" ${A(a4 + .3, 'mask')}>Todas com</span></div>
+      <div class="mk"><span class="big" ${A(a4 + .45, 'mask')} style="color:#9333ea;font-size:150px">prévia grátis.</span></div>
+      <div class="mk" style="margin-top:40px"><span class="sm" ${A(a4 + .75, 'mask')}>Todas uma empresa Vorkeza.</span></div>
+      <div style="display:flex;gap:22px;margin-top:60px">${FILHAS.map((m, i) => `<div ${A(a4 + .9 + i * .08, 'pop')}>${tile(m, 130)}</div>`).join('')}</div></div>`, t => {
+    $('c4').style.clipPath = `circle(${seg(t, a4, a4 + .5, E.io3) * 2300}px at 540px 960px)`;
+  });
+  sfx('impact', a4 + .05); sfx('type', a4 + .3); sfx('type', a4 + .45); sfx('type', a4 + .75); FILHAS.forEach((m, i) => sfx('pop', a4 + .9 + i * .08));
+  fim(17.15);
+}
+
+// ---------- animação declarativa ----------
+function anim(t) {
+  for (const el of Q('[data-a]')) {
+    const a = +el.dataset.a, d = +el.dataset.d || .6, fx = el.dataset.fx;
+    const q = seg(t, a, a + d, fx === 'pop' ? E.back : E.outExpo);
+    const o = el.dataset.o ? seg(t, +el.dataset.o, +el.dataset.o + .3, E.in3) : 0;
+    if (fx === 'mask') el.style.transform = `translateY(calc(${(1 - q) * 112 - o * 112}% + ${(1 - q) * 50 - o * 50}px))`;
+    else if (fx === 'pop') { el.style.opacity = clamp(q * 3) * (1 - o); el.style.transform = `scale(${lerp(.5, 1, q)})` }
+    else if (fx === 'left') { el.style.opacity = clamp(q * 2); el.style.transform = `translateX(${(1 - q) * 900}px)` }
+    else if (fx === 'right') { el.style.opacity = clamp(q * 2); el.style.transform = `translateX(${(q - 1) * 900}px)` }
+    else if (fx === 'fade') el.style.opacity = q * (1 - o);
+    else { el.style.opacity = q * (1 - o); el.style.transform = `translateY(${(1 - q) * 60}px)` }
+  }
+  for (const p of Q('[data-draw]')) { const a = +p.dataset.draw; p.setAttribute('stroke-dashoffset', 1 - seg(t, a, a + .6, E.out3)) }
+}
+
+// ---------- grão ----------
+const gctx = $('grain').getContext('2d'), gimg = gctx.createImageData(540, 960);
+function grain(frame) { let s = (frame * 9301 + 49297) % 233280 || 1; const d = gimg.data; for (let i = 0; i < d.length; i += 4) { s = (s * 16807) % 2147483647; const v = s & 255; d[i] = d[i + 1] = d[i + 2] = v; d[i + 3] = 255 } gctx.putImageData(gimg, 0, 0) }
+
+window.seek = t => {
+  for (const c of CENAS) { const on = t >= c.i && t < c.o; $(c.id).style.display = on ? 'block' : 'none'; if (on) c.upd(t) }
+  anim(t);
+  const hits = SFX.filter(s => s[0] === 'impact').map(s => s[1]);
+  const fl = Math.max(1 - seg(t, 0, .2), ...hits.map(h => (t >= h ? (1 - seg(t, h, h + .2)) * .35 : 0)));
+  $('flash').style.display = fl > .003 ? 'block' : 'none'; $('flash').style.opacity = fl;
+  grain(Math.round(t * 24));
+};
+window.ready = (async () => {
+  await document.fonts.load('800 40px Manrope'); await document.fonts.load('600 40px "DM Sans"'); await document.fonts.ready;
+  await Promise.all([...document.images].map(i => i.decode().catch(() => {})));
+  SFX.sort((a, b) => a[1] - b[1]); seek(0); return true;
+})();
+</script></body></html>

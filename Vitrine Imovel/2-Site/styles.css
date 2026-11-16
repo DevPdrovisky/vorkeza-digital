@@ -1,0 +1,6 @@
+/* Vitrine Imóvel — só as cores da marca. O resto vem de grupo/site-marca.css. */
+:root {
+  --m: #0F9D6E; --m-botao: #0A7D57; --m-2: #5EE0A8; --m-txt: #fff;
+  --noite: #07130F; --grafite: #0E231B; --m-claro: #E8F7F0; --m-borda: #BFE7D5; --m-forte: #0A7D57;
+}
+.hero h1 em { color: var(--m-2); }

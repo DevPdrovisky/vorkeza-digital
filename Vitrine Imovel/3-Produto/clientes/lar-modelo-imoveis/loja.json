@@ -1,0 +1,20 @@
+{
+  "nome": "Lar Modelo Imóveis",
+  "nomeCurto": "Lar Modelo",
+  "slogan": "Casas, apartamentos e terrenos para comprar ou alugar, com atendimento direto pelo WhatsApp.",
+  "cidade": "Artur Nogueira",
+  "uf": "SP",
+  "endereco": "Endereço fictício — imobiliária de demonstração",
+  "whatsapp": "55DDDNUMERO",
+  "instagram": "",
+  "creci": "",
+  "corretor": "",
+  "horarios": ["Seg a sex: 8h30 às 18h", "Sábado: 9h às 13h"],
+  "cnpj": "",
+  "cores": { "primaria": "#0F9D6E", "escura": "#0C1A15" },
+  "logo": "",
+  "url": "",
+  "anunciar": true,
+  "modo": "demo",
+  "indexar": false
+}

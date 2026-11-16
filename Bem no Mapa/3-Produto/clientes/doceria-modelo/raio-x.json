@@ -1,0 +1,35 @@
+{
+  "negocio": {
+    "nome": "Doceria Modelo",
+    "categoria": "Confeitaria",
+    "cidade": "Artur Nogueira",
+    "uf": "SP",
+    "data": "2026-11-10",
+    "fonte": "Exemplo fictício: todos os números desta página foram criados para demonstração.",
+    "modo": "demo"
+  },
+  "perfil": {
+    "nota": 4.4,
+    "avaliacoes": 23,
+    "respondidas": 0.13,
+    "ultimaAvaliacaoRespondida": "2026-05-14",
+    "fotos": 6,
+    "fotosRecentes": 0,
+    "ultimaPostagem": "nenhuma",
+    "horario": true,
+    "horarioFeriados": false,
+    "telefone": true,
+    "site": false,
+    "linkWhatsapp": false,
+    "descricao": false,
+    "categoriaPrincipal": "Confeitaria",
+    "categoriasExtras": 0,
+    "produtosOuServicos": false,
+    "endereco": true
+  },
+  "concorrentes": [
+    { "nome": "Concorrente A (fictício)", "nota": 4.7, "avaliacoes": 186, "fotos": 94 },
+    { "nome": "Concorrente B (fictício)", "nota": 4.5, "avaliacoes": 71, "fotos": 38 },
+    { "nome": "Concorrente C (fictício)", "nota": 4.2, "avaliacoes": 12, "fotos": 4 }
+  ]
+}

@@ -1,0 +1,655 @@
+{
+  "veiculos": [
+    {
+      "id": "101",
+      "marca": "Jeep",
+      "modelo": "Compass",
+      "versao": "Longitude 1.3 T270 Turbo Flex",
+      "anoFab": 2022,
+      "anoMod": 2022,
+      "km": 38500,
+      "preco": 129900,
+      "precoAntigo": 134900,
+      "categoria": "SUV",
+      "cambio": "Automático",
+      "combustivel": "Flex",
+      "cor": "Prata",
+      "portas": 4,
+      "finalPlaca": "7",
+      "selos": [
+        "Único dono",
+        "Revisado"
+      ],
+      "destaque": true,
+      "status": "disponivel",
+      "entrada": "2026-11-07",
+      "opcionais": [
+        "Central multimídia 10\"",
+        "Câmera de ré",
+        "Sensor de estacionamento",
+        "Ar digital dual zone",
+        "Rodas de liga leve 18\"",
+        "Faróis full LED",
+        "Piloto automático",
+        "Partida por botão"
+      ],
+      "descricao": "Veículo fictício, criado para demonstrar como cada carro aparece no site da revenda.",
+      "fotos": [
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/30/Jeep_Compass_%28MP%29_PHEV_Facelift_1X7A0139.jpg/1280px-Jeep_Compass_%28MP%29_PHEV_Facelift_1X7A0139.jpg",
+          "autor": "Alexander Migl",
+          "licenca": "CC BY-SA 4.0"
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9c/Jeep_Compass_%28MP%29_PHEV_Facelift_1X7A0140.jpg/1280px-Jeep_Compass_%28MP%29_PHEV_Facelift_1X7A0140.jpg",
+          "autor": "Alexander Migl",
+          "licenca": "CC BY-SA 4.0"
+        }
+      ]
+    },
+    {
+      "id": "102",
+      "marca": "Chevrolet",
+      "modelo": "Onix",
+      "versao": "LT 1.0 Flex",
+      "anoFab": 2022,
+      "anoMod": 2022,
+      "km": 41200,
+      "preco": 72900,
+      "categoria": "Hatch",
+      "cambio": "Manual",
+      "combustivel": "Flex",
+      "cor": "Cinza",
+      "portas": 4,
+      "finalPlaca": "3",
+      "selos": [
+        "IPVA 2026 pago"
+      ],
+      "destaque": true,
+      "status": "disponivel",
+      "entrada": "2026-10-28",
+      "opcionais": [
+        "Central MyLink",
+        "Ar-condicionado",
+        "Direção elétrica",
+        "Vidros e travas elétricos",
+        "Sensor de estacionamento",
+        "Wi-Fi nativo"
+      ],
+      "descricao": "Veículo fictício, criado para demonstrar como cada carro aparece no site da revenda.",
+      "fotos": [
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7a/2022_Chevrolet_Onix_1.2_LT_hatchback.jpg/1280px-2022_Chevrolet_Onix_1.2_LT_hatchback.jpg",
+          "autor": "Just a Man",
+          "licenca": "CC BY 4.0"
+        }
+      ]
+    },
+    {
+      "id": "103",
+      "marca": "Toyota",
+      "modelo": "Hilux",
+      "versao": "CD GR-Sport 2.8 4x4 Diesel",
+      "anoFab": 2023,
+      "anoMod": 2023,
+      "km": 46000,
+      "preco": 289900,
+      "categoria": "Picape",
+      "cambio": "Automático",
+      "combustivel": "Diesel",
+      "cor": "Branco",
+      "portas": 4,
+      "finalPlaca": "1",
+      "selos": [
+        "Revisões na concessionária"
+      ],
+      "destaque": true,
+      "status": "disponivel",
+      "entrada": "2026-11-04",
+      "opcionais": [
+        "Tração 4x4",
+        "Bancos em couro",
+        "Central multimídia",
+        "Câmera de ré",
+        "Controle de tração e estabilidade",
+        "Rodas de liga leve",
+        "Santo antônio",
+        "Piloto automático"
+      ],
+      "descricao": "Veículo fictício, criado para demonstrar como cada carro aparece no site da revenda.",
+      "fotos": [
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/81/Toyota_HiLux_GR_Sport_1X7A7281.jpg/1280px-Toyota_HiLux_GR_Sport_1X7A7281.jpg",
+          "autor": "Alexander-93",
+          "licenca": "CC BY-SA 4.0"
+        }
+      ]
+    },
+    {
+      "id": "104",
+      "marca": "Hyundai",
+      "modelo": "HB20",
+      "versao": "Platinum Plus 1.0 TGDI",
+      "anoFab": 2023,
+      "anoMod": 2023,
+      "km": 28400,
+      "preco": 94900,
+      "categoria": "Hatch",
+      "cambio": "Automático",
+      "combustivel": "Flex",
+      "cor": "Cinza",
+      "portas": 4,
+      "finalPlaca": "9",
+      "selos": [
+        "Baixa km"
+      ],
+      "destaque": false,
+      "status": "disponivel",
+      "entrada": "2026-10-30",
+      "opcionais": [
+        "Painel digital",
+        "Central multimídia 8\"",
+        "Carregador por indução",
+        "Câmera de ré",
+        "Rodas de liga leve",
+        "Ar digital",
+        "Partida por botão"
+      ],
+      "descricao": "Veículo fictício, criado para demonstrar como cada carro aparece no site da revenda.",
+      "fotos": [
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/99/2023_Hyundai_HB20_1.0_T-GDi_Platinum_Plus_%28Brazil%29_front_view_02.png/1280px-2023_Hyundai_HB20_1.0_T-GDi_Platinum_Plus_%28Brazil%29_front_view_02.png",
+          "autor": "Autosdeprimera",
+          "licenca": "CC BY 3.0"
+        }
+      ]
+    },
+    {
+      "id": "105",
+      "marca": "Fiat",
+      "modelo": "Toro",
+      "versao": "Volcano 2.0 Diesel 4x4",
+      "anoFab": 2024,
+      "anoMod": 2024,
+      "km": 33000,
+      "preco": 179900,
+      "categoria": "Picape",
+      "cambio": "Automático",
+      "combustivel": "Diesel",
+      "cor": "Branco",
+      "portas": 4,
+      "finalPlaca": "5",
+      "selos": [
+        "Único dono",
+        "Garantia de fábrica"
+      ],
+      "destaque": true,
+      "status": "disponivel",
+      "entrada": "2026-11-08",
+      "opcionais": [
+        "Tração 4x4",
+        "Bancos em couro",
+        "Central multimídia 10\"",
+        "Painel digital",
+        "Câmera de ré",
+        "Sensor de estacionamento",
+        "Rodas de liga leve 18\""
+      ],
+      "descricao": "Veículo fictício, criado para demonstrar como cada carro aparece no site da revenda.",
+      "fotos": [
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b1/2024_Fiat_Toro_2.0_Volcano_4x4.jpg/1280px-2024_Fiat_Toro_2.0_Volcano_4x4.jpg",
+          "autor": "Just a Man",
+          "licenca": "CC BY 4.0"
+        }
+      ]
+    },
+    {
+      "id": "106",
+      "marca": "Volkswagen",
+      "modelo": "T-Cross",
+      "versao": "Highline 250 TSI",
+      "anoFab": 2024,
+      "anoMod": 2024,
+      "km": 18900,
+      "preco": 149900,
+      "categoria": "SUV",
+      "cambio": "Automático",
+      "combustivel": "Flex",
+      "cor": "Preto",
+      "portas": 4,
+      "finalPlaca": "2",
+      "selos": [
+        "Baixa km",
+        "Garantia de fábrica"
+      ],
+      "destaque": true,
+      "status": "disponivel",
+      "entrada": "2026-11-02",
+      "opcionais": [
+        "Painel digital",
+        "Central multimídia",
+        "Teto solar",
+        "Câmera de ré",
+        "Sensor de estacionamento",
+        "Faróis full LED",
+        "Ar digital"
+      ],
+      "descricao": "Veículo fictício, criado para demonstrar como cada carro aparece no site da revenda.",
+      "fotos": [
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/80/Volkswagen_T-Cross_%282023%29_1X7A1967.jpg/1280px-Volkswagen_T-Cross_%282023%29_1X7A1967.jpg",
+          "autor": "Alexander-93",
+          "licenca": "CC BY-SA 4.0"
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a3/Volkswagen_T-Cross_%282023%29_1X7A2499.jpg/1280px-Volkswagen_T-Cross_%282023%29_1X7A2499.jpg",
+          "autor": "Alexander-93",
+          "licenca": "CC BY-SA 4.0"
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/Volkswagen_T-Cross_%282023%29_1X7A2500.jpg/1280px-Volkswagen_T-Cross_%282023%29_1X7A2500.jpg",
+          "autor": "Alexander-93",
+          "licenca": "CC BY-SA 4.0"
+        }
+      ]
+    },
+    {
+      "id": "107",
+      "marca": "Fiat",
+      "modelo": "Argo",
+      "versao": "Drive 1.3 Flex",
+      "anoFab": 2023,
+      "anoMod": 2023,
+      "km": 27000,
+      "preco": 74900,
+      "categoria": "Hatch",
+      "cambio": "Manual",
+      "combustivel": "Flex",
+      "cor": "Branco",
+      "portas": 4,
+      "finalPlaca": "4",
+      "selos": [
+        "IPVA 2026 pago"
+      ],
+      "destaque": false,
+      "status": "disponivel",
+      "entrada": "2026-10-21",
+      "opcionais": [
+        "Central multimídia 7\"",
+        "Ar-condicionado",
+        "Direção elétrica",
+        "Vidros e travas elétricos",
+        "Volante multifuncional"
+      ],
+      "descricao": "Veículo fictício, criado para demonstrar como cada carro aparece no site da revenda.",
+      "fotos": [
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6d/2023_Fiat_Argo_1.3_Drive_%28facelift%2C_Brazil%29.jpg/1280px-2023_Fiat_Argo_1.3_Drive_%28facelift%2C_Brazil%29.jpg",
+          "autor": "Maxi-Napo-99",
+          "licenca": "CC BY 4.0"
+        }
+      ]
+    },
+    {
+      "id": "108",
+      "marca": "Toyota",
+      "modelo": "Corolla Cross",
+      "versao": "XRX Hybrid 1.8",
+      "anoFab": 2023,
+      "anoMod": 2023,
+      "km": 31000,
+      "preco": 164900,
+      "categoria": "SUV",
+      "cambio": "Automático",
+      "combustivel": "Híbrido",
+      "cor": "Branco",
+      "portas": 4,
+      "finalPlaca": "8",
+      "selos": [
+        "Revisões na concessionária"
+      ],
+      "destaque": false,
+      "status": "reservado",
+      "entrada": "2026-10-25",
+      "opcionais": [
+        "Motor híbrido",
+        "Bancos em couro",
+        "Central multimídia",
+        "Piloto automático adaptativo",
+        "Alerta de faixa",
+        "Câmera de ré",
+        "Ar digital"
+      ],
+      "descricao": "Veículo fictício, criado para demonstrar como cada carro aparece no site da revenda.",
+      "fotos": [
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3f/Toyota_Corolla_Cross_Hybrid_1X7A6284.jpg/1280px-Toyota_Corolla_Cross_Hybrid_1X7A6284.jpg",
+          "autor": "Alexander Migl",
+          "licenca": "CC BY-SA 4.0"
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0b/Toyota_Corolla_Cross_Hybrid_1X7A1861.jpg/1280px-Toyota_Corolla_Cross_Hybrid_1X7A1861.jpg",
+          "autor": "Alexander-93",
+          "licenca": "CC BY-SA 4.0"
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/05/Toyota_Corolla_Cross_Hybrid_1X7A1862.jpg/1280px-Toyota_Corolla_Cross_Hybrid_1X7A1862.jpg",
+          "autor": "Alexander-93",
+          "licenca": "CC BY-SA 4.0"
+        }
+      ]
+    },
+    {
+      "id": "109",
+      "marca": "Chevrolet",
+      "modelo": "Onix",
+      "versao": "RS 1.0 Turbo",
+      "anoFab": 2022,
+      "anoMod": 2023,
+      "km": 35800,
+      "preco": 89900,
+      "categoria": "Hatch",
+      "cambio": "Automático",
+      "combustivel": "Flex",
+      "cor": "Vermelho",
+      "portas": 4,
+      "finalPlaca": "6",
+      "selos": [
+        "Único dono"
+      ],
+      "destaque": false,
+      "status": "disponivel",
+      "entrada": "2026-11-06",
+      "opcionais": [
+        "Central MyLink",
+        "Wi-Fi nativo",
+        "Câmera de ré",
+        "Rodas de liga leve 16\"",
+        "Ar-condicionado",
+        "Partida por botão"
+      ],
+      "descricao": "Veículo fictício, criado para demonstrar como cada carro aparece no site da revenda.",
+      "fotos": [
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/20/2022_Chevrolet_Onix_RS_1.0_Turbo.jpg/1280px-2022_Chevrolet_Onix_RS_1.0_Turbo.jpg",
+          "autor": "Just a Man",
+          "licenca": "CC BY 4.0"
+        }
+      ]
+    },
+    {
+      "id": "110",
+      "marca": "Chevrolet",
+      "modelo": "Onix Plus",
+      "versao": "Premier 1.0 Turbo",
+      "anoFab": 2023,
+      "anoMod": 2023,
+      "km": 29000,
+      "preco": 98900,
+      "categoria": "Sedã",
+      "cambio": "Automático",
+      "combustivel": "Flex",
+      "cor": "Vermelho",
+      "portas": 4,
+      "finalPlaca": "0",
+      "selos": [
+        "Baixa km",
+        "Único dono"
+      ],
+      "destaque": false,
+      "status": "disponivel",
+      "entrada": "2026-10-18",
+      "opcionais": [
+        "Central MyLink 8\"",
+        "Wi-Fi nativo",
+        "Carregador por indução",
+        "Câmera de ré",
+        "Sensor de estacionamento",
+        "Ar digital",
+        "Partida por botão",
+        "Rodas de liga leve 16\""
+      ],
+      "descricao": "Veículo fictício, criado para demonstrar como cada carro aparece no site da revenda.",
+      "fotos": [
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/48/Chevrolet_Onix_Turbo_Premier_2023_%2853298952614%29.jpg/1280px-Chevrolet_Onix_Turbo_Premier_2023_%2853298952614%29.jpg",
+          "autor": "RL GNZLZ",
+          "licenca": "CC BY-SA 2.0"
+        }
+      ]
+    },
+    {
+      "id": "111",
+      "marca": "Volkswagen",
+      "modelo": "Nivus",
+      "versao": "Highline 200 TSI",
+      "anoFab": 2022,
+      "anoMod": 2022,
+      "km": 36000,
+      "preco": 119900,
+      "categoria": "SUV",
+      "cambio": "Automático",
+      "combustivel": "Flex",
+      "cor": "Cinza",
+      "portas": 4,
+      "finalPlaca": "3",
+      "selos": [],
+      "destaque": false,
+      "status": "disponivel",
+      "entrada": "2026-10-12",
+      "opcionais": [
+        "Painel digital",
+        "Central VW Play",
+        "Faróis full LED",
+        "Câmera de ré",
+        "Sensor de estacionamento",
+        "Ar digital"
+      ],
+      "descricao": "Veículo fictício, criado para demonstrar como cada carro aparece no site da revenda.",
+      "fotos": [
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1e/2022_Volkswagen_Nivus_200_TSi_Highline.jpg/1280px-2022_Volkswagen_Nivus_200_TSi_Highline.jpg",
+          "autor": "RL GNZLZ",
+          "licenca": "CC BY-SA 2.0"
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1d/2021_Volkswagen_Nivus_200_TSi_Comfortline_%28Chile%29_rear_view.jpg/1280px-2021_Volkswagen_Nivus_200_TSi_Comfortline_%28Chile%29_rear_view.jpg",
+          "autor": "RL GNZLZ",
+          "licenca": "CC BY-SA 2.0"
+        }
+      ]
+    },
+    {
+      "id": "112",
+      "marca": "Fiat",
+      "modelo": "Strada",
+      "versao": "Adventure 1.8 Cabine Dupla",
+      "anoFab": 2019,
+      "anoMod": 2019,
+      "km": 74000,
+      "preco": 79900,
+      "categoria": "Picape",
+      "cambio": "Manual",
+      "combustivel": "Flex",
+      "cor": "Vermelho",
+      "portas": 2,
+      "finalPlaca": "2",
+      "selos": [],
+      "destaque": false,
+      "status": "disponivel",
+      "entrada": "2026-10-09",
+      "opcionais": [
+        "Ar-condicionado",
+        "Direção hidráulica",
+        "Vidros elétricos",
+        "Rodas de liga leve",
+        "Protetor de caçamba"
+      ],
+      "descricao": "Veículo fictício, criado para demonstrar como cada carro aparece no site da revenda.",
+      "fotos": [
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/Fiat_Strada_Adventure%2C_R%C3%ADo_Negro.jpg/1280px-Fiat_Strada_Adventure%2C_R%C3%ADo_Negro.jpg",
+          "autor": "Raf24",
+          "licenca": "CC BY 4.0"
+        }
+      ]
+    },
+    {
+      "id": "113",
+      "marca": "Jeep",
+      "modelo": "Renegade",
+      "versao": "Longitude 1.3 T270 Turbo",
+      "anoFab": 2022,
+      "anoMod": 2022,
+      "km": 44000,
+      "preco": 104900,
+      "categoria": "SUV",
+      "cambio": "Automático",
+      "combustivel": "Flex",
+      "cor": "Azul",
+      "portas": 4,
+      "finalPlaca": "1",
+      "selos": [
+        "Revisado"
+      ],
+      "destaque": false,
+      "status": "disponivel",
+      "entrada": "2026-10-15",
+      "opcionais": [
+        "Central multimídia 8.4\"",
+        "Faróis full LED",
+        "Câmera de ré",
+        "Ar digital",
+        "Rodas de liga leve 17\"",
+        "Partida por botão"
+      ],
+      "descricao": "Veículo fictício, criado para demonstrar como cada carro aparece no site da revenda.",
+      "fotos": [
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/20/Jeep_Renegade_4xe_1X7A6025.jpg/1280px-Jeep_Renegade_4xe_1X7A6025.jpg",
+          "autor": "Alexander Migl",
+          "licenca": "CC BY-SA 4.0"
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e4/Jeep_Renegade_4xe_1X7A6026.jpg/1280px-Jeep_Renegade_4xe_1X7A6026.jpg",
+          "autor": "Alexander Migl",
+          "licenca": "CC BY-SA 4.0"
+        }
+      ]
+    },
+    {
+      "id": "114",
+      "marca": "Volkswagen",
+      "modelo": "Polo",
+      "versao": "Highline 200 TSI",
+      "anoFab": 2021,
+      "anoMod": 2021,
+      "km": 52000,
+      "preco": 84900,
+      "categoria": "Hatch",
+      "cambio": "Automático",
+      "combustivel": "Flex",
+      "cor": "Branco",
+      "portas": 4,
+      "finalPlaca": "5",
+      "selos": [],
+      "destaque": false,
+      "status": "disponivel",
+      "entrada": "2026-10-03",
+      "opcionais": [
+        "Painel digital",
+        "Central multimídia",
+        "Ar digital",
+        "Câmera de ré",
+        "Rodas de liga leve",
+        "Piloto automático"
+      ],
+      "descricao": "Veículo fictício, criado para demonstrar como cada carro aparece no site da revenda.",
+      "fotos": [
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/Volkswagen_Polo_VI_%282021%29_IMG_5322.jpg/1280px-Volkswagen_Polo_VI_%282021%29_IMG_5322.jpg",
+          "autor": "Alexander Migl",
+          "licenca": "CC BY-SA 4.0"
+        }
+      ]
+    },
+    {
+      "id": "115",
+      "marca": "Hyundai",
+      "modelo": "HB20",
+      "versao": "Comfort Plus 1.0 TGDI",
+      "anoFab": 2025,
+      "anoMod": 2025,
+      "km": 12300,
+      "preco": 96900,
+      "categoria": "Hatch",
+      "cambio": "Automático",
+      "combustivel": "Flex",
+      "cor": "Prata",
+      "portas": 4,
+      "finalPlaca": "4",
+      "selos": [
+        "Baixa km",
+        "Garantia de fábrica"
+      ],
+      "destaque": false,
+      "status": "disponivel",
+      "entrada": "2026-11-09",
+      "opcionais": [
+        "Central multimídia 8\"",
+        "Câmera de ré",
+        "Ar-condicionado",
+        "Rodas de liga leve",
+        "Volante multifuncional"
+      ],
+      "descricao": "Veículo fictício, criado para demonstrar como cada carro aparece no site da revenda.",
+      "fotos": [
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/2025_Hyundai_HB20_1.6_Comfort_Plus.jpg/1280px-2025_Hyundai_HB20_1.6_Comfort_Plus.jpg",
+          "autor": "Just a Man",
+          "licenca": "CC BY 4.0"
+        },
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/35/Hyundai_HB20_Comfort_Plus_2025.jpg/1280px-Hyundai_HB20_Comfort_Plus_2025.jpg",
+          "autor": "Just a Man",
+          "licenca": "CC BY 4.0"
+        }
+      ]
+    },
+    {
+      "id": "116",
+      "marca": "Renault",
+      "modelo": "Kwid",
+      "versao": "Life 1.0",
+      "anoFab": 2021,
+      "anoMod": 2021,
+      "km": 39000,
+      "preco": 49900,
+      "categoria": "Hatch",
+      "cambio": "Manual",
+      "combustivel": "Flex",
+      "cor": "Branco",
+      "portas": 4,
+      "finalPlaca": "6",
+      "selos": [],
+      "destaque": false,
+      "status": "vendido",
+      "entrada": "2026-09-29",
+      "opcionais": [
+        "Ar-condicionado",
+        "Direção elétrica",
+        "Vidros elétricos dianteiros",
+        "Rádio com Bluetooth"
+      ],
+      "descricao": "Veículo fictício, criado para demonstrar como cada carro aparece no site da revenda.",
+      "fotos": [
+        {
+          "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/aa/2021_Renault_Kwid_1.0_Life.jpg/1280px-2021_Renault_Kwid_1.0_Life.jpg",
+          "autor": "RL GNZLZ",
+          "licenca": "CC BY-SA 2.0"
+        }
+      ]
+    }
+  ]
+}
